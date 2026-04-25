@@ -1,0 +1,61 @@
+/* ===================================
+   EVERYTHING
+   =================================== */
+* {
+    font-family: var(--default-font);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+:root {
+    --default-font: 'JetBrains Mono', monospace;
+
+    --main-blue-color: ;
+    --gray-background: ;
+}
+
+/* ===================================
+   WRAPPER
+   =================================== */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
+/* ===================================
+   HEADER
+   =================================== */
+.top-panel {
+    display: flex;
+    width: 100vw;
+}
+
+/* ===================================
+   PANEL CONTAINER
+   =================================== */
+.panel-container {
+    display: flex;
+    flex: 1 0 auto;
+}
+
+/* ===================================
+   LEFT-PANEL CONTAINER
+   =================================== */
+.left-panel {
+    min-width: 27vw; /* this will probably need to change to accomodate mobile layout */
+}
+
+/* ===================================
+   RIGHT-PANEL CONTAINER
+   =================================== */
+.right-panel {
+    background-color: red;
+}
+
+/* ===================================
+   FOOTER
+   =================================== */
