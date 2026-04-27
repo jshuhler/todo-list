@@ -12,8 +12,15 @@
 :root {
     --default-font: 'JetBrains Mono', monospace;
 
-    --main-blue-color: ;
-    --gray-background: ;
+    --main-blue-color: #2563EB;
+    --left-panel-background: #F8FAFC;
+    --right-panel-background: #ececec;
+    --font-color-main: ;
+    --font-color-secondary: #F8FAFC;
+}
+
+button {
+    cursor: pointer;
 }
 
 /* ===================================
@@ -31,7 +38,21 @@
    =================================== */
 .top-panel {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     width: 100vw;
+    padding: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+}
+
+button.new-todo {
+    background-color: var(--main-blue-color);
+    color: var(--font-color-secondary);
+    border: none;
+    border-radius: 8px;
+    padding: 6px 14px;
 }
 
 /* ===================================
@@ -47,13 +68,25 @@
    =================================== */
 .left-panel {
     min-width: 27vw; /* this will probably need to change to accomodate mobile layout */
+    padding: 10px;
+}
+
+.all-items,
+.projects {
+    margin-bottom: 15px;
+}
+
+.menu-choice,
+.menu-title {
+    padding: 5px 0px;
 }
 
 /* ===================================
    RIGHT-PANEL CONTAINER
    =================================== */
 .right-panel {
-    background-color: red;
+    min-width: 73vw;
+    background-color: var(--right-panel-background);
 }
 
 /* ===================================
