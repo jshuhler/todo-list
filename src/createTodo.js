@@ -12,6 +12,10 @@ class Todo {
     };
 };
 
+function createTodo(title,description,dueDate,priority,status) {
+    const newTodo = new Todo(title,description,dueDate,priority,status)
+}
+
 export { 
-    Todo
+    createTodo
 };
