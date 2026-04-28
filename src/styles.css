@@ -13,6 +13,7 @@
     --default-font: 'JetBrains Mono', monospace;
 
     --main-blue-color: #2563EB;
+    --main-blue-hover: #4d7fec;
     --left-panel-background: #F8FAFC;
     --right-panel-background: #ececec;
     --font-color-main: ;
@@ -74,6 +75,27 @@ button,
 .right-panel {
     min-width: 73vw; /* this is absolutely not the way to handle the width of the right panel*/
     background-color: var(--right-panel-background);
+}
+
+button.add-task-button {
+    font: var();
+    padding: 5px;
+    width: 75px;
+    height: 75px;
+    border: none;
+    border-radius: 100px;
+    background-color: var(--main-blue-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    transition: all 0.1s ease;
+}
+
+button.add-task-button:hover {
+    background-color: var(--main-blue-hover)
+}
+
+button.add-task-button:active {
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+    transform: translateY(2px)
 }
 
 /* ===================================
