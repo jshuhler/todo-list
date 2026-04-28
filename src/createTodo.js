@@ -1,3 +1,5 @@
+const todoList = [];
+
 class Todo {
     constructor(title,description,dueDate,priority,status) {
         if (!new.target) {
@@ -14,8 +16,10 @@ class Todo {
 
 function createTodo(title,description,dueDate,priority,status) {
     const newTodo = new Todo(title,description,dueDate,priority,status)
-}
+    todoList.push(newTodo);
+};
 
 export { 
-    createTodo
+    todoList,
+    createTodo,
 };
