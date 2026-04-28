@@ -10,28 +10,41 @@
 </head>
 <body>
     <div class="wrapper">
-        <header class="top-panel">
-            <div class="title">
-                <h1>ToDo List</h1>
-            </div>
-            <div class="theme">
-
-            </div>
-            <button class="new-todo">+ New Todo</button>
-        </header>
         <div class="panel-container">
             <div class="left-panel">
-                <div class="all-items">
-                    <h2 class="menu-title">All Todos</h2>
-                    <div class="menu-choice">Everything</div>
-                    <div class="menu-choice">Due today</div>
-                    <div class="menu-choice">Due this week</div>
+                <div class="title">
+                    <h1>To-Do-er</h1>
                 </div>
-                <div class="projects">
+                <div class="left-section">
+                    <h2 class="menu-title">All Todos</h2>
+                    <ul class="everything-menu">
+                        <li class="menu-choice">
+                            <span>Everything</span>
+                        </li>
+                        <li class="menu-choice">
+                            <span>Due Today</span>
+                        </li>
+                        <li class="menu-choice">
+                            <span>Due This Week</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="left-section">
                     <h2 class="menu-title">Projects</h2>
                     <!-- give added projects the menu-choice class -->
+                     <ul class="project-menu">
+
+                     </ul>
                     <div class="project-btn">
                         <button>Add a Project</button>
+                    </div>
+                </div>
+                <div class="left-buttons">
+                    <div class="mode-toggle">
+
+                    </div>
+                    <div class="github-logo">
+
                     </div>
                 </div>
             </div>
@@ -39,7 +52,6 @@
                 <div class="todo-container"></div>
             </div>
         </div>
-        <div class="footer"></div>
     </div>
 </body>
 </html>

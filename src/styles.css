@@ -19,7 +19,8 @@
     --font-color-secondary: #F8FAFC;
 }
 
-button {
+button,
+.menu-choice span {
     cursor: pointer;
 }
 
@@ -34,28 +35,6 @@ button {
 }
 
 /* ===================================
-   HEADER
-   =================================== */
-.top-panel {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width: 100vw;
-    padding: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    position: relative;
-    z-index: 1;
-}
-
-button.new-todo {
-    background-color: var(--main-blue-color);
-    color: var(--font-color-secondary);
-    border: none;
-    border-radius: 8px;
-    padding: 6px 14px;
-}
-
-/* ===================================
    PANEL CONTAINER
    =================================== */
 .panel-container {
@@ -67,13 +46,21 @@ button.new-todo {
    LEFT-PANEL CONTAINER
    =================================== */
 .left-panel {
-    min-width: 27vw; /* this will probably need to change to accomodate mobile layout */
+    min-width: 27vw; /* this is absolutely not the way to handle the width of the left panel */
     padding: 10px;
+    box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
 }
 
-.all-items,
-.projects {
+.title {
+    padding-bottom: 15px;
+}
+
+.left-section {
     margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
 }
 
 .menu-choice,
@@ -85,7 +72,7 @@ button.new-todo {
    RIGHT-PANEL CONTAINER
    =================================== */
 .right-panel {
-    min-width: 73vw;
+    min-width: 73vw; /* this is absolutely not the way to handle the width of the right panel*/
     background-color: var(--right-panel-background);
 }
 
