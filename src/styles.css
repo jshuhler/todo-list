@@ -18,6 +18,10 @@
     --right-panel-background: #ececec;
     --font-color-main: ;
     --font-color-secondary: #F8FAFC;
+
+    --priority-high: red;
+    --priority-med: yellow;
+    --priority-low: green;
 }
 
 button,
@@ -33,6 +37,14 @@ button,
     flex-direction: column;
     justify-content: space-between;
     min-height: 100vh;
+}
+
+/* ===================================
+   ADD TODO LIST ITEM MODAL
+   =================================== */
+dialog {
+    display: flex;
+    flex-direction: column;
 }
 
 /* ===================================

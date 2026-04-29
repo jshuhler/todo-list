@@ -11,6 +11,45 @@
 <body>
     <div class="wrapper">
         <div class="panel-container">
+            <dialog>
+                <fieldset>
+                    <legend>Add New Task</legend>
+                    <div class="form-item" id="form-name">
+                        <label for="todo-name">Title</label>
+                        <input type="text" id="todo-name">
+                    </div>
+                    <div class="form-item" id="form-details">
+                        <label for="todo-details">Details</label>
+                        <input type="text" id="todo-details">
+                    </div>
+                    <div class="form-item" id="form-date">
+                        <label for="todo-date">Due Date</label>
+                        <input type="date" id="todo-date">
+                    </div>
+                    <div class="form-project" id="form-project">
+                        <label for="todo-project">Project</label>
+                        <select name="project" id="todo-project">
+                        
+                        </select>
+                    </div>
+                    <div class="form-priority">
+                        <p class="todo-priority">Task Priority</p>
+                        <div class="radio-item">
+                            <input type="radio" id="priority-high" name="priority" value="high">                            
+                            <label for="priority-high">High</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="priority-med" name="priority" value="med">                            
+                            <label for="priority-med">Medium</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="priority-low" name="priority" value="low">                            
+                            <label for="priority-low">Low</label>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </dialog>
             <div class="left-panel">
                 <div class="title">
                     <h1>To-Do-er</h1>
