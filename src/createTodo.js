@@ -1,3 +1,5 @@
+// Creates a todoItem and appends it to the todoList array
+
 const todoList = [];
 
 class Todo {

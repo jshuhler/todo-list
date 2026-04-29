@@ -1,3 +1,5 @@
+// Creates a projectItem and appends it to the projectList array
+
 const projectList = [];
 
 class Project {
