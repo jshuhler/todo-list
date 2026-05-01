@@ -43,8 +43,8 @@ button,
    ADD TODO LIST ITEM MODAL
    =================================== */
 dialog {
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
     background-color: var(--main-blue-color);
 }
 
