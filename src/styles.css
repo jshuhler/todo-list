@@ -45,6 +45,7 @@ button,
 dialog {
     display: flex;
     flex-direction: column;
+    background-color: var(--main-blue-color);
 }
 
 /* ===================================
