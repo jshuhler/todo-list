@@ -90,7 +90,7 @@ dialog {
     background-color: var(--right-panel-background);
 }
 
-button.add-task-button {
+button#add-task-button {
     font: var();
     padding: 5px;
     width: 75px;
@@ -102,11 +102,11 @@ button.add-task-button {
     transition: all 0.1s ease;
 }
 
-button.add-task-button:hover {
+button#add-task-button:hover {
     background-color: var(--main-blue-hover)
 }
 
-button.add-task-button:active {
+button#add-task-button:active {
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
     transform: translateY(2px)
 }
