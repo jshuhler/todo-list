@@ -1,14 +1,13 @@
 // Creates a todoItem and appends it to the todoList array
-
 const todoList = [];
 
 class Todo {
-    constructor(title,description,dueDate,priority,status) {
+    constructor(title,details,dueDate,priority,status) {
         if (!new.target) {
             throw Error("You must use the 'new' operator to call the constructor.");
         };
         this.title = title;
-        this.description = description;
+        this.details = details;
         this.dueDate = dueDate;
         this.priority = priority;
         this.status = status;
