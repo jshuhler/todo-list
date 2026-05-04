@@ -24,12 +24,17 @@ closeTodoDialog.addEventListener('click', (e) => {
     console.log('you clicked the close dialog button');
 });
 
-// CREATE TODO ITEM CARD AND ADD TO PAGE
-addTodoDialog.addEventListener('click', () => {
+// CREATE TODO ITEM AND ADD TO ARRAY
+addTodoDialog.addEventListener('click', (e) => {
+    e.preventDefault();
     todoTitle = document.getElementById("todo-name").value;
     todoDetails = document.getElementById("todo-details").value;
     todoDueDate = document.getElementById("todo-date").value;
     todoProject = document.getElementById("todo-project").value;
-    todoPriority = document.getElementById("priority").value;
+    let form = document.forms[0];
+    let radioButtons = form.elements["priority"];
+    todoPriority = radioButtons.value;
     createTodo(todoTitle,todoDetails,todoDueDate,todoProject,todoPriority);
+    console.log(todoList);
+    dialog.close();
 });
