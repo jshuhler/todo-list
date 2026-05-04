@@ -1,4 +1,4 @@
-import { createTodo } from "./createTodo.js";
+import { todoList, createTodo } from "./createTodo.js";
 
 // DECLARING VARIABLES 
 const dialog = document.querySelector("dialog");
@@ -18,8 +18,9 @@ addTodoButton.addEventListener('click', () => {
 });
 
 // CLOSE NEW TODO DIALOG WITHOUT ADDING ITEM
-closeTodoDialog.addEventListener('click', () => {
+closeTodoDialog.addEventListener('click', (e) => {
     dialog.close();
+    e.preventDefault();
     console.log('you clicked the close dialog button');
 });
 
@@ -32,5 +33,3 @@ addTodoDialog.addEventListener('click', () => {
     todoPriority = document.getElementById("priority").value;
     createTodo(todoTitle,todoDetails,todoDueDate,todoProject,todoPriority);
 });
-
-// Jeff your inputs don't match the createToDo function

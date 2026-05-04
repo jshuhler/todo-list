@@ -2,13 +2,14 @@
 const todoList = [];
 
 class Todo {
-    constructor(title,details,dueDate,priority,status) {
+    constructor(title,details,dueDate,project,priority,status) {
         if (!new.target) {
             throw Error("You must use the 'new' operator to call the constructor.");
         };
         this.title = title;
         this.details = details;
         this.dueDate = dueDate;
+        this.project = project
         this.priority = priority;
         this.status = status;
         this.id = crypto.randomUUID();
