@@ -40,12 +40,30 @@ button,
 }
 
 /* ===================================
-   ADD TODO LIST ITEM MODAL
+   DIALOGS (TODO & PROJECT)
    =================================== */
 dialog {
-    /* display: flex;
-    flex-direction: column; */
-    background-color: var(--main-blue-color);
+    padding: 20px;
+    border: solid 1px rgb(110, 110, 110);
+}
+
+dialog::backdrop {
+    backdrop-filter: blur(3px);
+}
+
+fieldset {
+    border: none;
+    padding-bottom: 10px;
+}
+
+.dialog-header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+
+.dialog-close {
+    cursor: pointer;
 }
 
 /* ===================================
@@ -90,16 +108,26 @@ dialog {
     background-color: var(--right-panel-background);
 }
 
+.no-todo-text {
+    color: #999999;
+    text-align: center;
+    margin: 20px;
+}
+
 button#add-task-button {
-    font: var();
+    font-size: 40px;
+    color: var(--right-panel-background);
     padding: 5px;
-    width: 75px;
-    height: 75px;
+    width: 80px;
+    height: 80px;
     border: none;
     border-radius: 100px;
     background-color: var(--main-blue-color);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
     transition: all 0.1s ease;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
 }
 
 button#add-task-button:hover {

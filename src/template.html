@@ -11,10 +11,13 @@
 <body>
     <div class="wrapper">
         <div class="panel-container">
-            <dialog>
+            <dialog class="todo-dialog">
                 <form action="" method="" class="add-todo-form">
                     <fieldset>
-                        <legend>Add New Task</legend>
+                        <div class="dialog-header">
+                            <legend>Add New Task</legend>
+                            <span class="todo-dialog-close dialog-close">&times;</span>
+                        </div>
                         <div class="form-item" id="form-name">
                             <label for="todo-name">Title</label>
                             <input type="text" id="todo-name">
@@ -36,22 +39,39 @@
                         <div class="form-priority">
                             <p class="todo-priority">Task Priority</p>
                             <div class="radio-item">
-                                <input type="radio" id="priority-high" name="priority" value="high">
+                                <input type="radio" id="priority-high" name="priority" value="3">
                                 <label for="priority-high">High</label>
                             </div>
                             <div class="radio-item">
-                                <input type="radio" id="priority-med" name="priority" value="med" checked>
+                                <input type="radio" id="priority-med" name="priority" value="2" checked>
                                 <label for="priority-med">Medium</label>
                             </div>
                             <div class="radio-item">
-                                <input type="radio" id="priority-low" name="priority" value="low">
+                                <input type="radio" id="priority-low" name="priority" value="1">
                                 <label for="priority-low">Low</label>
                             </div>
                         </div>
                     </fieldset>
-                    <div class="modal-buttons">
+                    <div class="dialog-buttons">
                         <button type="submit" id="add-todo-submit">Save</button>
                         <button type="button" id="close-todo-submit">Close</button>
+                    </div>
+                </form>
+            </dialog>
+            <dialog class="project-dialog">
+                <form action="" method="" class="add-project-form">
+                    <fieldset>
+                        <div class="dialog-header">
+                            <legend>Add New Project</legend>
+                            <div class="project-dialog-close dialog-close">&times;</div>
+                        </div>
+                        <div class="form-item" id="project-form-name">
+                            <label for="project-name">Project Name</label>
+                            <input type="text" id="project-name">
+                        </div>
+                    </fieldset>
+                    <div class="dialog-buttons">
+                        <button type="submit" id="add-project-submit">Save</button>
                     </div>
                 </form>
             </dialog>
@@ -79,7 +99,7 @@
                      <ul class="project-menu">
 
                      </ul>
-                    <div class="project-btn">
+                    <div id="add-project-button">
                         <button>Add a Project</button>
                     </div>
                 </div>
@@ -94,6 +114,7 @@
             </div>
             <div class="right-panel">
                 <div class="todo-container">
+                    <div class="no-todo-text">You're not tracking anything yet. Click the <span class="default-text">+</span> to start getting organized.</div>
                     <div class="todo-item">
                         <div class="todo-title">Title</div>
                         <div class="todo-details">Details</div>
@@ -103,7 +124,7 @@
                     </div>
                 </div>
                 <button id="add-task-button">
-                    <h1>+</h1>
+                    <span>&plus;</span>
                 </button>
             </div>
         </div>
