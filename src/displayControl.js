@@ -8,7 +8,7 @@ import { projectList, createProject } from "./createProject.js";
 // DECLARING VARIABLES FOR TODO DIALOG
 const todoDialog = document.querySelector("dialog.todo-dialog");
 const addTodoButton = document.getElementById("add-task-button");
-const closeTodoDialog = document.getElementById("close-todo-submit");
+const closeTodoDialog = document.querySelector(".todo-dialog-close");
 const addTodoDialog = document.getElementById("add-todo-submit");
 let todoTitle;
 let todoDetails;
@@ -69,6 +69,7 @@ closeProjectDialog.addEventListener('click', (e) => {
     console.log('close project dialog button press');
 });
 
+// CREATE NEW PROJECT AND ADD TO ARRAY
 addProjectDialog.addEventListener('click', (e) => {
     e.preventDefault();
     projectName = document.getElementById("project-name").value;
@@ -78,6 +79,7 @@ addProjectDialog.addEventListener('click', (e) => {
     projectDialog.close();
 });
 
+// ADD NEW PROJECT TO SIDEBAR
 
 
 // -------------------------------

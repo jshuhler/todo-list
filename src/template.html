@@ -18,19 +18,19 @@
                             <legend>Add New Task</legend>
                             <span class="todo-dialog-close dialog-close">&times;</span>
                         </div>
-                        <div class="form-item" id="form-name">
+                        <div>
                             <label for="todo-name">Title</label>
                             <input type="text" id="todo-name">
                         </div>
-                        <div class="form-item" id="form-details">
+                        <div>
                             <label for="todo-details">Details</label>
                             <input type="text" id="todo-details">
                         </div>
-                        <div class="form-item" id="form-date">
+                        <div>
                             <label for="todo-date">Due Date</label>
                             <input type="date" id="todo-date">
                         </div>
-                        <div class="form-item" id="form-project">
+                        <div>
                             <label for="todo-project">Project</label>
                             <select name="project" id="todo-project">
                     
@@ -54,7 +54,6 @@
                     </fieldset>
                     <div class="dialog-buttons">
                         <button type="submit" id="add-todo-submit">Save</button>
-                        <button type="button" id="close-todo-submit">Close</button>
                     </div>
                 </form>
             </dialog>
@@ -65,9 +64,9 @@
                             <legend>Add New Project</legend>
                             <div class="project-dialog-close dialog-close">&times;</div>
                         </div>
-                        <div class="form-item" id="project-form-name">
-                            <label for="project-name">Project Name</label>
-                            <input type="text" id="project-name">
+                        <div>
+                            <label for="project-name">Project Name:</label>
+                            <input type="text" id="project-name" required>
                         </div>
                     </fieldset>
                     <div class="dialog-buttons">
@@ -79,7 +78,7 @@
                 <div class="title">
                     <h1>To-Do-er</h1>
                 </div>
-                <div class="left-section">
+                <div class="left-section" id="left-section-top">
                     <h2 class="menu-title">All Todos</h2>
                     <ul class="everything-menu">
                         <li class="menu-choice">
@@ -93,7 +92,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="left-section">
+                <div class="left-section" id="left-section-bottom">
                     <h2 class="menu-title">Projects</h2>
                     <!-- give added projects the menu-choice class, maybe make it a list -->
                      <ul class="project-menu">
@@ -116,11 +115,7 @@
                 <div class="todo-container">
                     <div class="no-todo-text">You're not tracking anything yet. Click the <span class="default-text">+</span> to start getting organized.</div>
                     <div class="todo-item">
-                        <div class="todo-title">Title</div>
-                        <div class="todo-details">Details</div>
-                        <div class="todo-date">Due Date</div>
-                        <div class="todo-priority">Priority</div>
-                        <div class="todo-status">Status</div>
+
                     </div>
                 </div>
                 <button id="add-task-button">
