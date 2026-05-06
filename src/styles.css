@@ -14,8 +14,10 @@
 
     --main-blue-color: #2563EB;
     --main-blue-hover: #4d7fec;
-    --left-panel-background: #F8FAFC;
-    --right-panel-background: #ececec;
+    --left-panel-background: #F9FDFE;
+    --left-panel-hover: #dde2e4;
+    --right-panel-background: #ECECEC;
+
     --font-color-main: ;
     --font-color-secondary: #F8FAFC;
 
@@ -83,6 +85,7 @@ fieldset {
     box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.1);
     position: relative;
     z-index: 1;
+    background-color: var(--left-panel-background);
 }
 
 .title {
@@ -108,12 +111,18 @@ fieldset {
     background-color: var(--right-panel-background);
 }
 
-.no-todo-text {
+/* NO EXISTING TODOS */
+.empty-todo-container {
     color: #999999;
     text-align: center;
     margin: 20px;
 }
 
+span.default-text {
+    color: var(--main-blue-color);
+}
+
+/* ADD TODO BUTTON */
 button#add-task-button {
     font-size: 40px;
     color: var(--right-panel-background);
@@ -137,4 +146,70 @@ button#add-task-button:hover {
 button#add-task-button:active {
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
     transform: translateY(2px)
+}
+
+/* ===================================
+   TO DO ITEMS
+   =================================== */
+.todo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.todo-item .text-container,
+.todo-item .detail-container,
+.todo-item .detail-bottom-container {
+    gap: 3px;
+}
+
+.todo-item {
+    width: 95%;
+    padding: 8px;
+    display: grid;
+    grid-template-columns: 1fr 13fr 6fr;
+    gap: 8px;
+    background-color: var(--left-panel-background);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.todo-item:hover {
+    background-color: var(--left-panel-hover);
+    cursor: pointer;
+}
+
+.todo-item .status-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.todo-item .text-container {
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+}
+
+.todo-item .todo-title-container {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.todo-item .todo-detail-container {
+    color: #494949d7;
+    font-size: 0.9em;
+}
+
+.todo-item .detail-container {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+.todo-item .detail-top-container,
+.todo-item .detail-bottom-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.todo-trash-container {
+    align-self: flex-right;
 }

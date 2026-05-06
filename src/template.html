@@ -24,7 +24,7 @@
                         </div>
                         <div>
                             <label for="todo-details">Details</label>
-                            <input type="text" id="todo-details">
+                            <textarea name="todo-details" id="todo-details" rows="5" cols="33"></textarea>
                         </div>
                         <div>
                             <label for="todo-date">Due Date</label>
@@ -112,10 +112,30 @@
                 </div>
             </div>
             <div class="right-panel">
+                <div class="empty-todo-container">You're not tracking anything yet, click the <span class="default-text">+</span> to start getting organized</div>
                 <div class="todo-container">
-                    <div class="no-todo-text">You're not tracking anything yet. Click the <span class="default-text">+</span> to start getting organized.</div>
+                    <div class="todo-sort-title"> 
+                        <!-- this should get adjusted whenever the user sorts to see specific projects vs all of the items -->
+                    </div>
                     <div class="todo-item">
-
+                        <div class="status-container">
+                            btn
+                            <!-- put the selection toggle for the status in this div -->
+                        </div>
+                        <div class="text-container">
+                            <div class="todo-title-container">Learn how to hack stuff</div>
+                            <div class="todo-detail-container">Details about the thing I need to do go here. I can add a bunch of info if I need to. It's just basic text though, not rich format.</div>
+                        </div>
+                        <div class="detail-container">
+                            <div class="detail-top-container">
+                                <div class="todo-date-container">05/06/26</div>
+                                <div class="todo-trash-container">icon</div>
+                            </div>
+                            <div class="detail-bottom-container">
+                                <div class="todo-project-container">Coding</div>
+                                <div class="todo-priority-container">Medium</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <button id="add-task-button">
