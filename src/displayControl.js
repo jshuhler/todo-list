@@ -54,7 +54,7 @@ const projectDialog = document.querySelector("dialog.project-dialog");
 const addProjectButton = document.getElementById("add-project-button");
 const closeProjectDialog = document.querySelector(".project-dialog-close");
 const addProjectDialog = document.getElementById("add-project-submit");
-const projectMenu = document.querySelector("project-menu");
+const projectMenu = document.querySelector(".project-menu");
 let projectName;
 
 // OPEN NEW PROJECT DIALOG
@@ -75,12 +75,17 @@ addProjectDialog.addEventListener('click', (e) => {
     e.preventDefault();
     projectName = document.getElementById("project-name").value;
     createProject(projectName);
-    const userProject = document.createElement("div")
-    userProject.classList.add("user-project");
-    projectMenu.appendChild(userProject);
     console.log(projectList);
     console.log('save project button press');
     projectDialog.close();
+
+    const userProject = document.createElement("li");
+    const projectTitle = document.createElement("span");
+
+    userProject.appendChild(projectTitle);
+    projectTitle.textContent = projectName;
+    userProject.classList.add("menu-choice");
+    projectMenu.appendChild(userProject);
 });
 
 // -------------------------------
