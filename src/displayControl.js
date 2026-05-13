@@ -1,5 +1,5 @@
 import { todoList, createTodo } from "./createTodo.js";
-import { projectList, createProject } from "./createProject.js";
+import { projectList, createProject, deleteProject } from "./createProject.js";
 
 // -------------------------------
 // OPENING AND CLOSING THE NEW TODO DIALOG
@@ -79,13 +79,23 @@ addProjectDialog.addEventListener('click', (e) => {
     console.log('save project button press');
     projectDialog.close();
 
-    const userProject = document.createElement("li");
-    const projectTitle = document.createElement("span");
+    // split the below into a new function that is called 
+    // when the save project button is clicked (above), then add another 
+    // function that is called that adds the event listener onto 
+    // the delete button that is created for project deletion
 
-    userProject.appendChild(projectTitle);
+    const newProject = document.createElement("li");
+    const projectTitle = document.createElement("span");
+    const projectDelete = document.createElement("span");
+
+    newProject.appendChild(projectTitle);
+    newProject.appendChild(projectDelete);
     projectTitle.textContent = projectName;
-    userProject.classList.add("menu-choice");
-    projectMenu.appendChild(userProject);
+    projectDelete.textContent = "×";
+    newProject.classList.add("menu-choice");
+    projectMenu.appendChild(newProject);
+
+
 });
 
 // -------------------------------

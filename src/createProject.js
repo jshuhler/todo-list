@@ -17,7 +17,16 @@ function createProject(name) {
     projectList.push(newProject);
 };
 
+function deleteProject() {
+    const projectToRemove = projectList.find((selectedProject) => selectedProject.id === Project.id);
+    const index = projectList.indexOf(projectToRemove);
+    if (index > -1) {
+        projectList.splice(index, 1);
+    };
+};
+
 export {
     projectList,
     createProject,
+    deleteProject,
 }

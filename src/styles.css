@@ -103,6 +103,11 @@ fieldset {
     padding: 5px 0px;
 }
 
+.project-menu .menu-choice {
+    display: flex;
+    justify-content: space-between;
+}
+
 /* ===================================
    RIGHT-PANEL CONTAINER
    =================================== */
