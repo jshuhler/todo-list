@@ -79,36 +79,23 @@ addProjectDialog.addEventListener('click', (e) => {
     console.log('save project button press');
     projectDialog.close();
     addToProjectList();
-    projectDeleteButton();
-    // split the below into a new function that is called 
-    // when the save project button is clicked (above), then add another 
-    // function that is called that adds the event listener onto 
-    // the delete button that is created for project deletion
-    // and then add an event listener onto the project name for the display changes
-
-
-
-
 });
 
-// ADD PROJECT TO LEFT PANEL AND CREATE DELETE BUTTON
+// ADD PROJECT AND DELETE BUTTON TO LEFT PANEL
 const addToProjectList = () => {
     const newProject = document.createElement("li");
     const projectTitle = document.createElement("span");
-    
-
     newProject.appendChild(projectTitle);
-    
     projectTitle.textContent = projectName;
-    
     newProject.classList.add("menu-choice");
     projectMenu.appendChild(newProject);
-};
-
-const projectDeleteButton = () => {
     const projectDelete = document.createElement("span");
     newProject.appendChild(projectDelete);
-    projectDelete.textContent = "×";
+    projectDelete.textContent = "×"; // need to add a data attribute to this button for projection deletion via unique ID
+};
+
+const projectDeleteListen = () => {
+
 }
 
 // -------------------------------
