@@ -70,7 +70,7 @@ closeProjectDialog.addEventListener('click', (e) => {
     console.log('close project dialog button press');
 });
 
-// CREATE & SAVE NEW PROJECT, ADD TO PROJECT ARRAY, ADD TO LEFT PANEL
+// CREATE NEW PROJECT, ADD TO PROJECT ARRAY, CALL ADD TO LIST FUNCTION
 addProjectDialog.addEventListener('click', (e) => {
     e.preventDefault();
     projectName = document.getElementById("project-name").value;
@@ -79,23 +79,25 @@ addProjectDialog.addEventListener('click', (e) => {
     console.log('save project button press');
     projectDialog.close();
     addToProjectList();
+    return projectName;
 });
 
 // ADD PROJECT AND DELETE BUTTON TO LEFT PANEL
-function addToProjectList() {
-    const newProject = document.createElement("li"); // create list item to hold project name/delete button
+function addToProjectList(Project) {
+    const newProject = document.createElement("li"); // create list item to hold project name & delete button
     const projectTitle = document.createElement("span"); //create span for project name
     newProject.appendChild(projectTitle); // add project name to project container
     projectTitle.textContent = projectName;
     newProject.classList.add("menu-choice");
     projectMenu.appendChild(newProject);
     const projectDelete = document.createElement("span");
+    projectDelete.classList.add("delete-button");
     newProject.appendChild(projectDelete);
     projectDelete.textContent = "×"; // need to add a data attribute to this button for projection deletion via unique ID
-    projectDelete.setAttribute("data-id",projectName.id);
+    projectDelete.setAttribute("data-id",Project.id);
 };
 
-// ADD EVENT LISTENER TO PROJECT DELETE BUTTON
+// CREATE DELETE BUTTON AND ADD EVENT LISTENER TO PROJECT DELETE BUTTON
 const projectDeleteListen = () => {
 
 };
