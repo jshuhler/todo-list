@@ -79,16 +79,17 @@ addProjectDialog.addEventListener('click', (e) => {
     const projectName = document.getElementById("project-name").value;
     createProject(projectName);
     console.log(projectName);
+    console.log(projectArray)
     console.log('save project button press');
     projectDialog.close();
-    addToProjectList(projectArray);
+    addToProjectList(projectArray); // should just call this on the new project that I created, not the entire array. 
 });
 
 // ADD PROJECT AND DELETE BUTTON TO LEFT PANEL
 function addToProjectList(projectArray) {
     const newProject = document.createElement("li"); // create list item to hold project List & delete button
     const projectTitle = document.createElement("span"); //create span for project name text
-    newProject.appendChild(projectArray.name); // add project List to project container
+    newProject.appendChild(projectArray.name ); // add project List to project container
     projectTitle.textContent = projectArray.name;
     newProject.classList.add("menu-choice");
     projectMenu.appendChild(newProject);
