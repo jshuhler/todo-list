@@ -1,6 +1,6 @@
-// Creates a projectItem and appends it to the projectList array
+// Creates a projectItem and appends it to the projectArray array
 
-const projectList = [];
+const projectArray = [];
 
 class Project {
     constructor(name) {
@@ -14,19 +14,19 @@ class Project {
 
 function createProject(name) {
     const newProject = new Project(name)
-    projectList.push(newProject);
+    projectArray.push(newProject);
 };
 
 function deleteProject() {
-    const projectToRemove = projectList.find((selectedProject) => selectedProject.id === Project.id);
-    const index = projectList.indexOf(projectToRemove);
+    const projectToRemove = projectArray.find((selectedProject) => selectedProject.id === Project.id);
+    const index = projectArray.indexOf(projectToRemove);
     if (index > -1) {
         projectList.splice(index, 1);
     };
 };
 
 export {
-    projectList,
+    projectArray,
     createProject,
     deleteProject,
 }

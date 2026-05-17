@@ -1,5 +1,5 @@
 import { todoList, createTodo } from "./createTodo.js";
-import { projectList, createProject, deleteProject } from "./createProject.js";
+import { projectArray, createProject, deleteProject } from "./createProject.js";
 
 // -------------------------------
 // OPENING AND CLOSING THE NEW TODO DIALOG
@@ -32,7 +32,7 @@ closeTodoDialog.addEventListener('click', (e) => {
 // CREATE TODO ITEM AND ADD TO ARRAY
 addTodoDialog.addEventListener('click', (e) => {
     e.preventDefault();
-    todoTitle = document.getElementById("todo-name").value;
+    todoTitle = document.getElementById("todo-List").value;
     todoDetails = document.getElementById("todo-details").value;
     todoDueDate = document.getElementById("todo-date").value;
     todoProject = document.getElementById("todo-project").value;
@@ -45,6 +45,9 @@ addTodoDialog.addEventListener('click', (e) => {
     todoDialog.close();
 });
 
+// CREATE NEW TODO CARD
+
+
 // -------------------------------
 // OPENING AND CLOSING THE NEW PROJECT DIALOG
 // -------------------------------
@@ -55,7 +58,7 @@ const addProjectButton = document.getElementById("add-project-button");
 const closeProjectDialog = document.querySelector(".project-dialog-close");
 const addProjectDialog = document.getElementById("add-project-submit");
 const projectMenu = document.querySelector(".project-menu");
-let projectName;
+// let projectList;
 
 // OPEN NEW PROJECT DIALOG
 addProjectButton.addEventListener('click', () => {
@@ -73,28 +76,29 @@ closeProjectDialog.addEventListener('click', (e) => {
 // CREATE NEW PROJECT, ADD TO PROJECT ARRAY, CALL ADD TO LIST FUNCTION
 addProjectDialog.addEventListener('click', (e) => {
     e.preventDefault();
-    projectName = document.getElementById("project-name").value;
+    const projectName = document.getElementById("project-name").value;
     createProject(projectName);
-    console.log(projectList);
+    console.log(projectName);
     console.log('save project button press');
     projectDialog.close();
-    addToProjectList();
-    return projectName;
+    addToProjectList(projectArray);
 });
 
 // ADD PROJECT AND DELETE BUTTON TO LEFT PANEL
-function addToProjectList(Project) {
-    const newProject = document.createElement("li"); // create list item to hold project name & delete button
-    const projectTitle = document.createElement("span"); //create span for project name
-    newProject.appendChild(projectTitle); // add project name to project container
-    projectTitle.textContent = projectName;
+function addToProjectList(projectArray) {
+    const newProject = document.createElement("li"); // create list item to hold project List & delete button
+    const projectTitle = document.createElement("span"); //create span for project name text
+    newProject.appendChild(projectArray.name); // add project List to project container
+    projectTitle.textContent = projectArray.name;
     newProject.classList.add("menu-choice");
     projectMenu.appendChild(newProject);
     const projectDelete = document.createElement("span");
     projectDelete.classList.add("delete-button");
     newProject.appendChild(projectDelete);
     projectDelete.textContent = "×"; // need to add a data attribute to this button for projection deletion via unique ID
-    projectDelete.setAttribute("data-id",Project.id);
+    console.log(projectArray.name)
+    console.log(projectArray.id)
+    projectDelete.setAttribute("data-id",projectArray.at(-1).id);
 };
 
 // CREATE DELETE BUTTON AND ADD EVENT LISTENER TO PROJECT DELETE BUTTON
