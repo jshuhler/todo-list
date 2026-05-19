@@ -58,6 +58,7 @@ const addProjectButton = document.getElementById("add-project-button");
 const closeProjectDialog = document.querySelector(".project-dialog-close");
 const addProjectDialog = document.getElementById("add-project-submit");
 const projectMenu = document.querySelector(".project-menu");
+let project;
 // let projectList;
 
 // OPEN NEW PROJECT DIALOG
@@ -73,7 +74,7 @@ closeProjectDialog.addEventListener('click', (e) => {
     console.log('close project dialog button press');
 });
 
-// CREATE NEW PROJECT, ADD TO PROJECT ARRAY, CALL ADD TO LIST FUNCTION
+// CREATE NEW PROJECT, ADD TO PROJECT ARRAY, CALL ADD TO PROJECT LIST FUNCTION
 addProjectDialog.addEventListener('click', (e) => {
     e.preventDefault();
     const projectName = document.getElementById("project-name").value;
@@ -85,27 +86,79 @@ addProjectDialog.addEventListener('click', (e) => {
     addToProjectList(projectArray); // should just call this on the new project that I created, not the entire array. 
 });
 
-// ADD PROJECT AND DELETE BUTTON TO LEFT PANEL
+// REFACTORED: ADD PROJECT AND A DELETE BUTTON TO LEFT PANEL
 function addToProjectList(projectArray) {
-    const newProject = document.createElement("li"); // create list item to hold project List & delete button
-    const projectTitle = document.createElement("span"); //create span for project name text
-    newProject.appendChild(projectArray.name ); // add project List to project container
-    projectTitle.textContent = projectArray.name;
-    newProject.classList.add("menu-choice");
-    projectMenu.appendChild(newProject);
-    const projectDelete = document.createElement("span");
-    projectDelete.classList.add("delete-button");
-    newProject.appendChild(projectDelete);
-    projectDelete.textContent = "×"; // need to add a data attribute to this button for projection deletion via unique ID
-    console.log(projectArray.name)
-    console.log(projectArray.id)
-    projectDelete.setAttribute("data-id",projectArray.at(-1).id);
+    projectMenu.innerHTML = "";
+    for (const project of projectArray) {
+        const projectLine = document.createElement("li");
+        const projectTitle = document.createElement("span");
+        const projectDelete = document.createElement("span");
+
+        // add projectLine to the entire projectMenu
+        projectMenu.appendChild(projectLine);
+        
+        // add class to projectLine
+        projectLine.classList.add("menu-choice");
+        
+        // add the name of the project to the projectTitle span
+        projectTitle.textContent = project.name;
+
+        // add the x and class to the delete button span
+        projectDelete.textContent = "×";
+        projectDelete.classList.add("delete-button");
+
+        // add the project title and the project delete button into the single line for the whole project
+        projectLine.appendChild(projectTitle);
+        projectLine.appendChild(projectDelete);
+        for (const key in project) {
+            // for every object in the project array, loop through and set the key with the name id to the data attribute for that delete button
+            if (key === 'name') {
+                continue;
+            } else if (key === 'id') {
+                projectDelete.setAttribute("data-id",project.id);
+                // projectDeleteListener(projectArray,projectDelete,project);
+                projectDelete.addEventListener('click', () => {
+                    const projectToRemove = projectArray.find((selectedProject) => selectedProject.id === project.id);
+                    const index = projectArray.indexOf(projectToRemove);
+                    if (index > -1) {
+                        projectArray.splice(index,1);
+                    };
+                });
+
+            };
+        };
+    };
+    // call function to add event listener to x button to remove a project
+    
 };
 
-// CREATE DELETE BUTTON AND ADD EVENT LISTENER TO PROJECT DELETE BUTTON
-const projectDeleteListen = () => {
+// in progress delete listener function for removing projects. currently copied into addToProjectList function above.
+// function projectDeleteListener(projectArray, projectDelete, project) {
+//     projectDelete.addEventListener('click', () => {
+//         const projectToRemove = projectArray.find((selectedProject) => selectedProject.id === project.id);
+//         const index = projectArray.indexOf(projectToRemove);
+//         if (index > -1) {
+//             projectArray.splice(index,1);
+//         };
+//     });
+// };
 
-};
+// ADD PROJECT AND DELETE BUTTON TO LEFT PANEL
+// function addToProjectList(projectArray) {
+//     const newProject = document.createElement("li"); // create list item to hold project List & delete button
+//     const projectTitle = document.createElement("span"); //create span for project name text
+//     newProject.appendChild(projectArray.name); // add project List to project container
+//     projectTitle.textContent = projectArray.name;
+//     newProject.classList.add("menu-choice");
+//     projectMenu.appendChild(newProject);
+//     const projectDelete = document.createElement("span");
+//     projectDelete.classList.add("delete-button");
+//     newProject.appendChild(projectDelete);
+//     projectDelete.textContent = "×"; // need to add a data attribute to this button for projection deletion via unique ID
+//     console.log(projectArray.name)
+//     console.log(projectArray.id)
+//     projectDelete.setAttribute("data-id",projectArray.at(-1).id);
+// };
 
 // -------------------------------
 // CHANGING THE SORT BY PROJECT

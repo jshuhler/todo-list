@@ -9,7 +9,7 @@ class Project {
         };
         this.name = name;
         this.id = crypto.randomUUID();
-    }
+    };
 };
 
 function createProject(name) {
