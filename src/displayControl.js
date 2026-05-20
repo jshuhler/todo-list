@@ -117,23 +117,9 @@ function addToProjectList(projectArray) {
             } else if (key === 'id') {
                 projectDelete.setAttribute("data-id",project.id);
                 projectDeleteListener(projectArray,projectDelete,project);
-
-                // projectDelete.addEventListener('click', () => {
-                //     console.log("project delete button press");
-                //     const projectToRemove = projectArray.find((selectedProject) => selectedProject.id === project.id);
-                //     console.log(projectToRemove)
-                //     const index = projectArray.indexOf(projectToRemove);
-                //     console.log(index)
-                //     if (index > -1) {
-                //         projectArray.splice(index,1);
-                //     };
-                // });
-
             };
         };
     };
-    // call function to add event listener to x button to remove a project
-    
 };
 
 // in progress delete listener function for removing projects. currently copied into addToProjectList function above.
@@ -147,6 +133,7 @@ function projectDeleteListener(projectArray, projectDelete, project) {
         if (index > -1) {
             projectArray.splice(index,1);
         };
+        addToProjectList(projectArray);
     });
 };
 
