@@ -1,4 +1,4 @@
-import { todoList, createTodo } from "./createTodo.js";
+import { todoArray, createTodo } from "./createTodo.js";
 import { projectArray, createProject, deleteProject } from "./createProject.js";
 
 // -------------------------------
@@ -10,6 +10,7 @@ const todoDialog = document.querySelector("dialog.todo-dialog");
 const addTodoButton = document.getElementById("add-task-button");
 const closeTodoDialog = document.querySelector(".todo-dialog-close");
 const addTodoDialog = document.getElementById("add-todo-submit");
+const todoContainer = document.querySelector("todo-container");
 let todoTitle;
 let todoDetails;
 let todoDueDate;
@@ -29,10 +30,10 @@ closeTodoDialog.addEventListener('click', (e) => {
     console.log('close todo dialog button press');
 });
 
-// CREATE TODO ITEM AND ADD TO ARRAY
+// CREATE TODO ITEM, ADD TO TODO ARRAY, CALL CREATE TODO CARD FUNCTION
 addTodoDialog.addEventListener('click', (e) => {
     e.preventDefault();
-    todoTitle = document.getElementById("todo-List").value;
+    todoTitle = document.getElementById("todo-name").value;
     todoDetails = document.getElementById("todo-details").value;
     todoDueDate = document.getElementById("todo-date").value;
     todoProject = document.getElementById("todo-project").value;
@@ -40,13 +41,18 @@ addTodoDialog.addEventListener('click', (e) => {
     let radioButtons = form.elements["priority"]; // getting the value out of the RadioNodeList value property
     todoPriority = radioButtons.value;
     createTodo(todoTitle,todoDetails,todoDueDate,todoProject,todoPriority);
-    console.log(todoList);
+    console.log(todoArray);
     console.log('save todo item button press');
     todoDialog.close();
+    // call create todo card function her
+    addToTodoDisplay();
 });
 
 // CREATE NEW TODO CARD
-
+function addToTodoDisplay() {
+    console.log(typeof(todoContainer))
+    // todoContainer.innerHTML = "";
+};
 
 // -------------------------------
 // OPENING AND CLOSING THE NEW PROJECT DIALOG
@@ -59,7 +65,6 @@ const closeProjectDialog = document.querySelector(".project-dialog-close");
 const addProjectDialog = document.getElementById("add-project-submit");
 const projectMenu = document.querySelector(".project-menu");
 let project;
-// let projectList;
 
 // OPEN NEW PROJECT DIALOG
 addProjectButton.addEventListener('click', () => {
@@ -102,6 +107,8 @@ function addToProjectList(projectArray) {
         
         // add the name of the project to the projectTitle span
         projectTitle.textContent = project.name;
+        // this is where to call the function for adding the event listener to 
+        // each project name to change the display to show only todos within that project
 
         // add the x and class to the delete button span
         projectDelete.textContent = "×";

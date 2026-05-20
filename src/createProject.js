@@ -18,16 +18,7 @@ function createProject(name) {
     return newProject;
 };
 
-function deleteProject() {
-    const projectToRemove = projectArray.find((selectedProject) => selectedProject.id === Project.id);
-    const index = projectArray.indexOf(projectToRemove);
-    if (index > -1) {
-        projectList.splice(index, 1);
-    };
-};
-
 export {
     projectArray,
     createProject,
-    deleteProject,
 }

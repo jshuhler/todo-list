@@ -1,5 +1,5 @@
-// Creates a todoItem and appends it to the todoList array
-const todoList = [];
+// Creates a todoItem and appends it to the todoArray array
+const todoArray = [];
 
 class Todo {
     constructor(title,details,dueDate,project,priority,status) {
@@ -18,10 +18,10 @@ class Todo {
 
 function createTodo(title,description,dueDate,priority,status) {
     const newTodo = new Todo(title,description,dueDate,priority,status)
-    todoList.push(newTodo);
+    todoArray.push(newTodo);
 };
 
 export { 
-    todoList,
+    todoArray,
     createTodo,
 };
