@@ -116,14 +116,18 @@ function addToProjectList(projectArray) {
                 continue;
             } else if (key === 'id') {
                 projectDelete.setAttribute("data-id",project.id);
-                // projectDeleteListener(projectArray,projectDelete,project);
-                projectDelete.addEventListener('click', () => {
-                    const projectToRemove = projectArray.find((selectedProject) => selectedProject.id === project.id);
-                    const index = projectArray.indexOf(projectToRemove);
-                    if (index > -1) {
-                        projectArray.splice(index,1);
-                    };
-                });
+                projectDeleteListener(projectArray,projectDelete,project);
+
+                // projectDelete.addEventListener('click', () => {
+                //     console.log("project delete button press");
+                //     const projectToRemove = projectArray.find((selectedProject) => selectedProject.id === project.id);
+                //     console.log(projectToRemove)
+                //     const index = projectArray.indexOf(projectToRemove);
+                //     console.log(index)
+                //     if (index > -1) {
+                //         projectArray.splice(index,1);
+                //     };
+                // });
 
             };
         };
@@ -133,32 +137,18 @@ function addToProjectList(projectArray) {
 };
 
 // in progress delete listener function for removing projects. currently copied into addToProjectList function above.
-// function projectDeleteListener(projectArray, projectDelete, project) {
-//     projectDelete.addEventListener('click', () => {
-//         const projectToRemove = projectArray.find((selectedProject) => selectedProject.id === project.id);
-//         const index = projectArray.indexOf(projectToRemove);
-//         if (index > -1) {
-//             projectArray.splice(index,1);
-//         };
-//     });
-// };
-
-// ADD PROJECT AND DELETE BUTTON TO LEFT PANEL
-// function addToProjectList(projectArray) {
-//     const newProject = document.createElement("li"); // create list item to hold project List & delete button
-//     const projectTitle = document.createElement("span"); //create span for project name text
-//     newProject.appendChild(projectArray.name); // add project List to project container
-//     projectTitle.textContent = projectArray.name;
-//     newProject.classList.add("menu-choice");
-//     projectMenu.appendChild(newProject);
-//     const projectDelete = document.createElement("span");
-//     projectDelete.classList.add("delete-button");
-//     newProject.appendChild(projectDelete);
-//     projectDelete.textContent = "×"; // need to add a data attribute to this button for projection deletion via unique ID
-//     console.log(projectArray.name)
-//     console.log(projectArray.id)
-//     projectDelete.setAttribute("data-id",projectArray.at(-1).id);
-// };
+function projectDeleteListener(projectArray, projectDelete, project) {
+    projectDelete.addEventListener('click', () => {
+        console.log("project delete button press");
+        const projectToRemove = projectArray.find((selectedProject) => selectedProject.id === project.id);
+        console.log(projectToRemove)
+        const index = projectArray.indexOf(projectToRemove);
+        console.log(index)
+        if (index > -1) {
+            projectArray.splice(index,1);
+        };
+    });
+};
 
 // -------------------------------
 // CHANGING THE SORT BY PROJECT
