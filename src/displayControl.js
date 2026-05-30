@@ -10,7 +10,7 @@ const todoDialog = document.querySelector("dialog.todo-dialog");
 const addTodoButton = document.getElementById("add-task-button");
 const closeTodoDialog = document.querySelector(".todo-dialog-close");
 const addTodoDialog = document.getElementById("add-todo-submit");
-const todoContainer = document.querySelector("todo-container");
+const todoContainer = document.querySelector(".todo-container");
 let todoTitle;
 let todoDetails;
 let todoDueDate;
@@ -44,14 +44,42 @@ addTodoDialog.addEventListener('click', (e) => {
     console.log(todoArray);
     console.log('save todo item button press');
     todoDialog.close();
-    // call create todo card function her
+    // call create todo card function here
     addToTodoDisplay();
 });
 
-// CREATE NEW TODO CARD
-function addToTodoDisplay() {
-    console.log(typeof(todoContainer))
-    // todoContainer.innerHTML = "";
+// ADD NEW TODO CARD PSUEDOCODE
+// 1. add a function to the + event listener that is called when the save button is clicked on the dialog
+// 2. that function:
+//  - clears the existing DOM of the todoContainer
+//  - loops through the entire existing array of todos and remakes them visually
+//  - will need to take in the current project and only print the current project todos on the pageXOffset
+//  - will be called from anywhere the current project is changed
+
+// CREATE NEW TODO CARD 
+function addToTodoDisplay(todoArray) {
+    todoContainer.innerHTML = "";
+    for (const todo of todoArray) {
+        // entire todo item container
+        const todoItem = document.createElement("div");
+        todoItem.classList.add("todo-item");
+        todoContainer.appendChild(todoItem);
+
+        // status container - this will eventually need an event listener on the toggle to change status from open to closed
+        const statusContainer = document.createElement("div");
+        statusContainer.classList.add("status-container");
+        todoItem.appendChild(statusContainer);
+
+        // text container
+        const textContainer = document.createElement("div");
+        textContainer.classList.add("text-container");
+        todoItem.appendChild(textContainer);
+
+        // detail container
+        const detailContainer = document.createElement("div");
+        detailContainer.classList.add("detail-container");
+        todoItem.appendChild("detail-container");
+    };
 };
 
 // -------------------------------
@@ -134,9 +162,9 @@ function projectDeleteListener(projectArray, projectDelete, project) {
     projectDelete.addEventListener('click', () => {
         console.log("project delete button press");
         const projectToRemove = projectArray.find((selectedProject) => selectedProject.id === project.id);
-        console.log(projectToRemove)
+        console.log(projectToRemove);
         const index = projectArray.indexOf(projectToRemove);
-        console.log(index)
+        console.log(index);
         if (index > -1) {
             projectArray.splice(index,1);
         };

@@ -11,7 +11,7 @@ class Todo {
         this.dueDate = dueDate;
         this.project = project
         this.priority = priority;
-        this.status = status;
+        this.status = "open";
         this.id = crypto.randomUUID();
     };
 };
