@@ -45,6 +45,8 @@ addTodoDialog.addEventListener('click', (e) => {
     console.log('save todo item button press');
     todoDialog.close();
     // call create todo card function here
+    console.log(typeof(todoArray))
+    console.log(todoArray)
     addToTodoDisplay();
 });
 
@@ -74,6 +76,16 @@ function addToTodoDisplay(todoArray) {
         const textContainer = document.createElement("div");
         textContainer.classList.add("text-container");
         todoItem.appendChild(textContainer);
+
+        const todoTitleContainer = document.createElement("div");
+        todoTitleContainer.classList.add("todo-title-container");
+        todoTitleContainer.textContent = todo.title;
+        textContainer.appendChild(todoTitleContainer);
+
+        const todoDetailContainer = document.createElement("div");
+        todoDetailContainer.classList.add("todo-detail-container");
+        todoDetailContainer.textContent = todo.details;
+        textContainer.appendChild(todoDetailContainer);
 
         // detail container
         const detailContainer = document.createElement("div");
