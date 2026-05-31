@@ -163,8 +163,8 @@ button#add-task-button:active {
 }
 
 .todo-item .text-container,
-.todo-item .detail-container,
-.todo-item .detail-bottom-container {
+.todo-item .info-container,
+.todo-item .info-bottom-container {
     gap: 3px;
 }
 
@@ -206,13 +206,13 @@ button#add-task-button:active {
     font-size: 0.9em;
 }
 
-.todo-item .detail-container {
+.todo-item .info-container {
     display: grid;
     grid-template-rows: 1fr 1fr;
 }
 
-.todo-item .detail-top-container,
-.todo-item .detail-bottom-container {
+.todo-item .info-top-container,
+.todo-item .info-bottom-container {
     display: flex;
     justify-content: space-evenly;
 }

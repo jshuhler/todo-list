@@ -45,9 +45,7 @@ addTodoDialog.addEventListener('click', (e) => {
     console.log('save todo item button press');
     todoDialog.close();
     // call create todo card function here
-    console.log(typeof(todoArray))
-    console.log(todoArray)
-    addToTodoDisplay();
+    addToTodoDisplay(todoArray);
 });
 
 // ADD NEW TODO CARD PSUEDOCODE
@@ -55,7 +53,7 @@ addTodoDialog.addEventListener('click', (e) => {
 // 2. that function:
 //  - clears the existing DOM of the todoContainer
 //  - loops through the entire existing array of todos and remakes them visually
-//  - will need to take in the current project and only print the current project todos on the pageXOffset
+//  - will need to take in the current project and only print the current project todos on the page
 //  - will be called from anywhere the current project is changed
 
 // CREATE NEW TODO CARD 
@@ -64,33 +62,59 @@ function addToTodoDisplay(todoArray) {
     for (const todo of todoArray) {
         // entire todo item container
         const todoItem = document.createElement("div");
-        todoItem.classList.add("todo-item");
-        todoContainer.appendChild(todoItem);
+            todoItem.classList.add("todo-item");
+            todoContainer.appendChild(todoItem);
 
         // status container - this will eventually need an event listener on the toggle to change status from open to closed
         const statusContainer = document.createElement("div");
-        statusContainer.classList.add("status-container");
-        todoItem.appendChild(statusContainer);
+            statusContainer.classList.add("status-container");
+            todoItem.appendChild(statusContainer);
 
         // text container
-        const textContainer = document.createElement("div");
-        textContainer.classList.add("text-container");
-        todoItem.appendChild(textContainer);
+        const textContainer = document.createElement("div");    
+            textContainer.classList.add("text-container");
+            todoItem.appendChild(textContainer);
 
         const todoTitleContainer = document.createElement("div");
-        todoTitleContainer.classList.add("todo-title-container");
-        todoTitleContainer.textContent = todo.title;
-        textContainer.appendChild(todoTitleContainer);
+            todoTitleContainer.classList.add("todo-title-container");
+            todoTitleContainer.textContent = todo.title;
+            textContainer.appendChild(todoTitleContainer);
 
         const todoDetailContainer = document.createElement("div");
-        todoDetailContainer.classList.add("todo-detail-container");
-        todoDetailContainer.textContent = todo.details;
-        textContainer.appendChild(todoDetailContainer);
+            todoDetailContainer.classList.add("todo-detail-container");
+            todoDetailContainer.textContent = todo.details;
+            textContainer.appendChild(todoDetailContainer);
 
-        // detail container
-        const detailContainer = document.createElement("div");
-        detailContainer.classList.add("detail-container");
-        todoItem.appendChild("detail-container");
+        // info container
+        const infoContainer = document.createElement("div");
+            infoContainer.classList.add("info-container");
+            todoItem.appendChild(infoContainer);
+
+        const infoTopContainer = document.createElement("div");
+            infoTopContainer.classList.add("info-top-container");
+            infoContainer.appendChild(infoTopContainer);
+
+        const todoDateContainer = document.createElement("div");
+            todoDateContainer.classList.add("todo-date-container");
+            todoDateContainer.textContent = todo.dueDate;
+            infoTopContainer.appendChild(todoDateContainer);
+
+        // this is the element to append the listener to using a for in loop to handle deletions of specific todo items
+        const todoTrashContainer = document.createElement("div");
+
+        const infoBottomContainer = document.createElement("div");
+            infoBottomContainer.classList.add("info-bottom-container");    
+            infoContainer.appendChild(infoBottomContainer);
+
+        const todoProjectContainer = document.createElement("div");
+            todoProjectContainer.classList.add("todo-project-container");
+            todoProjectContainer.textContent = "_PROJ NAME_";
+            infoBottomContainer.appendChild(todoProjectContainer);
+        
+        const todoPriorityContainer = document.createElement("div");
+            todoPriorityContainer.classList.add("todo-priority-container");
+            todoPriorityContainer.textContent = todo.priority;
+            infoBottomContainer.appendChild(todoPriorityContainer);
     };
 };
 
