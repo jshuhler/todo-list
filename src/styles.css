@@ -217,7 +217,7 @@ button#add-task-button:active {
     justify-content: space-evenly;
 }
 
-.todo-trash-container {
+.todo-delete-button {
     align-self: flex-right;
 }
 

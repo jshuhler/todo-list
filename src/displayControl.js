@@ -113,10 +113,24 @@ function addToTodoDisplay(todoArray) {
         
         const todoPriorityContainer = document.createElement("div");
             todoPriorityContainer.classList.add("todo-priority-container");
-            todoPriorityContainer.textContent = todo.priority;
+            if (todo.priority === "1") {
+                todoPriorityContainer.textContent = "Low";
+            } else if (todo.priority === "2") {
+                todoPriorityContainer.textContent = "Medium";
+            } else if (todoPriority === "3") {
+                todoPriorityContainer.textContent = "High";
+            };
             infoBottomContainer.appendChild(todoPriorityContainer);
+        createTodoDeleteButton();
     };
 };
+
+// CREATE TODO CARD DELETE BUTTON AND EVENT LISTENER
+function createTodoDeleteButton() {
+    const todoDeleteButton = document.createElement("button");
+    todoDeleteButton.classList.add("todo-delete-button");
+    todoDeleteButton.setAttribute("data-id",todo.id)
+}
 
 // -------------------------------
 // OPENING AND CLOSING THE NEW PROJECT DIALOG
@@ -193,7 +207,6 @@ function addToProjectList(projectArray) {
     };
 };
 
-// in progress delete listener function for removing projects. currently copied into addToProjectList function above.
 function projectDeleteListener(projectArray, projectDelete, project) {
     projectDelete.addEventListener('click', () => {
         console.log("project delete button press");
@@ -211,5 +224,6 @@ function projectDeleteListener(projectArray, projectDelete, project) {
 // -------------------------------
 // CHANGING THE SORT BY PROJECT
 // -------------------------------
-
+// this should probably call a function that is in the createTodo.js module. that should probably
+// be renamed to todo.js 
 // DECLARING VARIABLES
