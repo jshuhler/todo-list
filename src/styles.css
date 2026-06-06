@@ -221,6 +221,14 @@ button#add-task-button:active {
     align-self: flex-right;
 }
 
-.todo-priority-container {
+.todo-priority-high-3 {
     background-color: var(--priority-high);
+}
+
+.todo-priority-medium-2 {
+    background-color: var(--priority-med);
+}
+
+.todo-priority-low-1 {
+    background-color: var(--priority-low);
 }

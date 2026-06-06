@@ -115,22 +115,40 @@ function addToTodoDisplay(todoArray) {
             todoPriorityContainer.classList.add("todo-priority-container");
             if (todo.priority === "1") {
                 todoPriorityContainer.textContent = "Low";
+                todoPriorityContainer.classList.add("todo-priority-low-1");
             } else if (todo.priority === "2") {
                 todoPriorityContainer.textContent = "Medium";
+                todoPriorityContainer.classList.add("todo-priority-medium-2");
             } else if (todoPriority === "3") {
                 todoPriorityContainer.textContent = "High";
+                todoPriorityContainer.classList.add("todo-priority-high-3");
             };
             infoBottomContainer.appendChild(todoPriorityContainer);
-        createTodoDeleteButton();
+
+        const todoDeleteButton = document.createElement("button");
+            todoDeleteButton.classList.add("todo-delete-button");
+            todoDeleteButton.setAttribute("data-id",todo.id);
+
+            todoDeleteListener(todoDeleteButton, todo);
+            
+            const deleteTodoIcon = document.createElement("img");
+            deleteTodoIcon.setAttribute("src","../src/img/trashcan.png");
+            todoDeleteButton.appendChild(deleteTodoIcon);
+            infoTopContainer.appendChild(todoDeleteButton)
     };
 };
 
-// CREATE TODO CARD DELETE BUTTON AND EVENT LISTENER
-function createTodoDeleteButton() {
-    const todoDeleteButton = document.createElement("button");
-    todoDeleteButton.classList.add("todo-delete-button");
-    todoDeleteButton.setAttribute("data-id",todo.id)
-}
+function todoDeleteListener (todoDeleteButton, todo) {
+    todoDeleteButton.addEventListener('click', () => {
+        console.log("todo delete button press")
+        const todoToRemove = todoArray.find((selectedTodo) => selectedTodo.id === todo.id);
+        const index = todoArray.indexOf(todoToRemove);
+        if (index > -1) {
+            todoArray.splice(index,1);
+        };
+        addToTodoDisplay(todoArray);
+    });
+};
 
 // -------------------------------
 // OPENING AND CLOSING THE NEW PROJECT DIALOG
@@ -209,11 +227,11 @@ function addToProjectList(projectArray) {
 
 function projectDeleteListener(projectArray, projectDelete, project) {
     projectDelete.addEventListener('click', () => {
-        console.log("project delete button press");
+        // console.log("project delete button press");
         const projectToRemove = projectArray.find((selectedProject) => selectedProject.id === project.id);
-        console.log(projectToRemove);
+        // console.log(projectToRemove);
         const index = projectArray.indexOf(projectToRemove);
-        console.log(index);
+        // console.log(index);
         if (index > -1) {
             projectArray.splice(index,1);
         };
