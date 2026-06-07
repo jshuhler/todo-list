@@ -20,6 +20,8 @@ let todoPriority;
 // OPEN NEW TODO DIALOG
 addTodoButton.addEventListener('click', () => {
     todoDialog.showModal();
+    console.log(projectArray)
+    addProjectToSelection(projectArray);
     console.log('add todo item button press');
 });
 
@@ -181,7 +183,7 @@ addProjectDialog.addEventListener('click', (e) => {
     const projectName = document.getElementById("project-name").value;
     createProject(projectName);
     console.log(projectName);
-    console.log(projectArray)
+    console.log(projectArray);
     console.log('save project button press');
     projectDialog.close();
     addToProjectList(projectArray); // should just call this on the new project that I created, not the entire array. 
@@ -240,8 +242,27 @@ function projectDeleteListener(projectArray, projectDelete, project) {
 };
 
 // -------------------------------
+// POPULATING PROJECT SELECT FROM PROJECTARRAY
+// -------------------------------
+// iterate through the projectArray object, pulling out the name key, and adding the value to the dialog
+const projectSelectList = document.getElementById("todo-project");
+
+function addProjectToSelection(projectArray) {
+    for (const name of projectArray) {
+            const projectOption = document.createElement("option");
+            projectOption.setAttribute("value",name.value);
+            projectOption.textContent = name.value;
+            projectSelectList.appendChild(projectOption);
+    };
+};
+
+// -------------------------------
 // CHANGING THE SORT BY PROJECT
 // -------------------------------
 // this should probably call a function that is in the createTodo.js module. that should probably
 // be renamed to todo.js 
+
+// maybe I could make some kind of generic "sort" function that looks for whatever thing is selected
+// like the project, All Todos, Due today or Due This Week and just call the function from there?
+
 // DECLARING VARIABLES
