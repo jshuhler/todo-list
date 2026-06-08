@@ -248,11 +248,13 @@ function projectDeleteListener(projectArray, projectDelete, project) {
 const projectSelectList = document.getElementById("todo-project");
 
 function addProjectToSelection(projectArray) {
-    for (const name of projectArray) {
-            const projectOption = document.createElement("option");
-            projectOption.setAttribute("value",name.value);
-            projectOption.textContent = name.value;
-            projectSelectList.appendChild(projectOption);
+    projectSelectList.innerHTML = "";
+    for (const project of projectArray) {
+        console.log(project)
+        const projectOption = document.createElement("option");
+        projectOption.setAttribute("value",project.name);
+        projectOption.textContent = project.name;
+        projectSelectList.appendChild(projectOption);
     };
 };
 

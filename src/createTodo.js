@@ -9,7 +9,7 @@ class Todo {
         this.title = title;
         this.details = details;
         this.dueDate = dueDate;
-        this.project = project
+        this.project = project;
         this.priority = priority;
         this.status = "open";
         this.id = crypto.randomUUID();
