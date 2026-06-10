@@ -219,6 +219,12 @@ button#add-task-button:active {
 
 .todo-delete-button {
     align-self: flex-right;
+    border: none;
+    background-color: transparent;
+}
+
+.todo-delete-button img {
+    height: 1.45em;
 }
 
 .todo-priority-high-3 {
