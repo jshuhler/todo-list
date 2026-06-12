@@ -21,16 +21,13 @@ let todoPriority;
 // OPEN NEW TODO DIALOG
 addTodoButton.addEventListener('click', () => {
     todoDialog.showModal();
-    console.log(projectArray)
     addProjectToSelection(projectArray);
-    console.log('add todo item button press');
 });
 
 // CLOSE NEW TODO DIALOG WITHOUT ADDING ITEM
 closeTodoDialog.addEventListener('click', (e) => {
     todoDialog.close();
     e.preventDefault();
-    console.log('close todo dialog button press');
 });
 
 // CREATE TODO ITEM, ADD TO TODO ARRAY, CALL CREATE TODO CARD FUNCTION
@@ -44,8 +41,6 @@ addTodoDialog.addEventListener('click', (e) => {
     let radioButtons = form.elements["priority"]; // getting the value out of the RadioNodeList value property
     todoPriority = radioButtons.value;
     createTodo(todoTitle,todoDetails,todoDueDate,todoProject,todoPriority);
-    console.log(todoArray);
-    console.log('save todo item button press');
     todoDialog.close();
     // call create todo card function here
     addToTodoDisplay(todoArray);
@@ -146,7 +141,6 @@ function addToTodoDisplay(todoArray) {
 
 function todoDeleteListener (todoDeleteButton, todo) {
     todoDeleteButton.addEventListener('click', () => {
-        console.log("todo delete button press")
         const todoToRemove = todoArray.find((selectedTodo) => selectedTodo.id === todo.id);
         const index = todoArray.indexOf(todoToRemove);
         if (index > -1) {
@@ -171,14 +165,12 @@ let project;
 // OPEN NEW PROJECT DIALOG
 addProjectButton.addEventListener('click', () => {
     projectDialog.showModal();
-    console.log('add project button press');
 });
 
 // CLOSE NEW PROJECT DIALOG WITHOUT ADDING PROJECT
 closeProjectDialog.addEventListener('click', (e) => {
     projectDialog.close();
     e.preventDefault();
-    console.log('close project dialog button press');
 });
 
 // CREATE NEW PROJECT, ADD TO PROJECT ARRAY, CALL ADD TO PROJECT LIST FUNCTION
@@ -186,23 +178,18 @@ addProjectDialog.addEventListener('click', (e) => {
     e.preventDefault();
     const projectName = document.getElementById("project-name").value;
     createProject(projectName);
-    console.log(projectName);
-    console.log(projectArray);
-    console.log('save project button press');
     projectDialog.close();
     addToProjectList(projectArray); // should just call this on the new project that I created, not the entire array. 
 });
 
-// REFACTORED: ADD PROJECT AND A DELETE BUTTON TO LEFT PANEL
+// ADD PROJECT NAME AND A DELETE BUTTON TO LEFT PANEL
 function addToProjectList(projectArray) {
-    console.log(projectArray);
-
     // creating the default project
     createProject("All Items");
-    console.log(projectArray);
+
     projectMenu.innerHTML = "";
     for (const project of projectArray) {
-        if (project.name === "All Todos") {
+        if (project.name === "All Items") {
             continue
         } else {
             const projectLine = document.createElement("li");
@@ -240,6 +227,7 @@ function addToProjectList(projectArray) {
     };
 };
 
+// CREATING AND ADDING THE EVENT LISTENER TO THE DELETE BUTTON ON THE LEFT PANEL LIST OF PROJECTS
 function projectDeleteListener(projectArray, projectDelete, project) {
     projectDelete.addEventListener('click', () => {
         // console.log("project delete button press");
@@ -257,6 +245,7 @@ function projectDeleteListener(projectArray, projectDelete, project) {
 // -------------------------------
 // POPULATING PROJECT SELECT FROM PROJECTARRAY
 // -------------------------------
+
 // iterate through the projectArray object, pulling out the name key, and adding the value to the dialog
 const projectSelectList = document.getElementById("todo-project");
 
@@ -266,20 +255,20 @@ function addProjectToSelection(projectArray) {
 
     // create the placeholder text for the project select list
     const defaultProjectOption = document.createElement("option");
-    defaultProjectOption.setAttribute("value","default");
-    defaultProjectOption.default = true;
-    // defaultProjectOption.disabled = true;
+    defaultProjectOption.setAttribute("value","");
+    defaultProjectOption.disabled = true;
+    defaultProjectOption.selected = true;
     defaultProjectOption.textContent = "Choose a Project";
     projectSelectList.appendChild(defaultProjectOption);
 
     // loop through the projectArray and add each project there to the select list
     for (const project of projectArray) {
-        console.log(project)
         const projectOption = document.createElement("option");
         projectOption.setAttribute("value",project.name);
         projectOption.textContent = project.name;
         projectSelectList.appendChild(projectOption);
     };
+    console.log(projectArray);
 };
 
 // -------------------------------
