@@ -46,14 +46,6 @@ addTodoDialog.addEventListener('click', (e) => {
     addToTodoDisplay(todoArray);
 });
 
-// ADD NEW TODO CARD PSUEDOCODE
-// 1. add a function to the + event listener that is called when the save button is clicked on the dialog
-// 2. that function:
-//  - clears the existing DOM of the todoContainer
-//  - loops through the entire existing array of todos and remakes them visually
-//  - will need to take in the current project and only print the current project todos on the page
-//  - will be called from anywhere the current project is changed
-
 // CREATE NEW TODO CARD 
 function addToTodoDisplay(todoArray) {
     // add an if statement here to determine if the project array is empty or not
@@ -243,7 +235,7 @@ function projectDeleteListener(projectArray, projectDelete, project) {
 };
 
 // -------------------------------
-// POPULATING PROJECT SELECT FROM PROJECTARRAY
+// POPULATING PROJECT SELECT FROM PROJECTARRAY WHEN ADDING A TODO ITEM
 // -------------------------------
 
 // iterate through the projectArray object, pulling out the name key, and adding the value to the dialog
