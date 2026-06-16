@@ -13,7 +13,7 @@
     <div class="wrapper">
         <div class="panel-container">
             <dialog class="todo-dialog">
-                <form action="" method="" class="add-todo-form">
+                <form action="" method="post" class="add-todo-form">
                     <fieldset>
                         <div class="dialog-header">
                             <legend>Add New Task</legend>
@@ -21,34 +21,34 @@
                         </div>
                         <div>
                             <label for="todo-name">Title</label>
-                            <input type="text" id="todo-name">
+                            <input type="text" id="todo-name" required>
                         </div>
                         <div>
                             <label for="todo-details">Details</label>
-                            <textarea name="todo-details" id="todo-details" rows="5" cols="33"></textarea>
+                            <textarea name="todo-details" id="todo-details" rows="5" cols="33" required></textarea>
                         </div>
                         <div>
                             <label for="todo-date">Due Date</label>
-                            <input type="date" id="todo-date">
+                            <input type="date" id="todo-date" required>
                         </div>
                         <div>
                             <label for="todo-project">Project</label>
-                            <select name="project" id="todo-project">
+                            <select name="project" id="todo-project" required>
                                 
                             </select>
                         </div>
                         <div class="form-priority">
                             <p class="todo-priority">Task Priority</p>
                             <div class="radio-item">
-                                <input type="radio" id="priority-high" name="priority" value="3">
+                                <input type="radio" id="priority-high" name="priority" value="3" required>
                                 <label for="priority-high">High</label>
                             </div>
                             <div class="radio-item">
-                                <input type="radio" id="priority-med" name="priority" value="2" checked>
+                                <input type="radio" id="priority-med" name="priority" value="2" checked required>
                                 <label for="priority-med">Medium</label>
                             </div>
                             <div class="radio-item">
-                                <input type="radio" id="priority-low" name="priority" value="1">
+                                <input type="radio" id="priority-low" name="priority" value="1" required>
                                 <label for="priority-low">Low</label>
                             </div>
                         </div>

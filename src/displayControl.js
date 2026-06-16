@@ -177,11 +177,11 @@ addProjectDialog.addEventListener('click', (e) => {
 // ADD PROJECT NAME AND A DELETE BUTTON TO LEFT PANEL
 function addToProjectList(projectArray) {
     // creating the default project
-    createProject("All Items");
+    // createProject("All Items");
 
     projectMenu.innerHTML = "";
     for (const project of projectArray) {
-        if (project.name === "All Items") {
+        if (project.name === "All Todos") {
             continue
         } else {
             const projectLine = document.createElement("li");
