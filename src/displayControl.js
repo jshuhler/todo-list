@@ -10,7 +10,10 @@ import trashcan from "./img/trashcan.png"
 const todoDialog = document.querySelector("dialog.todo-dialog");
 const addTodoButton = document.getElementById("add-task-button");
 const closeTodoDialog = document.querySelector(".todo-dialog-close");
-const addTodoDialog = document.getElementById("add-todo-submit");
+
+const addTodoDialog = document.querySelector("add-todo-form");
+// const addTodoDialog = document.getElementById("add-todo-submit");
+
 const todoContainer = document.querySelector(".todo-container");
 let todoTitle;
 let todoDetails;
@@ -31,18 +34,19 @@ closeTodoDialog.addEventListener('click', (e) => {
 });
 
 // CREATE TODO ITEM, ADD TO TODO ARRAY, CALL CREATE TODO CARD FUNCTION
-addTodoDialog.addEventListener('click', (e) => {
+addTodoDialog.addEventListener('submit', (e) => {
     e.preventDefault();
     todoTitle = document.getElementById("todo-name").value;
     todoDetails = document.getElementById("todo-details").value;
     todoDueDate = document.getElementById("todo-date").value;
     todoProject = document.getElementById("todo-project").value;
+
     let form = document.forms[0]; // getting the value out of the RadioNodeList value property
     let radioButtons = form.elements["priority"]; // getting the value out of the RadioNodeList value property
     todoPriority = radioButtons.value;
     createTodo(todoTitle,todoDetails,todoDueDate,todoProject,todoPriority);
     todoDialog.close();
-    // call create todo card function here
+
     addToTodoDisplay(todoArray);
 });
 
@@ -166,7 +170,7 @@ closeProjectDialog.addEventListener('click', (e) => {
 });
 
 // CREATE NEW PROJECT, ADD TO PROJECT ARRAY, CALL ADD TO PROJECT LIST FUNCTION
-addProjectDialog.addEventListener('click', (e) => {
+addProjectDialog.addEventListener('submit', (e) => {
     e.preventDefault();
     const projectName = document.getElementById("project-name").value;
     createProject(projectName);
@@ -176,9 +180,6 @@ addProjectDialog.addEventListener('click', (e) => {
 
 // ADD PROJECT NAME AND A DELETE BUTTON TO LEFT PANEL
 function addToProjectList(projectArray) {
-    // creating the default project
-    // createProject("All Items");
-
     projectMenu.innerHTML = "";
     for (const project of projectArray) {
         if (project.name === "All Todos") {
