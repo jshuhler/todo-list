@@ -11,7 +11,7 @@ const todoDialog = document.querySelector("dialog.todo-dialog");
 const addTodoButton = document.getElementById("add-task-button");
 const closeTodoDialog = document.querySelector(".todo-dialog-close");
 
-const addTodoDialog = document.querySelector("add-todo-form");
+const addTodoDialog = document.querySelector(".add-todo-form");
 // const addTodoDialog = document.getElementById("add-todo-submit");
 
 const todoContainer = document.querySelector(".todo-container");
@@ -154,7 +154,8 @@ function todoDeleteListener (todoDeleteButton, todo) {
 const projectDialog = document.querySelector("dialog.project-dialog");
 const addProjectButton = document.getElementById("add-project-button");
 const closeProjectDialog = document.querySelector(".project-dialog-close");
-const addProjectDialog = document.getElementById("add-project-submit");
+const addProjectDialog = document.querySelector(".add-project-form");
+// const addProjectDialog = document.getElementById("add-project-submit");
 const projectMenu = document.querySelector(".project-menu");
 let project;
 
