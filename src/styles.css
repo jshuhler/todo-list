@@ -173,7 +173,7 @@ button#add-task-button:active {
     margin: 10px;
     padding: 8px;
     display: grid;
-    grid-template-columns: 1fr 13fr 6fr;
+    grid-template-columns: 12fr 6fr 1fr;
     gap: 8px;
     border-radius: 7px;
     background-color: var(--left-panel-background);
@@ -185,15 +185,25 @@ button#add-task-button:active {
     cursor: pointer;
 }
 
-.todo-item .status-container {
+/* .todo-item .status-container {
     display: flex;
     align-items: center;
     justify-content: center;
-}
+} */
 
 .todo-item .text-container {
     display: grid;
     grid-template-rows: 1fr 2fr;
+    padding-left: 10px;
+}
+
+.todo-title-container,
+.todo-detail-container,
+.todo-date-container,
+.todo-priority-container,
+.todo-project-container {
+    display: flex;
+    align-items: center;
 }
 
 .todo-item .todo-title-container {
