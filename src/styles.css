@@ -173,7 +173,7 @@ button#add-task-button:active {
     margin: 10px;
     padding: 8px;
     display: grid;
-    grid-template-columns: 12fr 6fr 1fr;
+    grid-template-columns: 1fr 12fr 8fr 1fr;
     gap: 8px;
     border-radius: 7px;
     background-color: var(--left-panel-background);
