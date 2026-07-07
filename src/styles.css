@@ -185,7 +185,8 @@ button#add-task-button:active {
     cursor: pointer;
 }
 
-.todo-item .status-container {
+.todo-item .status-container,
+.todo-item .todo-trash-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -235,6 +236,11 @@ button#add-task-button:active {
 
 .todo-delete-button img {
     height: 1.45em;
+}
+
+.todo-priority-container {
+    padding: 3px 7px;
+    border-radius: 21px;
 }
 
 .todo-priority-high-3 {

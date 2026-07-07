@@ -67,6 +67,11 @@ function addToTodoDisplay(todoArray) {
             statusContainer.classList.add("status-container");
             todoItem.appendChild(statusContainer);
 
+        const todoCheckbox = document.createElement("input");
+            todoCheckbox.classList.add("todo-checkbox");
+            todoCheckbox.setAttribute("type","checkbox");
+            statusContainer.appendChild(todoCheckbox);
+
         // text container
         const textContainer = document.createElement("div");    
             textContainer.classList.add("text-container");
@@ -87,6 +92,7 @@ function addToTodoDisplay(todoArray) {
             infoContainer.classList.add("info-container");
             todoItem.appendChild(infoContainer);
 
+        // info top container
         const infoTopContainer = document.createElement("div");
             infoTopContainer.classList.add("info-top-container");
             infoContainer.appendChild(infoTopContainer);
@@ -96,18 +102,6 @@ function addToTodoDisplay(todoArray) {
             todoDateContainer.textContent = todo.dueDate;
             infoTopContainer.appendChild(todoDateContainer);
 
-        // this is the element to append the listener to using a for in loop to handle deletions of specific todo items
-        const todoTrashContainer = document.createElement("div");
-
-        const infoBottomContainer = document.createElement("div");
-            infoBottomContainer.classList.add("info-bottom-container");    
-            infoContainer.appendChild(infoBottomContainer);
-
-        const todoProjectContainer = document.createElement("div");
-            todoProjectContainer.classList.add("todo-project-container");
-            todoProjectContainer.textContent = todo.project;
-            infoBottomContainer.appendChild(todoProjectContainer);
-        
         const todoPriorityContainer = document.createElement("div");
             todoPriorityContainer.classList.add("todo-priority-container");
             if (todo.priority === "1") {
@@ -120,7 +114,23 @@ function addToTodoDisplay(todoArray) {
                 todoPriorityContainer.textContent = "High";
                 todoPriorityContainer.classList.add("todo-priority-high-3");
             };
-            infoBottomContainer.appendChild(todoPriorityContainer);
+            infoTopContainer.appendChild(todoPriorityContainer);
+
+        // info bottom container
+        const infoBottomContainer = document.createElement("div");
+            infoBottomContainer.classList.add("info-bottom-container");    
+            infoContainer.appendChild(infoBottomContainer);
+
+        const todoProjectContainer = document.createElement("div");
+            todoProjectContainer.classList.add("todo-project-container");
+            todoProjectContainer.textContent = todo.project;
+            infoBottomContainer.appendChild(todoProjectContainer);
+        
+        // this is the element to append the listener to using a for in loop 
+        // to handle deletions of specific todo items
+        const todoTrashContainer = document.createElement("div");
+            todoTrashContainer.classList.add("todo-trash-container");
+            todoItem.appendChild(todoTrashContainer);
 
         const todoDeleteButton = document.createElement("button");
             todoDeleteButton.classList.add("todo-delete-button");
@@ -131,7 +141,7 @@ function addToTodoDisplay(todoArray) {
             const deleteTodoIcon = document.createElement("img");
             deleteTodoIcon.src = trashcan;
             todoDeleteButton.appendChild(deleteTodoIcon);
-            infoTopContainer.appendChild(todoDeleteButton)
+            todoTrashContainer.appendChild(todoDeleteButton)
     };
 };
 
