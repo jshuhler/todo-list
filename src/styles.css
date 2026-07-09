@@ -192,6 +192,13 @@ button#add-task-button:active {
     justify-content: center;
 }
 
+input[type=checkbox] {
+    /* appearance: none; */
+    width: 150px;
+    height: 150px;
+    border-radius: 50px;
+}
+
 .todo-item .text-container {
     display: grid;
     grid-template-rows: 1fr 2fr;

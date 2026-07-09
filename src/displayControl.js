@@ -1,4 +1,4 @@
-import { todoArray, createTodo } from "./createTodo.js";
+import { todoArray, createTodo, todoStatusListener } from "./createTodo.js";
 import { projectArray, createProject, deleteProject } from "./createProject.js";
 import trashcan from "./img/trashcan.png"
 
@@ -51,7 +51,7 @@ addTodoDialog.addEventListener('submit', (e) => {
 });
 
 // CREATE NEW TODO CARD 
-function addToTodoDisplay(todoArray) {
+function addToTodoDisplay(todoArray,todo) {
     // add an if statement here to determine if the project array is empty or not
     // if it's empty, it should show the "click the button" message, probably by adding a class?
     // if it's not empty, it should do the below stuff
@@ -70,7 +70,11 @@ function addToTodoDisplay(todoArray) {
         const todoCheckbox = document.createElement("input");
             todoCheckbox.classList.add("todo-checkbox");
             todoCheckbox.setAttribute("type","checkbox");
+            if (todo.status === 'closed') {
+                todoCheckbox.toggleAttribute("checked");
+            }
             statusContainer.appendChild(todoCheckbox);
+            todoStatusListener(todoCheckbox,todo);
 
         // text container
         const textContainer = document.createElement("div");    
@@ -138,11 +142,12 @@ function addToTodoDisplay(todoArray) {
 
             todoDeleteListener(todoDeleteButton, todo);
             
-            const deleteTodoIcon = document.createElement("img");
+        const deleteTodoIcon = document.createElement("img");
             deleteTodoIcon.src = trashcan;
             todoDeleteButton.appendChild(deleteTodoIcon);
             todoTrashContainer.appendChild(todoDeleteButton)
     };
+    console.log(todoArray)
 };
 
 function todoDeleteListener (todoDeleteButton, todo) {

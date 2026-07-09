@@ -21,7 +21,25 @@ function createTodo(title,description,dueDate,priority,status) {
     todoArray.push(newTodo);
 };
 
+function todoStatusListener (todoCheckbox, todo) {
+    todoCheckbox.addEventListener('click', () => {
+        const todoStatusToChange = todoArray.find((selectedTodo) => selectedTodo.id === todo.id);
+        const index = todoArray.indexOf(todoStatusToChange);
+        if (todo.status === 'open') {
+            console.log("the status is open right now, changing to closed");
+            todo.status = 'closed';
+        } else if (todo.status === 'closed') {
+            console.log("the status is closed right now, changing to open");
+            todo.status = 'open';
+        };
+        console.log(todoArray);
+        // if I'm going to dim or strike thru the cards when I click them as done, I'm going to need to recall the display function to remake the displayed list, right?
+        // addToTodoDisplay(todoArray);
+    });
+};
+
 export { 
     todoArray,
     createTodo,
+    todoStatusListener,
 };
