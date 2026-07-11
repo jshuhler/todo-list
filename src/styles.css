@@ -185,8 +185,7 @@ button#add-task-button:active {
     cursor: pointer;
 }
 
-.todo-item .status-container,
-.todo-item .todo-trash-container {
+.todo-item .status-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -194,8 +193,8 @@ button#add-task-button:active {
 
 input[type=checkbox] {
     /* appearance: none; */
-    width: 150px;
-    height: 150px;
+    width: 25px;
+    height: 25px;
     border-radius: 50px;
 }
 
@@ -235,14 +234,26 @@ input[type=checkbox] {
     justify-content: space-evenly;
 }
 
-.todo-delete-button {
+.icon-container {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+.todo-item .todo-trash-container,
+.todo-item .todo-edit-container {
+    display: flex;
+}
+
+.todo-delete-button,
+.todo-edit-button {
     align-self: flex-right;
     border: none;
     background-color: transparent;
 }
 
-.todo-delete-button img {
-    height: 1.45em;
+.todo-delete-button img,
+.todo-edit-button img {
+    height: 1.25em;
 }
 
 .todo-priority-container {

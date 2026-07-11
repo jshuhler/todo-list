@@ -51,9 +51,17 @@ function todoStatusListener (todoCheckbox, todo) {
     });
 };
 
+function todoUpdateListener (todoEditButton, todo) {
+    todoEditButton.addEventListener('click', () => {
+        console.log("progress...")
+        todoDialog.showModal();
+    })
+};
+
 export { 
     todoArray,
     createTodo,
     todoStatusListener,
     todoDeleteListener,
+    todoUpdateListener,
 };

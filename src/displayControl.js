@@ -1,6 +1,7 @@
-import { todoArray, createTodo, todoStatusListener, todoDeleteListener } from "./createTodo.js";
+import { todoArray, createTodo, todoStatusListener, todoDeleteListener, todoUpdateListener } from "./createTodo.js";
 import { projectArray, createProject, deleteProject, projectDeleteListener } from "./createProject.js";
 import trashcan from "./img/trashcan.png"
+import pencil from "./img/pencil.png"
 
 // -------------------------------
 // OPENING AND CLOSING THE NEW TODO DIALOG
@@ -61,6 +62,7 @@ function addToTodoDisplay(todoArray,todo) {
         const todoItem = document.createElement("div");
             todoItem.classList.add("todo-item");
             todoContainer.appendChild(todoItem);
+            // call update function here, Jeff.
 
         // status container - this will eventually need an event listener on the toggle to change status from open to closed
         const statusContainer = document.createElement("div");
@@ -130,11 +132,14 @@ function addToTodoDisplay(todoArray,todo) {
             todoProjectContainer.textContent = todo.project;
             infoBottomContainer.appendChild(todoProjectContainer);
         
-        // this is the element to append the listener to using a for in loop 
-        // to handle deletions of specific todo items
+        const iconContainer = document.createElement("div");
+            iconContainer.classList.add("icon-container");
+            todoItem.appendChild(iconContainer);
+
+        // delete button
         const todoTrashContainer = document.createElement("div");
             todoTrashContainer.classList.add("todo-trash-container");
-            todoItem.appendChild(todoTrashContainer);
+            iconContainer.appendChild(todoTrashContainer);
 
         const todoDeleteButton = document.createElement("button");
             todoDeleteButton.classList.add("todo-delete-button");
@@ -145,7 +150,23 @@ function addToTodoDisplay(todoArray,todo) {
         const deleteTodoIcon = document.createElement("img");
             deleteTodoIcon.src = trashcan;
             todoDeleteButton.appendChild(deleteTodoIcon);
-            todoTrashContainer.appendChild(todoDeleteButton)
+            todoTrashContainer.appendChild(todoDeleteButton);
+
+        // edit button
+        const todoEditContainer = document.createElement("div");
+            todoEditContainer.classList.add("todo-edit-container");
+            iconContainer.appendChild(todoEditContainer);
+        
+        const todoEditButton = document.createElement("button");
+            todoEditButton.classList.add("todo-edit-button");
+            todoEditButton.setAttribute("data-id",todo.id);
+
+            todoUpdateListener(todoEditButton,todo)
+
+        const editTodoIcon = document.createElement("img");
+            editTodoIcon.src = pencil;
+            todoEditButton.appendChild(editTodoIcon);
+            todoEditContainer.appendChild(todoEditButton);
     };
     console.log(todoArray)
 };
