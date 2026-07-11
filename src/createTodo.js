@@ -1,3 +1,5 @@
+import { addToTodoDisplay } from "./displayControl.js";
+
 // Creates a todoItem and appends it to the todoArray array
 const todoArray = [];
 
@@ -21,6 +23,17 @@ function createTodo(title,description,dueDate,priority,status) {
     todoArray.push(newTodo);
 };
 
+function todoDeleteListener (todoDeleteButton, todo) {
+    todoDeleteButton.addEventListener('click', () => {
+        const todoToRemove = todoArray.find((selectedTodo) => selectedTodo.id === todo.id);
+        const index = todoArray.indexOf(todoToRemove);
+        if (index > -1) {
+            todoArray.splice(index,1);
+        };
+        addToTodoDisplay(todoArray);
+    });
+};
+
 function todoStatusListener (todoCheckbox, todo) {
     todoCheckbox.addEventListener('click', () => {
         const todoStatusToChange = todoArray.find((selectedTodo) => selectedTodo.id === todo.id);
@@ -42,4 +55,5 @@ export {
     todoArray,
     createTodo,
     todoStatusListener,
+    todoDeleteListener,
 };

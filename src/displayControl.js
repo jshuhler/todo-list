@@ -1,5 +1,5 @@
-import { todoArray, createTodo, todoStatusListener } from "./createTodo.js";
-import { projectArray, createProject, deleteProject } from "./createProject.js";
+import { todoArray, createTodo, todoStatusListener, todoDeleteListener } from "./createTodo.js";
+import { projectArray, createProject, deleteProject, projectDeleteListener } from "./createProject.js";
 import trashcan from "./img/trashcan.png"
 
 // -------------------------------
@@ -150,16 +150,16 @@ function addToTodoDisplay(todoArray,todo) {
     console.log(todoArray)
 };
 
-function todoDeleteListener (todoDeleteButton, todo) {
-    todoDeleteButton.addEventListener('click', () => {
-        const todoToRemove = todoArray.find((selectedTodo) => selectedTodo.id === todo.id);
-        const index = todoArray.indexOf(todoToRemove);
-        if (index > -1) {
-            todoArray.splice(index,1);
-        };
-        addToTodoDisplay(todoArray);
-    });
-};
+// function todoDeleteListener (todoDeleteButton, todo) {
+//     todoDeleteButton.addEventListener('click', () => {
+//         const todoToRemove = todoArray.find((selectedTodo) => selectedTodo.id === todo.id);
+//         const index = todoArray.indexOf(todoToRemove);
+//         if (index > -1) {
+//             todoArray.splice(index,1);
+//         };
+//         addToTodoDisplay(todoArray);
+//     });
+// };
 
 // -------------------------------
 // OPENING AND CLOSING THE NEW PROJECT DIALOG
@@ -237,19 +237,19 @@ function addToProjectList(projectArray) {
 };
 
 // CREATING AND ADDING THE EVENT LISTENER TO THE DELETE BUTTON ON THE LEFT PANEL LIST OF PROJECTS
-function projectDeleteListener(projectArray, projectDelete, project) {
-    projectDelete.addEventListener('click', () => {
-        // console.log("project delete button press");
-        const projectToRemove = projectArray.find((selectedProject) => selectedProject.id === project.id);
-        // console.log(projectToRemove);
-        const index = projectArray.indexOf(projectToRemove);
-        // console.log(index);
-        if (index > -1) {
-            projectArray.splice(index,1);
-        };
-        addToProjectList(projectArray);
-    });
-};
+// function projectDeleteListener(projectArray, projectDelete, project) {
+//     projectDelete.addEventListener('click', () => {
+//         // console.log("project delete button press");
+//         const projectToRemove = projectArray.find((selectedProject) => selectedProject.id === project.id);
+//         // console.log(projectToRemove);
+//         const index = projectArray.indexOf(projectToRemove);
+//         // console.log(index);
+//         if (index > -1) {
+//             projectArray.splice(index,1);
+//         };
+//         addToProjectList(projectArray);
+//     });
+// };
 
 // -------------------------------
 // POPULATING PROJECT SELECT FROM PROJECTARRAY WHEN ADDING A TODO ITEM
@@ -290,3 +290,8 @@ function addProjectToSelection(projectArray) {
 // like the project, All Todos, Due today or Due This Week and just call the function from there?
 
 // DECLARING VARIABLES
+
+export {
+    addToProjectList,
+    addToTodoDisplay,
+};
