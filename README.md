@@ -7,4 +7,4 @@
 
 ### attibutions
 Favicon and icon [created by Graphics Plazza and meaicon - Flaticon](https://www.flaticon.com/free-icons/to-do-list).
-Trashcan icon [created by Agus_87 - Flaticon](https://www.flaticon.com/free-icons/trashcan).
+Trashcan and pencil icon [created by Agus_87 - Flaticon](https://www.flaticon.com/authors/agus-87).

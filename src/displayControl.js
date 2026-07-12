@@ -1,7 +1,8 @@
 import { todoArray, createTodo, todoStatusListener, todoDeleteListener, todoUpdateListener } from "./createTodo.js";
 import { projectArray, createProject, deleteProject, projectDeleteListener } from "./createProject.js";
-import trashcan from "./img/trashcan.png"
-import pencil from "./img/pencil.png"
+import trashcan from "./img/trashcan.png";
+import pencil from "./img/pencil.png";
+import pencil_edit from "./img/pencil_edit.png";
 
 // -------------------------------
 // OPENING AND CLOSING THE NEW TODO DIALOG
@@ -164,7 +165,7 @@ function addToTodoDisplay(todoArray,todo) {
             todoUpdateListener(todoEditButton,todo)
 
         const editTodoIcon = document.createElement("img");
-            editTodoIcon.src = pencil;
+            editTodoIcon.src = pencil_edit;
             todoEditButton.appendChild(editTodoIcon);
             todoEditContainer.appendChild(todoEditButton);
     };

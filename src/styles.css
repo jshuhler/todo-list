@@ -182,7 +182,7 @@ button#add-task-button:active {
 
 .todo-item:hover {
     background-color: var(--left-panel-hover);
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 .todo-item .status-container {
@@ -196,6 +196,7 @@ input[type=checkbox] {
     width: 25px;
     height: 25px;
     border-radius: 50px;
+    cursor: pointer;
 }
 
 .todo-item .text-container {
@@ -237,11 +238,20 @@ input[type=checkbox] {
 .icon-container {
     display: grid;
     grid-template-rows: 1fr 1fr;
+    justify-items: center;
+}
+
+.icon-container button {
+    cursor: pointer;
 }
 
 .todo-item .todo-trash-container,
 .todo-item .todo-edit-container {
     display: flex;
+}
+
+.todo-edit-container img {
+    padding-left: 3px;
 }
 
 .todo-delete-button,
