@@ -9,6 +9,7 @@ import pencil_edit from "./img/pencil_edit.png";
 // -------------------------------
 
 // DECLARING VARIABLES FOR TODO DIALOG
+const todoForm = document.querySelector(".add-todo-form")
 const todoDialog = document.querySelector("dialog.todo-dialog");
 const addTodoButton = document.getElementById("add-task-button");
 const closeTodoDialog = document.querySelector(".todo-dialog-close");
@@ -25,6 +26,7 @@ let todoPriority;
 
 // OPEN NEW TODO DIALOG
 addTodoButton.addEventListener('click', () => {
+    todoForm.reset();
     todoDialog.showModal();
     addProjectToSelection(projectArray);
 });
@@ -63,7 +65,7 @@ function addToTodoDisplay(todoArray,todo) {
         const todoItem = document.createElement("div");
             todoItem.classList.add("todo-item");
             todoContainer.appendChild(todoItem);
-            // call update function here, Jeff.
+            // call update function here
 
         // status container - this will eventually need an event listener on the toggle to change status from open to closed
         const statusContainer = document.createElement("div");
@@ -162,7 +164,7 @@ function addToTodoDisplay(todoArray,todo) {
             todoEditButton.classList.add("todo-edit-button");
             todoEditButton.setAttribute("data-id",todo.id);
 
-            todoUpdateListener(todoEditButton,todo)
+            todoUpdateListener(todoEditButton,todo, todoDialog)
 
         const editTodoIcon = document.createElement("img");
             editTodoIcon.src = pencil_edit;
@@ -171,17 +173,6 @@ function addToTodoDisplay(todoArray,todo) {
     };
     console.log(todoArray)
 };
-
-// function todoDeleteListener (todoDeleteButton, todo) {
-//     todoDeleteButton.addEventListener('click', () => {
-//         const todoToRemove = todoArray.find((selectedTodo) => selectedTodo.id === todo.id);
-//         const index = todoArray.indexOf(todoToRemove);
-//         if (index > -1) {
-//             todoArray.splice(index,1);
-//         };
-//         addToTodoDisplay(todoArray);
-//     });
-// };
 
 // -------------------------------
 // OPENING AND CLOSING THE NEW PROJECT DIALOG
@@ -213,7 +204,7 @@ addProjectDialog.addEventListener('submit', (e) => {
     const projectName = document.getElementById("project-name").value;
     createProject(projectName);
     projectDialog.close();
-    addToProjectList(projectArray); // should just call this on the new project that I created, not the entire array. 
+    addToProjectList(projectArray);  
 });
 
 // ADD PROJECT NAME AND A DELETE BUTTON TO LEFT PANEL
@@ -257,21 +248,6 @@ function addToProjectList(projectArray) {
         };
     };
 };
-
-// CREATING AND ADDING THE EVENT LISTENER TO THE DELETE BUTTON ON THE LEFT PANEL LIST OF PROJECTS
-// function projectDeleteListener(projectArray, projectDelete, project) {
-//     projectDelete.addEventListener('click', () => {
-//         // console.log("project delete button press");
-//         const projectToRemove = projectArray.find((selectedProject) => selectedProject.id === project.id);
-//         // console.log(projectToRemove);
-//         const index = projectArray.indexOf(projectToRemove);
-//         // console.log(index);
-//         if (index > -1) {
-//             projectArray.splice(index,1);
-//         };
-//         addToProjectList(projectArray);
-//     });
-// };
 
 // -------------------------------
 // POPULATING PROJECT SELECT FROM PROJECTARRAY WHEN ADDING A TODO ITEM
