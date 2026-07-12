@@ -113,13 +113,13 @@ function addToTodoDisplay(todoArray,todo) {
 
         const todoPriorityContainer = document.createElement("div");
             todoPriorityContainer.classList.add("todo-priority-container");
-            if (todo.priority === "1") {
+            if (todo.priority === '1') {
                 todoPriorityContainer.textContent = "Low";
                 todoPriorityContainer.classList.add("todo-priority-low-1");
-            } else if (todo.priority === "2") {
+            } else if (todo.priority === '2') {
                 todoPriorityContainer.textContent = "Medium";
                 todoPriorityContainer.classList.add("todo-priority-medium-2");
-            } else if (todoPriority === "3") {
+            } else if (todo.priority === '3') {
                 todoPriorityContainer.textContent = "High";
                 todoPriorityContainer.classList.add("todo-priority-high-3");
             };

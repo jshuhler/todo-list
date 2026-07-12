@@ -169,7 +169,8 @@ button#add-task-button:active {
 }
 
 .todo-item {
-    width: 95%;
+    width: 95%; 
+    /* ^ I don't think this is doing anything. */
     margin: 10px;
     padding: 8px;
     display: grid;
