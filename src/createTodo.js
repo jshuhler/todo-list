@@ -18,8 +18,8 @@ class Todo {
     };
 };
 
-function createTodo(title,description,dueDate,priority,status) {
-    const newTodo = new Todo(title,description,dueDate,priority,status)
+function createTodo(title,details,dueDate,project,priority) {
+    const newTodo = new Todo(title,details,dueDate,project,priority)
     todoArray.push(newTodo);
 };
 
@@ -55,7 +55,12 @@ function todoUpdateListener (todoEditButton, todo, todoDialog) {
     todoEditButton.addEventListener('click', () => {
         console.log("progress...")
         todoDialog.showModal();
-    })
+        console.log(todoArray);
+        const todoToUpdate = todoArray.find((selectedTodo) => selectedTodo.id === todo.id);
+        console.log(todoToUpdate);
+        const index = todoArray.indexOf(todoToUpdate);
+        console.log(index);
+    });
 };
 
 export { 

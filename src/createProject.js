@@ -22,11 +22,8 @@ function createProject(name) {
 
 function projectDeleteListener(projectArray, projectDelete, project) {
     projectDelete.addEventListener('click', () => {
-        // console.log("project delete button press");
         const projectToRemove = projectArray.find((selectedProject) => selectedProject.id === project.id);
-        // console.log(projectToRemove);
         const index = projectArray.indexOf(projectToRemove);
-        // console.log(index);
         if (index > -1) {
             projectArray.splice(index,1);
         };

@@ -242,9 +242,9 @@ input[type=checkbox] {
     justify-items: center;
 }
 
-.icon-container button {
+/* .icon-container button {
     cursor: pointer;
-}
+} */
 
 .todo-item .todo-trash-container,
 .todo-item .todo-edit-container {
@@ -265,6 +265,7 @@ input[type=checkbox] {
 .todo-delete-button img,
 .todo-edit-button img {
     height: 1.25em;
+    cursor: pointer;
 }
 
 .todo-priority-container {

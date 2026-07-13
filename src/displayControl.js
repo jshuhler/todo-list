@@ -4,9 +4,9 @@ import trashcan from "./img/trashcan.png";
 import pencil from "./img/pencil.png";
 import pencil_edit from "./img/pencil_edit.png";
 
-// -------------------------------
-// OPENING AND CLOSING THE NEW TODO DIALOG
-// -------------------------------
+// --------------------------------------- //
+// OPENING AND CLOSING THE NEW TODO DIALOG //
+// --------------------------------------- //
 
 // DECLARING VARIABLES FOR TODO DIALOG
 const todoForm = document.querySelector(".add-todo-form")
@@ -38,6 +38,7 @@ closeTodoDialog.addEventListener('click', (e) => {
 });
 
 // CREATE TODO ITEM, ADD TO TODO ARRAY, CALL CREATE TODO CARD FUNCTION
+// think about moving this to createTodo.js maybe
 addTodoDialog.addEventListener('submit', (e) => {
     e.preventDefault();
     todoTitle = document.getElementById("todo-name").value;
@@ -54,7 +55,7 @@ addTodoDialog.addEventListener('submit', (e) => {
     addToTodoDisplay(todoArray);
 });
 
-// CREATE NEW TODO CARD 
+// CREATE NEW TODO CARD FUNCTION
 function addToTodoDisplay(todoArray,todo) {
     // add an if statement here to determine if the project array is empty or not
     // if it's empty, it should show the "click the button" message, probably by adding a class?
@@ -148,7 +149,7 @@ function addToTodoDisplay(todoArray,todo) {
             todoDeleteButton.classList.add("todo-delete-button");
             todoDeleteButton.setAttribute("data-id",todo.id);
 
-            todoDeleteListener(todoDeleteButton, todo);
+            todoDeleteListener(todoDeleteButton, todo);                         
             
         const deleteTodoIcon = document.createElement("img");
             deleteTodoIcon.src = trashcan;
@@ -164,7 +165,7 @@ function addToTodoDisplay(todoArray,todo) {
             todoEditButton.classList.add("todo-edit-button");
             todoEditButton.setAttribute("data-id",todo.id);
 
-            todoUpdateListener(todoEditButton,todo, todoDialog)
+            todoUpdateListener(todoEditButton, todo, todoDialog);
 
         const editTodoIcon = document.createElement("img");
             editTodoIcon.src = pencil_edit;
@@ -174,9 +175,9 @@ function addToTodoDisplay(todoArray,todo) {
     console.log(todoArray)
 };
 
-// -------------------------------
-// OPENING AND CLOSING THE NEW PROJECT DIALOG
-// -------------------------------
+// ------------------------------------------ //
+// OPENING AND CLOSING THE NEW PROJECT DIALOG //
+// ------------------------------------------ //
 
 // DECLARING VARIABLES FOR PROJECT DIALOG
 const projectDialog = document.querySelector("dialog.project-dialog");
@@ -249,9 +250,9 @@ function addToProjectList(projectArray) {
     };
 };
 
-// -------------------------------
-// POPULATING PROJECT SELECT FROM PROJECTARRAY WHEN ADDING A TODO ITEM
-// -------------------------------
+// ------------------------------------------------------------------- //
+// POPULATING PROJECT SELECT FROM PROJECTARRAY WHEN ADDING A TODO ITEM //
+// ------------------------------------------------------------------- //
 
 // iterate through the projectArray object, pulling out the name key, and adding the value to the dialog
 const projectSelectList = document.getElementById("todo-project");
