@@ -279,9 +279,9 @@ function addProjectToSelection(projectArray) {
     console.log(projectArray);
 };
 
-// -------------------------------
-// CHANGING THE SORT BY PROJECT
-// -------------------------------
+// ------------------------------- //
+// CHANGING THE SORT BY PROJECT    //
+// ------------------------------- //
 // this should probably call a function that is in the createTodo.js module. that should probably
 // be renamed to todo.js 
 

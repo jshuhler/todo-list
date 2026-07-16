@@ -53,14 +53,18 @@ function todoStatusListener (todoCheckbox, todo) {
 
 function todoUpdateListener (todoEditButton, todo, todoDialog) {
     todoEditButton.addEventListener('click', () => {
-        console.log("progress...")
         todoDialog.showModal();
-        console.log(todoArray);
         const todoToUpdate = todoArray.find((selectedTodo) => selectedTodo.id === todo.id);
         console.log(todoToUpdate);
         const index = todoArray.indexOf(todoToUpdate);
-        console.log(index);
+        console.log(`index: ${index}`)
+        console.log(`id of index: ${todoArray[index].id}`);
+        todoUpdate(todoToUpdate);
     });
+};
+
+function todoUpdate (todoToUpdate) {
+    console.log(todoToUpdate)
 };
 
 export { 
