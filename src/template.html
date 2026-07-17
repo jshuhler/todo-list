@@ -16,7 +16,7 @@
                 <form action="" method="" class="add-todo-form">
                     <fieldset>
                         <div class="dialog-header">
-                            <legend>Add New Task</legend>
+                            <legend>Add New Todo</legend>
                             <span class="todo-dialog-close dialog-close">&times;</span>
                         </div>
                         <div>
@@ -38,7 +38,7 @@
                             </select>
                         </div>
                         <div class="form-priority">
-                            <p class="todo-priority">Task Priority</p>
+                            <p class="todo-priority">Todo Priority</p>
                             <div class="radio-item">
                                 <input type="radio" id="priority-high" name="priority" value="3" required>
                                 <label for="priority-high">High</label>
@@ -56,6 +56,16 @@
                     <div class="dialog-buttons">
                         <button type="submit" id="add-todo-submit">Save</button>
                     </div>
+                </form>
+            </dialog>
+            <dialog class="todo-edit-dialog">
+                <form action="" method="" class="edit-todo-form">
+                    <fieldset>
+                        <div class="dialog-header">
+                            <legend>Edit Todo</legend>
+                            <span class="todo-dialog-close dialog-close">&times;</span>
+                        </div>
+                    </fieldset>
                 </form>
             </dialog>
             <dialog class="project-dialog">
