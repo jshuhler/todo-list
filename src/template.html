@@ -58,14 +58,50 @@
                     </div>
                 </form>
             </dialog>
-            <dialog class="todo-edit-dialog">
+            <dialog class="edit-todo-dialog">
                 <form action="" method="" class="edit-todo-form">
                     <fieldset>
                         <div class="dialog-header">
                             <legend>Edit Todo</legend>
-                            <span class="todo-dialog-close dialog-close">&times;</span>
+                            <span class="edit-todo-dialog-close dialog-close">&times;</span>
+                        </div>
+                        <div>
+                            <label for="todo-name">Title</label>
+                            <input type="text" id="edit-todo-name" required>
+                        </div>
+                        <div>
+                            <label for="todo-details">Details</label>
+                            <textarea name="todo-details" id="edit-todo-details" rows="5" cols="33"></textarea>
+                        </div>
+                        <div>
+                            <label for="todo-date">Due Date</label>
+                            <input type="date" id="edit-todo-date" required>
+                        </div>
+                        <div>
+                            <label for="todo-project">Project</label>
+                            <select name="project" id="edit-todo-project" required>
+
+                            </select>
+                        </div>
+                        <div class="form-priority">
+                            <p class="todo-priority">Todo Priority</p>
+                            <div class="radio-item">
+                                <input type="radio" id="priority-high" name="priority" value="3" required>
+                                <label for="priority-high">High</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="priority-med" name="priority" value="2" checked required>
+                                <label for="priority-med">Medium</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="priority-low" name="priority" value="1" required>
+                                <label for="priority-low">Low</label>
+                            </div>
                         </div>
                     </fieldset>
+                    <div class="dialog-buttons">
+                        <button type="submit" id="edit-todo-update">Update</button>
+                    </div>
                 </form>
             </dialog>
             <dialog class="project-dialog">

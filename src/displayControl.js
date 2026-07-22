@@ -165,7 +165,7 @@ function addToTodoDisplay(todoArray,todo) {
             todoEditButton.classList.add("todo-edit-button");
             todoEditButton.setAttribute("data-id",todo.id);
 
-            todoUpdateListener(todoEditButton, todo, todoDialog);
+            todoUpdateListener(todoEditButton, todo, editTodoDialog);
 
         const editTodoIcon = document.createElement("img");
             editTodoIcon.src = pencil_edit;
@@ -279,6 +279,22 @@ function addProjectToSelection(projectArray) {
     console.log(projectArray);
 };
 
+// ------------------ //
+// EDITING TODO ITEMS //
+// ------------------ //
+
+// DECLARING VARIABLES FOR EDITING TODO DIALOG
+const editTodoForm = document.querySelector(".edit-todo-form");
+const editTodoDialog = document.querySelector(".edit-todo-dialog");
+const editTodoButton = document.getElementById("edit-todo-update");
+const editCloseTodoDialog = document.querySelector(".edit-todo-dialog-close");
+
+// CLOSE EDIT TODO DIALOG WITHOUT ADDING ITEM
+editCloseTodoDialog.addEventListener('click', (e) => {
+    editTodoDialog.close();
+    e.preventDefault();
+});
+
 // ------------------------------- //
 // CHANGING THE SORT BY PROJECT    //
 // ------------------------------- //
@@ -293,4 +309,5 @@ function addProjectToSelection(projectArray) {
 export {
     addToProjectList,
     addToTodoDisplay,
+    addProjectToSelection,
 };
