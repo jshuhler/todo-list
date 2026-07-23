@@ -1,4 +1,4 @@
-import { addToTodoDisplay, addProjectToSelection } from "./displayControl.js";
+import { addToTodoDisplay, addProjectToSelection, addProjectToEditSelection } from "./displayControl.js";
 import { projectArray } from "./createProject.js";
 
 // Creates a todoItem and appends it to the todoArray array
@@ -52,7 +52,7 @@ function todoStatusListener (todoCheckbox, todo) {
     });
 };
 
-function todoUpdateListener (todoEditButton, todo, editTodoDialog) {
+function todoUpdateListener (todoEditButton, todo, editTodoDialog, projectArray) {
     todoEditButton.addEventListener('click', () => {
         editTodoDialog.showModal();
         const todoToUpdate = todoArray.find((selectedTodo) => selectedTodo.id === todo.id);
@@ -61,7 +61,7 @@ function todoUpdateListener (todoEditButton, todo, editTodoDialog) {
         console.log(`index: ${index}`);
         console.log(`id of index: ${todoArray[index].id}`);
         console.log(`projectArray: ${projectArray}`);
-        addProjectToSelection(projectArray);
+        addProjectToEditSelection(projectArray);
         todoUpdate(todoToUpdate);
     });
 };

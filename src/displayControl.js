@@ -165,7 +165,7 @@ function addToTodoDisplay(todoArray,todo) {
             todoEditButton.classList.add("todo-edit-button");
             todoEditButton.setAttribute("data-id",todo.id);
 
-            todoUpdateListener(todoEditButton, todo, editTodoDialog);
+            todoUpdateListener(todoEditButton, todo, editTodoDialog, projectArray);
 
         const editTodoIcon = document.createElement("img");
             editTodoIcon.src = pencil_edit;
@@ -283,6 +283,36 @@ function addProjectToSelection(projectArray) {
 // EDITING TODO ITEMS //
 // ------------------ //
 
+// ------------------------------------------------------------------- //
+// POPULATING PROJECT SELECT FROM PROJECTARRAY WHEN EDITING A TODO ITEM //
+// ------------------------------------------------------------------- //
+
+// iterate through the projectArray object, pulling out the name key, and adding the value to the dialog
+const projectEditSelectList = document.getElementById("edit-todo-project");
+
+function addProjectToEditSelection(projectArray) {
+    // clear entire Project select list on the create todo dialog
+    projectEditSelectList.innerHTML = "";
+
+    // create the placeholder text for the project select list
+    const defaultProjectOption = document.createElement("option");
+    defaultProjectOption.setAttribute("value","");
+    defaultProjectOption.disabled = true;
+    defaultProjectOption.selected = true;
+    defaultProjectOption.textContent = "Choose a Project";
+    projectEditSelectList.appendChild(defaultProjectOption);
+
+    // loop through the projectArray and add each project there to the select list
+    for (const project of projectArray) {
+        const projectOption = document.createElement("option");
+        projectOption.setAttribute("value",project.name);
+        projectOption.textContent = project.name;
+        projectEditSelectList.appendChild(projectOption);
+    };
+    console.log(projectArray);
+};
+
+
 // DECLARING VARIABLES FOR EDITING TODO DIALOG
 const editTodoForm = document.querySelector(".edit-todo-form");
 const editTodoDialog = document.querySelector(".edit-todo-dialog");
@@ -310,4 +340,5 @@ export {
     addToProjectList,
     addToTodoDisplay,
     addProjectToSelection,
+    addProjectToEditSelection,
 };
