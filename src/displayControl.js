@@ -283,9 +283,9 @@ function addProjectToSelection(projectArray) {
 // EDITING TODO ITEMS //
 // ------------------ //
 
-// ------------------------------------------------------------------- //
+// -------------------------------------------------------------------- //
 // POPULATING PROJECT SELECT FROM PROJECTARRAY WHEN EDITING A TODO ITEM //
-// ------------------------------------------------------------------- //
+// -------------------------------------------------------------------- //
 
 // iterate through the projectArray object, pulling out the name key, and adding the value to the dialog
 const projectEditSelectList = document.getElementById("edit-todo-project");
@@ -312,7 +312,6 @@ function addProjectToEditSelection(projectArray) {
     console.log(projectArray);
 };
 
-
 // DECLARING VARIABLES FOR EDITING TODO DIALOG
 const editTodoForm = document.querySelector(".edit-todo-form");
 const editTodoDialog = document.querySelector(".edit-todo-dialog");
@@ -324,6 +323,9 @@ editCloseTodoDialog.addEventListener('click', (e) => {
     editTodoDialog.close();
     e.preventDefault();
 });
+
+// ADDING VALUES TO DISPLAYED EDIT DIALOG
+
 
 // ------------------------------- //
 // CHANGING THE SORT BY PROJECT    //
