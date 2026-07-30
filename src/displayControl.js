@@ -318,6 +318,13 @@ const editTodoDialog = document.querySelector(".edit-todo-dialog");
 const editTodoButton = document.getElementById("edit-todo-update");
 const editCloseTodoDialog = document.querySelector(".edit-todo-dialog-close");
 
+// field specific variables for edit todo dialog
+const editTodoName = document.getElementById("edit-todo-name");
+const editTodoDetails = document.getElementById("edit-todo-details");
+const editTodoDate = document.getElementById("edit-todo-date");
+const editTodoProject = document.getElementById("edit-todo-project");
+const editTodoPriority = document.getElementById(".todo-priority")
+
 // CLOSE EDIT TODO DIALOG WITHOUT ADDING ITEM
 editCloseTodoDialog.addEventListener('click', (e) => {
     editTodoDialog.close();
@@ -325,7 +332,14 @@ editCloseTodoDialog.addEventListener('click', (e) => {
 });
 
 // ADDING VALUES TO DISPLAYED EDIT DIALOG
+function populateEditDialog (todoArray, index) {
+    editTodoName.value = todoArray[index].value; // this isn't right, todoArray[index].value is not the right thing.
 
+};
+
+function editTodo () {
+// probably need a function to actually call when the submit button is clicked on the 
+};
 
 // ------------------------------- //
 // CHANGING THE SORT BY PROJECT    //

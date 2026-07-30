@@ -58,6 +58,7 @@ function todoUpdateListener (todoEditButton, todo, editTodoDialog, projectArray)
         const todoToUpdate = todoArray.find((selectedTodo) => selectedTodo.id === todo.id);
         console.log(todoToUpdate);
         const index = todoArray.indexOf(todoToUpdate);
+        // call populateEditDialog here I think. Use the todoToUpdate and index variables I think. 
         console.log(`index: ${index}`);
         console.log(`id of index: ${todoArray[index].id}`);
         console.log(`projectArray: ${projectArray}`);
