@@ -1,4 +1,4 @@
-import { addToTodoDisplay, addProjectToSelection, addProjectToEditSelection } from "./displayControl.js";
+import { addToTodoDisplay, addProjectToSelection, addProjectToEditSelection, populateEditDialog } from "./displayControl.js";
 import { projectArray } from "./createProject.js";
 
 // Creates a todoItem and appends it to the todoArray array
@@ -55,10 +55,11 @@ function todoStatusListener (todoCheckbox, todo) {
 function todoUpdateListener (todoEditButton, todo, editTodoDialog, projectArray) {
     todoEditButton.addEventListener('click', () => {
         editTodoDialog.showModal();
+        
         const todoToUpdate = todoArray.find((selectedTodo) => selectedTodo.id === todo.id);
         console.log(todoToUpdate);
         const index = todoArray.indexOf(todoToUpdate);
-        // call populateEditDialog here I think. Use the todoToUpdate and index variables I think. 
+        populateEditDialog(todoToUpdate)
         console.log(`index: ${index}`);
         console.log(`id of index: ${todoArray[index].id}`);
         console.log(`projectArray: ${projectArray}`);

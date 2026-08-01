@@ -313,8 +313,8 @@ function addProjectToEditSelection(projectArray) {
 };
 
 // DECLARING VARIABLES FOR EDITING TODO DIALOG
-const editTodoForm = document.querySelector(".edit-todo-form");
 const editTodoDialog = document.querySelector(".edit-todo-dialog");
+const editTodoForm = document.querySelector(".edit-todo-form");
 const editTodoButton = document.getElementById("edit-todo-update");
 const editCloseTodoDialog = document.querySelector(".edit-todo-dialog-close");
 
@@ -323,22 +323,33 @@ const editTodoName = document.getElementById("edit-todo-name");
 const editTodoDetails = document.getElementById("edit-todo-details");
 const editTodoDate = document.getElementById("edit-todo-date");
 const editTodoProject = document.getElementById("edit-todo-project");
-const editTodoPriority = document.getElementById(".todo-priority")
+let form = document.forms[1]; // getting the value out of the RadioNodeList value property
+let radioButtons = form.elements["priority"]; // getting the value out of the RadioNodeList value property
+const editTodoPriority = radioButtons.value;
+// const editTodoPriority = document.getElementById(".todo-priority");
 
-// CLOSE EDIT TODO DIALOG WITHOUT ADDING ITEM
+// some kind of if loop somewhere to look at the value on the existing todo priority (1,2,3) and then add 
+// an attribute to the existing doalog when it's loaded that adds 'selected' or whatever it is for when a
+// radio button is filled in. I don't entirely know where that if loop should go yet. 
+
+// CLOSE EDIT TODO DIALOG WITHOUT EDITING ITEM
 editCloseTodoDialog.addEventListener('click', (e) => {
     editTodoDialog.close();
     e.preventDefault();
 });
 
 // ADDING VALUES TO DISPLAYED EDIT DIALOG
-function populateEditDialog (todoArray, index) {
-    editTodoName.value = todoArray[index].value; // this isn't right, todoArray[index].value is not the right thing.
-
+function populateEditDialog (todoToUpdate) {
+    document.getElementById("edit-todo-name").value = todoToUpdate.title;
+    document.getElementById("edit-todo-details").value = todoToUpdate.details;
+    document.getElementById("edit-todo-date").value = todoToUpdate.dueDate; 
+    document.getElementById("edit-todo-project").value = todoToUpdate.project; // working here to add the currently selected project to the select list
+    console.log(`todoToUpdate.project: ${todoToUpdate.project}`)
+    console.log(projectArray)
 };
 
 function editTodo () {
-// probably need a function to actually call when the submit button is clicked on the 
+// probably need a function to actually call when the submit button is clicked on the dialog
 };
 
 // ------------------------------- //
@@ -357,4 +368,5 @@ export {
     addToTodoDisplay,
     addProjectToSelection,
     addProjectToEditSelection,
+    populateEditDialog,
 };
