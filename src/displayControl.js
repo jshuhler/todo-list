@@ -134,6 +134,7 @@ function addToTodoDisplay(todoArray,todo) {
         const todoProjectContainer = document.createElement("div");
             todoProjectContainer.classList.add("todo-project-container");
             todoProjectContainer.textContent = todo.project;
+            // todoProjectContainer.setAttribute("data-project-id",project.id); // working on populating project on todo edit dialog
             infoBottomContainer.appendChild(todoProjectContainer);
         
         const iconContainer = document.createElement("div");
@@ -273,6 +274,7 @@ function addProjectToSelection(projectArray) {
     for (const project of projectArray) {
         const projectOption = document.createElement("option");
         projectOption.setAttribute("value",project.name);
+        projectOption.setAttribute("data-project-id",project.id);
         projectOption.textContent = project.name;
         projectSelectList.appendChild(projectOption);
     };
@@ -306,6 +308,7 @@ function addProjectToEditSelection(projectArray) {
     for (const project of projectArray) {
         const projectOption = document.createElement("option");
         projectOption.setAttribute("value",project.name);
+        projectOption.setAttribute("data-project-id",project.id);
         projectOption.textContent = project.name;
         projectEditSelectList.appendChild(projectOption);
     };
@@ -345,7 +348,7 @@ function populateEditDialog (todoToUpdate) {
     document.getElementById("edit-todo-date").value = todoToUpdate.dueDate; 
     document.getElementById("edit-todo-project").value = todoToUpdate.project; // working here to add the currently selected project to the select list
     console.log(`todoToUpdate.project: ${todoToUpdate.project}`)
-    console.log(projectArray)
+    console.log(todoToUpdate.project.id)
 };
 
 function editTodo () {

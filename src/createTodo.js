@@ -62,10 +62,15 @@ function todoUpdateListener (todoEditButton, todo, editTodoDialog, projectArray)
         populateEditDialog(todoToUpdate)
         console.log(`index: ${index}`);
         console.log(`id of index: ${todoArray[index].id}`);
-        console.log(`projectArray: ${projectArray}`);
+        console.log(`project id: ${projectArray}`);
         addProjectToEditSelection(projectArray);
         todoUpdate(todoToUpdate);
     });
+};
+
+function projectDataAttribute () {
+    const p = document.querySelector(".edit-todo-form.select");
+    p.setAttribute("data-project-id", project.id);
 };
 
 function todoUpdate (todoToUpdate) {
