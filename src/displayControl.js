@@ -296,22 +296,26 @@ function addProjectToEditSelection(projectArray) {
     // clear entire Project select list on the create todo dialog
     projectEditSelectList.innerHTML = "";
 
-    // create the placeholder text for the project select list
-    const defaultProjectOption = document.createElement("option");
-    defaultProjectOption.setAttribute("value","");
-    defaultProjectOption.disabled = true;
-    defaultProjectOption.selected = true;
-    defaultProjectOption.textContent = "Choose a Project";
-    projectEditSelectList.appendChild(defaultProjectOption);
-
     // loop through the projectArray and add each project there to the select list
     for (const project of projectArray) {
         const projectOption = document.createElement("option");
         projectOption.setAttribute("value",project.name);
         projectOption.setAttribute("data-project-id",project.id);
+        console.log(projectOption.dataset.projectId)
         projectOption.textContent = project.name;
         projectEditSelectList.appendChild(projectOption);
-    };
+        if (projectOption.dataset.projectId === project.id) {
+            projectOption.selected = true;
+            console.log(`it's ${projectOption.dataset.projectId}`)
+        } 
+    }; // need to grab the data attribute of the oen that triggered the event listener I think
+
+    // loop through the projectArray to compare to the projectOption.dataset.projectId 
+    // and then make that one selected by default
+    // for (const project of projectArray) {
+    //     // need to identify the option element that I need to add the selected attribute to
+    //     const projectOptionDefault = 
+    // };
     console.log(projectArray);
 };
 
