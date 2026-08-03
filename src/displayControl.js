@@ -23,6 +23,7 @@ let todoDetails;
 let todoDueDate;
 let todoProject;
 let todoPriority;
+let todoProjectId;
 
 // OPEN NEW TODO DIALOG
 addTodoButton.addEventListener('click', () => {
@@ -45,8 +46,10 @@ addTodoDialog.addEventListener('submit', (e) => {
     todoDetails = document.getElementById("todo-details").value;
     todoDueDate = document.getElementById("todo-date").value;
     todoProject = document.getElementById("todo-project").value;
-    todoProjectId = document.getElementById("todo-project").dataset.projectId;
-    console.log(todoProjectIdHolder)
+    if (selected === true) { // fix this bit
+        todoProjectId = document.getElementById("todo-project").dataset.projectId;
+    }
+    console.log(todoProjectId)
 
     let form = document.forms[0]; // getting the value out of the RadioNodeList value property
     let radioButtons = form.elements["priority"]; // getting the value out of the RadioNodeList value property
