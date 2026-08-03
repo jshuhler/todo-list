@@ -45,11 +45,14 @@ addTodoDialog.addEventListener('submit', (e) => {
     todoDetails = document.getElementById("todo-details").value;
     todoDueDate = document.getElementById("todo-date").value;
     todoProject = document.getElementById("todo-project").value;
+    todoProjectId = document.getElementById("todo-project").dataset.projectId;
+    console.log(todoProjectIdHolder)
 
     let form = document.forms[0]; // getting the value out of the RadioNodeList value property
     let radioButtons = form.elements["priority"]; // getting the value out of the RadioNodeList value property
     todoPriority = radioButtons.value;
-    createTodo(todoTitle,todoDetails,todoDueDate,todoProject,todoPriority);
+
+    createTodo(todoTitle,todoDetails,todoDueDate,todoProject,todoPriority,todoProjectId);
     todoDialog.close();
 
     addToTodoDisplay(todoArray);
@@ -306,7 +309,7 @@ function addProjectToEditSelection(projectArray) {
         projectEditSelectList.appendChild(projectOption);
         if (projectOption.dataset.projectId === project.id) {
             projectOption.selected = true;
-            console.log(`it's ${projectOption.dataset.projectId}`)
+            console.log(`it's ${projectOption.dataset.projectId}`);
         } 
     }; // need to grab the data attribute of the oen that triggered the event listener I think
 
@@ -318,7 +321,6 @@ function addProjectToEditSelection(projectArray) {
     // };
     console.log(projectArray);
 };
-
 // DECLARING VARIABLES FOR EDITING TODO DIALOG
 const editTodoDialog = document.querySelector(".edit-todo-dialog");
 const editTodoForm = document.querySelector(".edit-todo-form");

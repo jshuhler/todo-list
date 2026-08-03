@@ -5,7 +5,7 @@ import { projectArray } from "./createProject.js";
 const todoArray = [];
 
 class Todo {
-    constructor(title,details,dueDate,project,priority,status) {
+    constructor(title,details,dueDate,project,priority,projectId,status) {
         if (!new.target) {
             throw Error("You must use the 'new' operator to call the constructor.");
         };
@@ -14,8 +14,10 @@ class Todo {
         this.dueDate = dueDate;
         this.project = project;
         this.priority = priority;
+        this.projectId = projectId;
         this.status = "open";
         this.id = crypto.randomUUID();
+        
     };
 };
 
@@ -55,7 +57,9 @@ function todoStatusListener (todoCheckbox, todo) {
 function todoUpdateListener (todoEditButton, todo, editTodoDialog, projectArray) {
     todoEditButton.addEventListener('click', () => {
         editTodoDialog.showModal();
-        
+        // add and call separate functions (in this module) to do the looking for the 
+        // project ID dataset and looping through it
+        // or just use addProjectToEditSelection for this? SOLID principles.
         const todoToUpdate = todoArray.find((selectedTodo) => selectedTodo.id === todo.id);
         console.log(todoToUpdate);
         const index = todoArray.indexOf(todoToUpdate);
