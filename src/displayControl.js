@@ -45,32 +45,37 @@ addTodoDialog.addEventListener('submit', (e) => {
     todoTitle = document.getElementById("todo-name").value;
     todoDetails = document.getElementById("todo-details").value;
     todoDueDate = document.getElementById("todo-date").value;
-    todoProject = document.getElementById("todo-project").value;
+    todoProjectId = document.getElementById("todo-project").value;
     // here I'm trying to find the project ID data attribute of the project selected so I can 
     // assign the data attribute to the todoProjectID variable. Once it's there, I can pass it to the
     // todo constructor, allowing me to compare the projectID on the todo to the project array in 
-    // addProjectToEditSelection
-    if (selected === true) { 
-        todoProjectId = document.getElementById("todo-project").dataset.projectId;
-    }
-    console.log(todoProjectId)
+    // addProjectToEditSelection (line ~300 below).
+
+    // if (selected === true) { 
+    //     todoProjectId = document.getElementById("todo-project").dataset.projectId;
+    // }
+
+    // console.log(todoProjectId)
 
     let form = document.forms[0]; // getting the value out of the RadioNodeList value property
     let radioButtons = form.elements["priority"]; // getting the value out of the RadioNodeList value property
     todoPriority = radioButtons.value;
 
-    createTodo(todoTitle,todoDetails,todoDueDate,todoProject,todoPriority,todoProjectId);
+    createTodo(todoTitle,todoDetails,todoDueDate,todoPriority,todoProjectId);
     todoDialog.close();
 
     addToTodoDisplay(todoArray);
 });
 
 // CREATE NEW TODO CARD FUNCTION
-function addToTodoDisplay(todoArray,todo) {
+function addToTodoDisplay(todoArray) {
     // add an if statement here to determine if the project array is empty or not
     // if it's empty, it should show the "click the button" message, probably by adding a class?
     // if it's not empty, it should do the below stuff
     todoContainer.innerHTML = "";
+
+    // let projectId = todo.projectId;
+
     for (const todo of todoArray) {
         // entire todo item container
         const todoItem = document.createElement("div");
@@ -143,8 +148,10 @@ function addToTodoDisplay(todoArray,todo) {
 
         const todoProjectContainer = document.createElement("div");
             todoProjectContainer.classList.add("todo-project-container");
-            todoProjectContainer.textContent = todo.project;
-            // todoProjectContainer.setAttribute("data-project-id",project.id); // working on populating project on todo edit dialog
+
+            let projectObject = projectArray.find((project) => project.id === todo.projectId)
+        
+            todoProjectContainer.textContent = projectObject.name;
             infoBottomContainer.appendChild(todoProjectContainer);
         
         const iconContainer = document.createElement("div");
@@ -283,8 +290,8 @@ function addProjectToSelection(projectArray) {
     // loop through the projectArray and add each project there to the select list
     for (const project of projectArray) {
         const projectOption = document.createElement("option");
-        projectOption.setAttribute("value",project.name);
-        projectOption.setAttribute("data-project-id",project.id);
+        projectOption.setAttribute("value",project.id);
+        // projectOption.setAttribute("data-project-id",project.id);
         projectOption.textContent = project.name;
         projectSelectList.appendChild(projectOption);
     };
@@ -306,28 +313,19 @@ function addProjectToEditSelection(projectArray) {
     // clear entire Project select list on the create todo dialog
     projectEditSelectList.innerHTML = "";
 
-    // loop through the projectArray and add each project there to the select list
+    // loop through the projectArray and add each project there to the select list and
+    // adds the value of the project ID to the elements in the value attribute
     for (const project of projectArray) {
         const projectOption = document.createElement("option");
-        projectOption.setAttribute("value",project.name);
-        projectOption.setAttribute("data-project-id",project.id);
-        console.log(projectOption.dataset.projectId)
+        projectOption.setAttribute("value",project.id);
         projectOption.textContent = project.name;
         projectEditSelectList.appendChild(projectOption);
-        if (projectOption.dataset.projectId === project.id) {
-            projectOption.selected = true;
-            console.log(`it's ${projectOption.dataset.projectId}`);
-        } 
-    }; // need to grab the data attribute of the oen that triggered the event listener I think
+    }; 
 
-    // loop through the projectArray to compare to the projectOption.dataset.projectId 
-    // and then make that one selected by default
-    // for (const project of projectArray) {
-    //     // need to identify the option element that I need to add the selected attribute to
-    //     const projectOptionDefault = 
-    // };
-    console.log(projectArray);
+    // the code for making one of the todo options have the selected attribute is in populateEditDialog
+
 };
+
 // DECLARING VARIABLES FOR EDITING TODO DIALOG
 const editTodoDialog = document.querySelector(".edit-todo-dialog");
 const editTodoForm = document.querySelector(".edit-todo-form");
@@ -355,13 +353,22 @@ editCloseTodoDialog.addEventListener('click', (e) => {
 });
 
 // ADDING VALUES TO DISPLAYED EDIT DIALOG
-function populateEditDialog (todoToUpdate) {
+function populateEditDialog (todoToUpdate,projectArray) {
     document.getElementById("edit-todo-name").value = todoToUpdate.title;
     document.getElementById("edit-todo-details").value = todoToUpdate.details;
     document.getElementById("edit-todo-date").value = todoToUpdate.dueDate; 
-    document.getElementById("edit-todo-project").value = todoToUpdate.project; // working here to add the currently selected project to the select list
-    console.log(`todoToUpdate.project: ${todoToUpdate.project}`)
-    console.log(todoToUpdate.project.id)
+    // todoToUpdate.projectId has the ID of the project that is being edited. That's what should be used here.
+    console.log(todoToUpdate.projectId)
+    // look through projectArray at each project.id
+    // if project.id === todoToUpdate.projectId
+    // add selected attribute to the select option for that project
+    // else continue
+    for (project of projectArray) {
+        if (project.id === todoToUpdate.projectId) {
+            console.log(`this one matches: ${project.name}`)
+        }
+    }
+
 };
 
 function editTodo () {

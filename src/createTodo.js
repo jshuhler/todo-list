@@ -5,14 +5,14 @@ import { projectArray } from "./createProject.js";
 const todoArray = [];
 
 class Todo {
-    constructor(title,details,dueDate,project,priority,projectId,status) {
+    constructor(title,details,dueDate,priority,projectId,status) {
         if (!new.target) {
             throw Error("You must use the 'new' operator to call the constructor.");
         };
         this.title = title;
         this.details = details;
         this.dueDate = dueDate;
-        this.project = project;
+        // this.project = project;
         this.priority = priority;
         this.projectId = projectId;
         this.status = "open";
@@ -21,8 +21,8 @@ class Todo {
     };
 };
 
-function createTodo(title,details,dueDate,project,priority) {
-    const newTodo = new Todo(title,details,dueDate,project,priority)
+function createTodo(title,details,dueDate,priority,projectId) {
+    const newTodo = new Todo(title,details,dueDate,priority,projectId)
     todoArray.push(newTodo);
 };
 
@@ -61,12 +61,10 @@ function todoUpdateListener (todoEditButton, todo, editTodoDialog, projectArray)
         // project ID dataset and looping through it
         // or just use addProjectToEditSelection for this? SOLID principles.
         const todoToUpdate = todoArray.find((selectedTodo) => selectedTodo.id === todo.id);
-        console.log(todoToUpdate);
+        console.log(`todoToUpdate.title: ${todoToUpdate.title}`)
+        console.log(`todoToUpdate.projectId: ${todoToUpdate.projectId}`)
         const index = todoArray.indexOf(todoToUpdate);
-        populateEditDialog(todoToUpdate)
-        console.log(`index: ${index}`);
-        console.log(`id of index: ${todoArray[index].id}`);
-        console.log(`project id: ${projectArray}`);
+        populateEditDialog(todoToUpdate);
         addProjectToEditSelection(projectArray);
         todoUpdate(todoToUpdate);
     });
