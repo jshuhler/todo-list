@@ -46,7 +46,11 @@ addTodoDialog.addEventListener('submit', (e) => {
     todoDetails = document.getElementById("todo-details").value;
     todoDueDate = document.getElementById("todo-date").value;
     todoProject = document.getElementById("todo-project").value;
-    if (selected === true) { // fix this bit
+    // here I'm trying to find the project ID data attribute of the project selected so I can 
+    // assign the data attribute to the todoProjectID variable. Once it's there, I can pass it to the
+    // todo constructor, allowing me to compare the projectID on the todo to the project array in 
+    // addProjectToEditSelection
+    if (selected === true) { 
         todoProjectId = document.getElementById("todo-project").dataset.projectId;
     }
     console.log(todoProjectId)
