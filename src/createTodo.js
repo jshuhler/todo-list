@@ -61,8 +61,6 @@ function todoUpdateListener (todoEditButton, todo, editTodoDialog, projectArray)
         // project ID dataset and looping through it
         // or just use addProjectToEditSelection for this? SOLID principles.
         const todoToUpdate = todoArray.find((selectedTodo) => selectedTodo.id === todo.id);
-        console.log(`todoToUpdate.title: ${todoToUpdate.title}`)
-        console.log(`todoToUpdate.projectId: ${todoToUpdate.projectId}`)
         const index = todoArray.indexOf(todoToUpdate);
         populateEditDialog(todoToUpdate);
         addProjectToEditSelection(projectArray);
