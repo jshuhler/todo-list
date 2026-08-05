@@ -62,8 +62,9 @@ function todoUpdateListener (todoEditButton, todo, editTodoDialog, projectArray)
         // or just use addProjectToEditSelection for this? SOLID principles.
         const todoToUpdate = todoArray.find((selectedTodo) => selectedTodo.id === todo.id);
         const index = todoArray.indexOf(todoToUpdate);
-        populateEditDialog(todoToUpdate);
         addProjectToEditSelection(projectArray);
+        populateEditDialog(todoToUpdate,projectArray);
+        
         todoUpdate(todoToUpdate);
     });
 };

@@ -317,6 +317,7 @@ function addProjectToEditSelection(projectArray) {
     // adds the value of the project ID to the elements in the value attribute
     for (const project of projectArray) {
         const projectOption = document.createElement("option");
+        projectOption.classList.add("edit-project-option");
         projectOption.setAttribute("value",project.id);
         projectOption.textContent = project.name;
         projectEditSelectList.appendChild(projectOption);
@@ -362,13 +363,14 @@ function populateEditDialog (todoToUpdate,projectArray) {
     // look through projectArray at each project.id
     // if project.id === todoToUpdate.projectId
     // add selected attribute to the select option for that project
-    // else continue
+    const projectOption = document.querySelectorAll(".edit-project-option");
+    console.log(projectOption)
     for (project of projectArray) {
         if (project.id === todoToUpdate.projectId) {
             console.log(`this one matches: ${project.name}`)
-        }
-    }
-
+            projectOption.setAttribute("selected","");
+        };
+    };
 };
 
 function editTodo () {
