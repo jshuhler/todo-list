@@ -363,7 +363,7 @@ function populateEditDialog (todoToUpdate,projectArray) {
     // look through projectArray at each project.id
     // if project.id === todoToUpdate.projectId
     // add selected attribute to the select option for that project
-    const projectOption = document.querySelectorAll(".edit-project-option");
+    const projectOption = document.querySelector(".edit-project-option");
     console.log(projectOption)
     for (project of projectArray) {
         if (project.id === todoToUpdate.projectId) {
@@ -371,6 +371,11 @@ function populateEditDialog (todoToUpdate,projectArray) {
             projectOption.setAttribute("selected","");
         };
     };
+};
+
+// ADDING SELECTED ATTRIBUTE TO CORRECT PROJECT ON EDIT DIALOG
+function setEditSelectedProject () {
+    document.querySelector(".edit-project-option");
 };
 
 function editTodo () {
