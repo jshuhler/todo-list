@@ -376,13 +376,13 @@ function populateEditDialog (todoToUpdate,projectArray) {
 
 // ADDING SELECTED ATTRIBUTE TO CORRECT PROJECT ON EDIT DIALOG
 function setEditSelectedProject (projectSelectId) {
-    const projectOption = document.querySelectorAll(".edit-project-option");
-    for (let i = 0; i < projectOption.length; i++) {
-        projectOption.selected = false;
-        if (projectOption.value === projectSelectId) {
-            projectOption.selected = true;
-        }
-    }
+    const projectOptions = document.querySelectorAll(".edit-project-option");
+    for (let i = 0; i < projectOptions.length; i++) {
+        projectOptions[i].selected = false;
+        if (projectOptions[i].value === projectSelectId) {
+            projectOptions[i].selected = true;
+        };
+    };
 };
 
 function editTodo () {
