@@ -54,7 +54,7 @@ function todoStatusListener (todoCheckbox, todo) {
     });
 };
 
-function todoUpdateListener (todoEditButton, todo, editTodoDialog, projectArray) {
+function todoUpdateListener (todoEditButton, todo, editTodoDialog, projectArray,projectSelectId) {
     todoEditButton.addEventListener('click', () => {
         editTodoDialog.showModal();
         // add and call separate functions (in this module) to do the looking for the 
