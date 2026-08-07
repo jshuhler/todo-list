@@ -358,24 +358,31 @@ function populateEditDialog (todoToUpdate,projectArray) {
     document.getElementById("edit-todo-name").value = todoToUpdate.title;
     document.getElementById("edit-todo-details").value = todoToUpdate.details;
     document.getElementById("edit-todo-date").value = todoToUpdate.dueDate; 
-    // todoToUpdate.projectId has the ID of the project that is being edited. That's what should be used here.
     console.log(todoToUpdate.projectId)
     // look through projectArray at each project.id
     // if project.id === todoToUpdate.projectId
     // add selected attribute to the select option for that project
-    const projectOption = document.querySelector(".edit-project-option");
-    console.log(projectOption)
     for (project of projectArray) {
         if (project.id === todoToUpdate.projectId) {
-            console.log(`this one matches: ${project.name}`)
-            projectOption.setAttribute("selected","");
+            const projectSelectId = project.id;
+            console.log(`this one matches: ${project.name}, ${project.id}`)
+            return projectSelectId
         };
     };
+    // return projectSelectId;
+    console.log(projectSelectId) //projectSelectID is stuck in the for loop. 
+
 };
 
 // ADDING SELECTED ATTRIBUTE TO CORRECT PROJECT ON EDIT DIALOG
-function setEditSelectedProject () {
-    document.querySelector(".edit-project-option");
+function setEditSelectedProject (projectSelectId) {
+    const projectOption = document.querySelectorAll(".edit-project-option");
+    for (let i = 0; i < projectOption.length; i++) {
+        projectOption.selected = false;
+        if (projectOption.value === projectSelectId) {
+            projectOption.selected = true;
+        }
+    }
 };
 
 function editTodo () {
@@ -399,4 +406,5 @@ export {
     addProjectToSelection,
     addProjectToEditSelection,
     populateEditDialog,
+    setEditSelectedProject,
 };
