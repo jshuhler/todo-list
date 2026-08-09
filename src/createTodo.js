@@ -64,9 +64,9 @@ function todoUpdateListener (todoEditButton, todo, editTodoDialog, projectArray,
         const index = todoArray.indexOf(todoToUpdate);
         addProjectToEditSelection(projectArray);
         console.log(populateEditDialog)
-        populateEditDialog(todoToUpdate,projectArray);
+        const editDialog = populateEditDialog(todoToUpdate,projectArray);
         console.log(`projectSelectId in createTodo.js: ${projectSelectId}`)
-        setEditSelectedProject(projectSelectId);
+        setEditSelectedProject(editDialog);
         todoUpdate(todoToUpdate);
     });
 };

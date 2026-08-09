@@ -354,7 +354,7 @@ editCloseTodoDialog.addEventListener('click', (e) => {
 });
 
 // ADDING VALUES TO DISPLAYED EDIT DIALOG
-const populateEditDialog = function populateEditDialog (todoToUpdate,projectArray) {
+function populateEditDialog (todoToUpdate,projectArray) {
     document.getElementById("edit-todo-name").value = todoToUpdate.title;
     document.getElementById("edit-todo-details").value = todoToUpdate.details;
     document.getElementById("edit-todo-date").value = todoToUpdate.dueDate; 
