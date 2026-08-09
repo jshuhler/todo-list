@@ -309,7 +309,7 @@ function addProjectToSelection(projectArray) {
 // iterate through the projectArray object, pulling out the name key, and adding the value to the dialog
 const projectEditSelectList = document.getElementById("edit-todo-project");
 
-function addProjectToEditSelection(projectArray) {
+function addProjectsToEditSelection(projectArray) {
     // clear entire Project select list on the create todo dialog
     projectEditSelectList.innerHTML = "";
 
@@ -354,29 +354,48 @@ editCloseTodoDialog.addEventListener('click', (e) => {
 });
 
 // ADDING VALUES TO DISPLAYED EDIT DIALOG
-function populateEditDialog (todoToUpdate,projectArray) {
-    document.getElementById("edit-todo-name").value = todoToUpdate.title;
-    document.getElementById("edit-todo-details").value = todoToUpdate.details;
-    document.getElementById("edit-todo-date").value = todoToUpdate.dueDate; 
-    console.log(todoToUpdate.projectId)
-    // look through projectArray at each project.id
-    // if project.id === todoToUpdate.projectId
-    // add selected attribute to the select option for that project
+// function populateEditDialog (todoToUpdate,projectArray) {
+//     document.getElementById("edit-todo-name").value = todoToUpdate.title;
+//     document.getElementById("edit-todo-details").value = todoToUpdate.details;
+//     document.getElementById("edit-todo-date").value = todoToUpdate.dueDate; 
+
+//     // finding the ID of the project for the todo being edited
+//     for (project of projectArray) {
+//         if (project.id === todoToUpdate.projectId) {
+//             const projectSelectId = project.id;
+//             // console.log(`this one matches: ${project.name}, ${project.id}`)
+//             // console.log(`projectSelectId: ${projectSelectId}`)
+//             return projectSelectId;
+//         };
+//     };
+// };
+
+// // ADDING SELECTED ATTRIBUTE TO CORRECT PROJECT ON EDIT DIALOG
+// function setEditSelectedProject (projectSelectId) {
+//     const projectOptions = document.querySelectorAll(".edit-project-option");
+//     for (let i = 0; i < projectOptions.length; i++) {
+//         projectOptions[i].selected = false;
+//         if (projectOptions[i].value === projectSelectId) {
+//             projectOptions[i].selected = true;
+//         };
+//     };
+// };
+
+// reorganizing code
+//this just finds the ID of the project that matches the ID of the project ID key on the todo object
+function findProjectIdOfTodo (todoToUpdate, projectArray) {
     for (project of projectArray) {
         if (project.id === todoToUpdate.projectId) {
             const projectSelectId = project.id;
-            console.log(`this one matches: ${project.name}, ${project.id}`)
-            console.log(`projectSelectId: ${projectSelectId}`)
-            return projectSelectId
+            return projectSelectId;
         };
     };
-    // return projectSelectId;
-    console.log(projectSelectId) //projectSelectID is stuck in the for loop. 
-
 };
 
-// ADDING SELECTED ATTRIBUTE TO CORRECT PROJECT ON EDIT DIALOG
-function setEditSelectedProject (projectSelectId) {
+function populateEditDialog (todoToUpdate,projectArray,projectSelectId) {
+    document.getElementById("edit-todo-name").value = todoToUpdate.title;
+    document.getElementById("edit-todo-details").value = todoToUpdate.details;
+    document.getElementById("edit-todo-date").value = todoToUpdate.dueDate; 
     const projectOptions = document.querySelectorAll(".edit-project-option");
     for (let i = 0; i < projectOptions.length; i++) {
         projectOptions[i].selected = false;
@@ -405,7 +424,7 @@ export {
     addToProjectList,
     addToTodoDisplay,
     addProjectToSelection,
-    addProjectToEditSelection,
+    addProjectsToEditSelection,
+    findProjectIdOfTodo,
     populateEditDialog,
-    setEditSelectedProject,
 };

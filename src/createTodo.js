@@ -1,4 +1,4 @@
-import { addToTodoDisplay, addProjectToSelection, addProjectToEditSelection, populateEditDialog, setEditSelectedProject, } from "./displayControl.js";
+import { addToTodoDisplay, addProjectToSelection, addProjectsToEditSelection, findProjectIdOfTodo, populateEditDialog, } from "./displayControl.js";
 import { projectArray } from "./createProject.js";
 
 // Creates a todoItem and appends it to the todoArray array
@@ -54,6 +54,23 @@ function todoStatusListener (todoCheckbox, todo) {
     });
 };
 
+// function todoUpdateListener (todoEditButton, todo, editTodoDialog, projectArray, projectSelectId) {
+//     todoEditButton.addEventListener('click', () => {
+//         editTodoDialog.showModal();
+//         // add and call separate functions (in this module) to do the looking for the 
+//         // project ID dataset and looping through it
+//         // or just use addProjectToEditSelection for this? SOLID principles.
+//         const todoToUpdate = todoArray.find((selectedTodo) => selectedTodo.id === todo.id);
+//         const index = todoArray.indexOf(todoToUpdate);
+//         addProjectsToEditSelection(projectArray);
+//         // console.log(populateEditDialog)
+//         const editDialog = populateEditDialog(todoToUpdate,projectArray);
+//         // console.log(`projectSelectId in createTodo.js: ${projectSelectId}`)
+//         setEditSelectedProject(editDialog);
+//         todoUpdate(todoToUpdate);
+//     });
+// };
+
 function todoUpdateListener (todoEditButton, todo, editTodoDialog, projectArray, projectSelectId) {
     todoEditButton.addEventListener('click', () => {
         editTodoDialog.showModal();
@@ -62,11 +79,9 @@ function todoUpdateListener (todoEditButton, todo, editTodoDialog, projectArray,
         // or just use addProjectToEditSelection for this? SOLID principles.
         const todoToUpdate = todoArray.find((selectedTodo) => selectedTodo.id === todo.id);
         const index = todoArray.indexOf(todoToUpdate);
-        addProjectToEditSelection(projectArray);
-        console.log(populateEditDialog)
-        const editDialog = populateEditDialog(todoToUpdate,projectArray);
-        console.log(`projectSelectId in createTodo.js: ${projectSelectId}`)
-        setEditSelectedProject(editDialog);
+        addProjectsToEditSelection(projectArray);
+        const projectIdOfTodo = findProjectIdOfTodo(todoToUpdate,projectArray);
+        populateEditDialog(todoToUpdate,projectArray,projectIdOfTodo);
         todoUpdate(todoToUpdate);
     });
 };
@@ -77,7 +92,7 @@ function projectDataAttribute () {
 };
 
 function todoUpdate (todoToUpdate) {
-    console.log(todoToUpdate)
+    // console.log(todoToUpdate)
 };
 
 export { 
