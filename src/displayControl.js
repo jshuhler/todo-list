@@ -354,7 +354,7 @@ editCloseTodoDialog.addEventListener('click', (e) => {
 });
 
 // ADDING VALUES TO DISPLAYED EDIT DIALOG
-function populateEditDialog (todoToUpdate,projectArray) {
+const populateEditDialog = function populateEditDialog (todoToUpdate,projectArray) {
     document.getElementById("edit-todo-name").value = todoToUpdate.title;
     document.getElementById("edit-todo-details").value = todoToUpdate.details;
     document.getElementById("edit-todo-date").value = todoToUpdate.dueDate; 
@@ -366,6 +366,7 @@ function populateEditDialog (todoToUpdate,projectArray) {
         if (project.id === todoToUpdate.projectId) {
             const projectSelectId = project.id;
             console.log(`this one matches: ${project.name}, ${project.id}`)
+            console.log(`projectSelectId: ${projectSelectId}`)
             return projectSelectId
         };
     };
