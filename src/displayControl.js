@@ -4,9 +4,9 @@ import trashcan from "./img/trashcan.png";
 import pencil from "./img/pencil.png";
 import pencil_edit from "./img/pencil_edit.png";
 
-// --------------------------------------- //
-// OPENING AND CLOSING THE NEW TODO DIALOG //
-// --------------------------------------- //
+// --------------------------------------------------------------------------- //
+//                 OPENING AND CLOSING THE NEW TODO DIALOG                     //
+// --------------------------------------------------------------------------- //
 
 // DECLARING VARIABLES FOR TODO DIALOG
 const todoForm = document.querySelector(".add-todo-form")
@@ -25,20 +25,20 @@ let todoProject;
 let todoPriority;
 let todoProjectId;
 
-// OPEN NEW TODO DIALOG
+// open new todo dialog
 addTodoButton.addEventListener('click', () => {
     todoForm.reset();
     todoDialog.showModal();
     addProjectToSelection(projectArray);
 });
 
-// CLOSE NEW TODO DIALOG WITHOUT ADDING ITEM
+// close new todo dialog without adding item
 closeTodoDialog.addEventListener('click', (e) => {
     todoDialog.close();
     e.preventDefault();
 });
 
-// CREATE TODO ITEM, ADD TO TODO ARRAY, CALL CREATE TODO CARD FUNCTION
+// create todo item, add to todo array, call create todo card function
 // think about moving this to createTodo.js maybe
 addTodoDialog.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -46,17 +46,6 @@ addTodoDialog.addEventListener('submit', (e) => {
     todoDetails = document.getElementById("todo-details").value;
     todoDueDate = document.getElementById("todo-date").value;
     todoProjectId = document.getElementById("todo-project").value;
-    // here I'm trying to find the project ID data attribute of the project selected so I can 
-    // assign the data attribute to the todoProjectID variable. Once it's there, I can pass it to the
-    // todo constructor, allowing me to compare the projectID on the todo to the project array in 
-    // addProjectToEditSelection (line ~300 below).
-
-    // if (selected === true) { 
-    //     todoProjectId = document.getElementById("todo-project").dataset.projectId;
-    // }
-
-    // console.log(todoProjectId)
-
     let form = document.forms[0]; // getting the value out of the RadioNodeList value property
     let radioButtons = form.elements["priority"]; // getting the value out of the RadioNodeList value property
     todoPriority = radioButtons.value;
@@ -67,7 +56,35 @@ addTodoDialog.addEventListener('submit', (e) => {
     addToTodoDisplay(todoArray);
 });
 
-// CREATE NEW TODO CARD FUNCTION
+// adding the current projects to the project select on the todo dialog
+const projectSelectList = document.getElementById("todo-project");
+
+function addProjectToSelection(projectArray) {
+    // clear entire Project select list on the create todo dialog
+    projectSelectList.innerHTML = "";
+
+    // create the placeholder text for the project select list
+    const defaultProjectOption = document.createElement("option");
+    defaultProjectOption.setAttribute("value","");
+    defaultProjectOption.disabled = true;
+    defaultProjectOption.selected = true;
+    defaultProjectOption.textContent = "Choose a Project";
+    projectSelectList.appendChild(defaultProjectOption);
+
+    // loop through the projectArray and add each project there to the select list
+    for (const project of projectArray) {
+        const projectOption = document.createElement("option");
+        projectOption.setAttribute("value",project.id);
+        // projectOption.setAttribute("data-project-id",project.id);
+        projectOption.textContent = project.name;
+        projectSelectList.appendChild(projectOption);
+    };
+    console.log(projectArray);
+};
+
+// --------------------------------------------------------------------------- //
+//                        UPDATING THE MAIN TODO DISPLAY                       //
+// --------------------------------------------------------------------------- //
 function addToTodoDisplay(todoArray) {
     // add an if statement here to determine if the project array is empty or not
     // if it's empty, it should show the "click the button" message, probably by adding a class?
@@ -190,34 +207,33 @@ function addToTodoDisplay(todoArray) {
             todoEditButton.appendChild(editTodoIcon);
             todoEditContainer.appendChild(todoEditButton);
     };
-    console.log(todoArray)
+    console.log(todoArray);
 };
 
-// ------------------------------------------ //
-// OPENING AND CLOSING THE NEW PROJECT DIALOG //
-// ------------------------------------------ //
+// ------------------------------------------------------------ //
+//                      NEW PROJECT DIALOG                      //
+// ------------------------------------------------------------ //
 
-// DECLARING VARIABLES FOR PROJECT DIALOG
+// declaring variables
 const projectDialog = document.querySelector("dialog.project-dialog");
 const addProjectButton = document.getElementById("add-project-button");
 const closeProjectDialog = document.querySelector(".project-dialog-close");
 const addProjectDialog = document.querySelector(".add-project-form");
-// const addProjectDialog = document.getElementById("add-project-submit");
 const projectMenu = document.querySelector(".project-menu");
 let project;
 
-// OPEN NEW PROJECT DIALOG
+// open new project dialog
 addProjectButton.addEventListener('click', () => {
     projectDialog.showModal();
 });
 
-// CLOSE NEW PROJECT DIALOG WITHOUT ADDING PROJECT
+// close new project dialog without adding project
 closeProjectDialog.addEventListener('click', (e) => {
     projectDialog.close();
     e.preventDefault();
 });
 
-// CREATE NEW PROJECT, ADD TO PROJECT ARRAY, CALL ADD TO PROJECT LIST FUNCTION
+// create new project, add to project array, call add to project list function
 addProjectDialog.addEventListener('submit', (e) => {
     e.preventDefault();
     const projectName = document.getElementById("project-name").value;
@@ -226,7 +242,7 @@ addProjectDialog.addEventListener('submit', (e) => {
     addToProjectList(projectArray);  
 });
 
-// ADD PROJECT NAME AND A DELETE BUTTON TO LEFT PANEL
+// add project name and a delete button to left panel
 function addToProjectList(projectArray) {
     projectMenu.innerHTML = "";
     for (const project of projectArray) {
@@ -268,53 +284,18 @@ function addToProjectList(projectArray) {
     };
 };
 
-// ------------------------------------------------------------------- //
-// POPULATING PROJECT SELECT FROM PROJECTARRAY WHEN ADDING A TODO ITEM //
-// ------------------------------------------------------------------- //
 
-// iterate through the projectArray object, pulling out the name key, and adding the value to the dialog
-const projectSelectList = document.getElementById("todo-project");
+// ------------------------------------------------------------------------ //
+//                          EDITING TODO ITEMS                              //
+// ------------------------------------------------------------------------ //
 
-function addProjectToSelection(projectArray) {
-    // clear entire Project select list on the create todo dialog
-    projectSelectList.innerHTML = "";
-
-    // create the placeholder text for the project select list
-    const defaultProjectOption = document.createElement("option");
-    defaultProjectOption.setAttribute("value","");
-    defaultProjectOption.disabled = true;
-    defaultProjectOption.selected = true;
-    defaultProjectOption.textContent = "Choose a Project";
-    projectSelectList.appendChild(defaultProjectOption);
-
-    // loop through the projectArray and add each project there to the select list
-    for (const project of projectArray) {
-        const projectOption = document.createElement("option");
-        projectOption.setAttribute("value",project.id);
-        // projectOption.setAttribute("data-project-id",project.id);
-        projectOption.textContent = project.name;
-        projectSelectList.appendChild(projectOption);
-    };
-    console.log(projectArray);
-};
-
-// ------------------ //
-// EDITING TODO ITEMS //
-// ------------------ //
-
-// -------------------------------------------------------------------- //
-// POPULATING PROJECT SELECT FROM PROJECTARRAY WHEN EDITING A TODO ITEM //
-// -------------------------------------------------------------------- //
-
+// populating project select list from projectArray
 // iterate through the projectArray object, pulling out the name key, and adding the value to the dialog
 const projectEditSelectList = document.getElementById("edit-todo-project");
 
 function addProjectsToEditSelection(projectArray) {
     // clear entire Project select list on the create todo dialog
     projectEditSelectList.innerHTML = "";
-
-    // loop through the projectArray and add each project there to the select list and
-    // adds the value of the project ID to the elements in the value attribute
     for (const project of projectArray) {
         const projectOption = document.createElement("option");
         projectOption.classList.add("edit-project-option");
@@ -322,12 +303,9 @@ function addProjectsToEditSelection(projectArray) {
         projectOption.textContent = project.name;
         projectEditSelectList.appendChild(projectOption);
     }; 
-
-    // the code for making one of the todo options have the selected attribute is in populateEditDialog
-
 };
 
-// DECLARING VARIABLES FOR EDITING TODO DIALOG
+// declaring variables for editing todo dialog
 const editTodoDialog = document.querySelector(".edit-todo-dialog");
 const editTodoForm = document.querySelector(".edit-todo-form");
 const editTodoButton = document.getElementById("edit-todo-update");
@@ -338,20 +316,10 @@ const editTodoName = document.getElementById("edit-todo-name");
 const editTodoDetails = document.getElementById("edit-todo-details");
 const editTodoDate = document.getElementById("edit-todo-date");
 const editTodoProject = document.getElementById("edit-todo-project");
-let form = document.forms[1]; // this returns the whole form in HTML in the console
-let radioButtons = form.elements["priority"]; // this returns the nodelist 
-console.log(form)
-console.log(radioButtons)
+let form = document.forms[1]; 
+let radioButtons = form.elements["edit-priority"]; // this returns an object
 
-const editTodoPriority = radioButtons.value; // this does nothing, the value returned is the value of the radio element with the checked attribute. If nothing is checked, nothing will be returned from this.
-
-// const editTodoPriority = document.getElementById(".todo-priority");
-
-// some kind of if loop somewhere to look at the value on the existing todo priority (1,2,3) and then add 
-// an attribute to the existing doalog when it's loaded that adds 'selected' or whatever it is for when a
-// radio button is filled in. I don't entirely know where that if loop should go yet. 
-
-// CLOSE EDIT TODO DIALOG WITHOUT EDITING ITEM
+// close edit todo dialog without editing item
 editCloseTodoDialog.addEventListener('click', (e) => {
     editTodoDialog.close();
     e.preventDefault();
@@ -359,7 +327,7 @@ editCloseTodoDialog.addEventListener('click', (e) => {
 
 // finds the ID of the project that matches the ID of the project ID key on the todo object
 function findProjectIdOfTodo (todoToUpdate, projectArray) {
-    for (project of projectArray) {
+    for (const project of projectArray) {
         if (project.id === todoToUpdate.projectId) {
             const projectSelectId = project.id;
             return projectSelectId;
@@ -367,6 +335,7 @@ function findProjectIdOfTodo (todoToUpdate, projectArray) {
     };
 };
 
+// populating the edit todo dialog
 function populateEditDialog (todoToUpdate,projectArray,projectSelectId) {
     document.getElementById("edit-todo-name").value = todoToUpdate.title;
     document.getElementById("edit-todo-details").value = todoToUpdate.details;
@@ -378,17 +347,16 @@ function populateEditDialog (todoToUpdate,projectArray,projectSelectId) {
             projectOptions[i].selected = true;
         };
     };
-    const todoRadioPriority = document.querySelectorAll(".edit-priority");
-    console.log(todoRadioPriority)
-    // if (todoToUpdate.priority === "1") {
-
-    // } else if (todoToUpdate.priority === "2")
+    const todoEditPriority = todoToUpdate.priority;
+    for (const radioButton of radioButtons) {
+        if (radioButton.value === todoToUpdate.priority) {
+            radioButton.checked = true;
+            break;
+        };
+    };
 };
 
-function findTodoPriority (todoToUpdate) {
-    
-}
-
+// editing the todo item 
 function editTodo () {
 // probably need a function to actually call when the submit button is clicked on the dialog
 };
