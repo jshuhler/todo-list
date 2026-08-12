@@ -338,9 +338,13 @@ const editTodoName = document.getElementById("edit-todo-name");
 const editTodoDetails = document.getElementById("edit-todo-details");
 const editTodoDate = document.getElementById("edit-todo-date");
 const editTodoProject = document.getElementById("edit-todo-project");
-let form = document.forms[1]; // getting the value out of the RadioNodeList value property
-let radioButtons = form.elements["priority"]; // getting the value out of the RadioNodeList value property
-const editTodoPriority = radioButtons.value;
+let form = document.forms[1]; // this returns the whole form in HTML in the console
+let radioButtons = form.elements["priority"]; // this returns the nodelist 
+console.log(form)
+console.log(radioButtons)
+
+const editTodoPriority = radioButtons.value; // this does nothing, the value returned is the value of the radio element with the checked attribute. If nothing is checked, nothing will be returned from this.
+
 // const editTodoPriority = document.getElementById(".todo-priority");
 
 // some kind of if loop somewhere to look at the value on the existing todo priority (1,2,3) and then add 
@@ -353,36 +357,7 @@ editCloseTodoDialog.addEventListener('click', (e) => {
     e.preventDefault();
 });
 
-// ADDING VALUES TO DISPLAYED EDIT DIALOG
-// function populateEditDialog (todoToUpdate,projectArray) {
-//     document.getElementById("edit-todo-name").value = todoToUpdate.title;
-//     document.getElementById("edit-todo-details").value = todoToUpdate.details;
-//     document.getElementById("edit-todo-date").value = todoToUpdate.dueDate; 
-
-//     // finding the ID of the project for the todo being edited
-//     for (project of projectArray) {
-//         if (project.id === todoToUpdate.projectId) {
-//             const projectSelectId = project.id;
-//             // console.log(`this one matches: ${project.name}, ${project.id}`)
-//             // console.log(`projectSelectId: ${projectSelectId}`)
-//             return projectSelectId;
-//         };
-//     };
-// };
-
-// // ADDING SELECTED ATTRIBUTE TO CORRECT PROJECT ON EDIT DIALOG
-// function setEditSelectedProject (projectSelectId) {
-//     const projectOptions = document.querySelectorAll(".edit-project-option");
-//     for (let i = 0; i < projectOptions.length; i++) {
-//         projectOptions[i].selected = false;
-//         if (projectOptions[i].value === projectSelectId) {
-//             projectOptions[i].selected = true;
-//         };
-//     };
-// };
-
-// reorganizing code
-//this just finds the ID of the project that matches the ID of the project ID key on the todo object
+// finds the ID of the project that matches the ID of the project ID key on the todo object
 function findProjectIdOfTodo (todoToUpdate, projectArray) {
     for (project of projectArray) {
         if (project.id === todoToUpdate.projectId) {
@@ -403,7 +378,16 @@ function populateEditDialog (todoToUpdate,projectArray,projectSelectId) {
             projectOptions[i].selected = true;
         };
     };
+    const todoRadioPriority = document.querySelectorAll(".edit-priority");
+    console.log(todoRadioPriority)
+    // if (todoToUpdate.priority === "1") {
+
+    // } else if (todoToUpdate.priority === "2")
 };
+
+function findTodoPriority (todoToUpdate) {
+    
+}
 
 function editTodo () {
 // probably need a function to actually call when the submit button is clicked on the dialog

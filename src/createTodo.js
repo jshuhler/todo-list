@@ -86,6 +86,7 @@ function todoUpdateListener (todoEditButton, todo, editTodoDialog, projectArray,
     });
 };
 
+// this isn't called anywhere, why is this function here?
 function projectDataAttribute () {
     const p = document.querySelector(".edit-todo-form.select");
     p.setAttribute("data-project-id", project.id);
