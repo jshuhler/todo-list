@@ -1,4 +1,4 @@
-import { todoArray, createTodo, todoStatusListener, todoDeleteListener, todoUpdateListener } from "./createTodo.js";
+import { todoArray, createTodo, todoStatusListener, todoDeleteListener, todoUpdateListener, todoUpdate } from "./createTodo.js";
 import { projectArray, createProject, deleteProject, projectDeleteListener } from "./createProject.js";
 import trashcan from "./img/trashcan.png";
 import pencil from "./img/pencil.png";
@@ -356,10 +356,12 @@ function populateEditDialog (todoToUpdate,projectArray,projectSelectId) {
     };
 };
 
-// editing the todo item 
-function editTodo () {
-// probably need a function to actually call when the submit button is clicked on the dialog
-};
+// adding event listener to the Update button on edit todo dialog, call update function on click
+editTodoButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    console.log("You did it, Jeff.");
+    todoUpdate();
+});
 
 // ------------------------------- //
 // CHANGING THE SORT BY PROJECT    //

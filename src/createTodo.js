@@ -26,6 +26,7 @@ function createTodo(title,details,dueDate,priority,projectId) {
     todoArray.push(newTodo);
 };
 
+// add listener to delete button on todo cards
 function todoDeleteListener (todoDeleteButton, todo) {
     todoDeleteButton.addEventListener('click', () => {
         const todoToRemove = todoArray.find((selectedTodo) => selectedTodo.id === todo.id);
@@ -37,6 +38,7 @@ function todoDeleteListener (todoDeleteButton, todo) {
     });
 };
 
+// add listener to status toggle on todo cards
 function todoStatusListener (todoCheckbox, todo) {
     todoCheckbox.addEventListener('click', () => {
         const todoStatusToChange = todoArray.find((selectedTodo) => selectedTodo.id === todo.id);
@@ -54,29 +56,10 @@ function todoStatusListener (todoCheckbox, todo) {
     });
 };
 
-// function todoUpdateListener (todoEditButton, todo, editTodoDialog, projectArray, projectSelectId) {
-//     todoEditButton.addEventListener('click', () => {
-//         editTodoDialog.showModal();
-//         // add and call separate functions (in this module) to do the looking for the 
-//         // project ID dataset and looping through it
-//         // or just use addProjectToEditSelection for this? SOLID principles.
-//         const todoToUpdate = todoArray.find((selectedTodo) => selectedTodo.id === todo.id);
-//         const index = todoArray.indexOf(todoToUpdate);
-//         addProjectsToEditSelection(projectArray);
-//         // console.log(populateEditDialog)
-//         const editDialog = populateEditDialog(todoToUpdate,projectArray);
-//         // console.log(`projectSelectId in createTodo.js: ${projectSelectId}`)
-//         setEditSelectedProject(editDialog);
-//         todoUpdate(todoToUpdate);
-//     });
-// };
-
+// add listener to edit button on todo cards
 function todoUpdateListener (todoEditButton, todo, editTodoDialog, projectArray, projectSelectId) {
     todoEditButton.addEventListener('click', () => {
         editTodoDialog.showModal();
-        // add and call separate functions (in this module) to do the looking for the 
-        // project ID dataset and looping through it
-        // or just use addProjectToEditSelection for this? SOLID principles.
         const todoToUpdate = todoArray.find((selectedTodo) => selectedTodo.id === todo.id);
         const index = todoArray.indexOf(todoToUpdate);
         addProjectsToEditSelection(projectArray);
@@ -86,14 +69,12 @@ function todoUpdateListener (todoEditButton, todo, editTodoDialog, projectArray,
     });
 };
 
-// this isn't called anywhere, why is this function here?
-function projectDataAttribute () {
-    const p = document.querySelector(".edit-todo-form.select");
-    p.setAttribute("data-project-id", project.id);
-};
-
+// 
 function todoUpdate (todoToUpdate) {
-    // console.log(todoToUpdate)
+    // take all of the values from the dialog
+    // pass them back to the object identified in todoToUpdate ?
+    console.log("You did it over here too.")
+    console.log(todoToUpdate)
 };
 
 export { 
@@ -102,4 +83,5 @@ export {
     todoStatusListener,
     todoDeleteListener,
     todoUpdateListener,
+    todoUpdate,
 };
