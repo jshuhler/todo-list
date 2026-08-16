@@ -51,7 +51,8 @@ function todoStatusListener (todoCheckbox, todo) {
             todo.status = 'open';
         };
         console.log(todoArray);
-        // if I'm going to dim or strike thru the cards when I click them as done, I'm going to need to recall the display function to remake the displayed list, right?
+        // if I'm going to dim or strike thru the cards when I click them as done, I'm going to need to 
+        // re-call the display function to remake the displayed list, right?
         // addToTodoDisplay(todoArray);
     });
 };
