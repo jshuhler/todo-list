@@ -1,5 +1,5 @@
-import { todoArray, createTodo, todoStatusListener, todoDeleteListener, todoUpdateListener, todoUpdate } from "./createTodo.js";
-import { projectArray, createProject, deleteProject, projectDeleteListener } from "./createProject.js";
+import { todoArray, createTodo, todoUpdate } from "./createTodo.js";
+import { projectArray, createProject, deleteProject } from "./createProject.js";
 import trashcan from "./img/trashcan.png";
 import pencil from "./img/pencil.png";
 import pencil_edit from "./img/pencil_edit.png";
@@ -210,6 +210,50 @@ function addToTodoDisplay(todoArray) {
     console.log(todoArray);
 };
 
+// add listener to delete button on todo cards
+function todoDeleteListener (todoDeleteButton, todo) {
+    todoDeleteButton.addEventListener('click', () => {
+        const todoToRemove = todoArray.find((selectedTodo) => selectedTodo.id === todo.id);
+        const index = todoArray.indexOf(todoToRemove);
+        if (index > -1) {
+            todoArray.splice(index,1);
+        };
+        addToTodoDisplay(todoArray);
+    });
+};
+
+// add listener to status toggle on todo cards
+function todoStatusListener (todoCheckbox, todo) {
+    todoCheckbox.addEventListener('click', () => {
+        const todoStatusToChange = todoArray.find((selectedTodo) => selectedTodo.id === todo.id);
+        const index = todoArray.indexOf(todoStatusToChange);
+        if (todo.status === 'open') {
+            console.log("the status is open right now, changing to closed");
+            todo.status = 'closed';
+        } else if (todo.status === 'closed') {
+            console.log("the status is closed right now, changing to open");
+            todo.status = 'open';
+        };
+        console.log(todoArray);
+        // if I'm going to dim or strike thru the cards when I click them as done, I'm going to need to 
+        // re-call the display function to remake the displayed list, right?
+        // addToTodoDisplay(todoArray);
+    });
+};
+
+// add listener to edit button on todo cards
+function todoUpdateListener (todoEditButton, todo, editTodoDialog, projectArray, projectSelectId) {
+    todoEditButton.addEventListener('click', () => {
+        editTodoDialog.showModal();
+        const todoToUpdate = todoArray.find((selectedTodo) => selectedTodo.id === todo.id);
+        const index = todoArray.indexOf(todoToUpdate);
+        addProjectsToEditSelection(projectArray);
+        const projectIdOfTodo = findProjectIdOfTodo(todoToUpdate,projectArray);
+        populateEditDialog(todoToUpdate,projectArray,projectIdOfTodo);
+        todoUpdate(todoToUpdate);
+    });
+};
+
 // ------------------------------------------------------------ //
 //                      NEW PROJECT DIALOG                      //
 // ------------------------------------------------------------ //
@@ -284,6 +328,17 @@ function addToProjectList(projectArray) {
     };
 };
 
+// creates the listener on the project 'x' button to delete a project from the sidebar list
+function projectDeleteListener(projectArray, projectDelete, project) {
+    projectDelete.addEventListener('click', () => {
+        const projectToRemove = projectArray.find((selectedProject) => selectedProject.id === project.id);
+        const index = projectArray.indexOf(projectToRemove);
+        if (index > -1) {
+            projectArray.splice(index,1);
+        };
+        addToProjectList(projectArray);
+    });
+};
 
 // ------------------------------------------------------------------------ //
 //                          EDITING TODO ITEMS                              //

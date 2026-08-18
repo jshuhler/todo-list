@@ -20,19 +20,18 @@ function createProject(name) {
     return newProject;
 };
 
-function projectDeleteListener(projectArray, projectDelete, project) {
-    projectDelete.addEventListener('click', () => {
-        const projectToRemove = projectArray.find((selectedProject) => selectedProject.id === project.id);
-        const index = projectArray.indexOf(projectToRemove);
-        if (index > -1) {
-            projectArray.splice(index,1);
-        };
-        addToProjectList(projectArray);
-    });
-};
+// function projectDeleteListener(projectArray, projectDelete, project) {
+//     projectDelete.addEventListener('click', () => {
+//         const projectToRemove = projectArray.find((selectedProject) => selectedProject.id === project.id);
+//         const index = projectArray.indexOf(projectToRemove);
+//         if (index > -1) {
+//             projectArray.splice(index,1);
+//         };
+//         addToProjectList(projectArray);
+//     });
+// };
 
 export {
     projectArray,
     createProject,
-    projectDeleteListener,
 };
