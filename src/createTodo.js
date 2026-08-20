@@ -1,5 +1,6 @@
 import { addToTodoDisplay } from "./displayControl.js";
 import { projectArray } from "./createProject.js";
+import { addToStorage } from "./storage.js";
 
 // Creates a todoItem and appends it to the todoArray array
 const todoArray = [];
@@ -17,14 +18,20 @@ class Todo {
         this.projectId = projectId;
         this.status = "open";
         this.id = crypto.randomUUID();
-        
     };
 };
 
 function createTodo(title,details,dueDate,priority,projectId) {
     const newTodo = new Todo(title,details,dueDate,priority,projectId)
     todoArray.push(newTodo);
+    addToStorage(title);
 };
+
+if(!localStorage.getItem('title')) {
+  addToStorage(title);
+} else {
+  console.log(localStorage);
+}
 
 // 
 function todoUpdate (todoToUpdate) {
