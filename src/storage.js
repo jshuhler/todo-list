@@ -1,5 +1,5 @@
-import { todoArray } from "./createProject";
-import { projectArray } from "./createProject";
+import { todoArray } from "./createProject.js";
+import { projectArray } from "./createProject.js";
 
 // adding todo to local storage
 function addTodoToStorage(title) {
