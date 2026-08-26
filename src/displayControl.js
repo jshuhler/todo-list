@@ -38,8 +38,7 @@ closeTodoDialog.addEventListener('click', (e) => {
     e.preventDefault();
 });
 
-// create todo item, add to todo array, call create todo card function
-// think about moving this to createTodo.js maybe
+// create todo item, add to todo array, add to local storage, call create todo card function
 addTodoDialog.addEventListener('submit', (e) => {
     e.preventDefault();
     todoTitle = document.getElementById("todo-name").value;

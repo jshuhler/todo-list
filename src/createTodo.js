@@ -24,10 +24,10 @@ class Todo {
 function createTodo(title,details,dueDate,priority,projectId) {
     const newTodo = new Todo(title,details,dueDate,priority,projectId)
     todoArray.push(newTodo);
-    addToStorage(title);
+    addTodoToStorage(todoArray);
 };
 
-storageCheck('title');
+storageCheck('todoArray');
 
 // 
 function todoUpdate (todoToUpdate) {
