@@ -1,5 +1,6 @@
 import { todoArray, createTodo, todoUpdate } from "./createTodo.js";
 import { projectArray, createProject, deleteProject } from "./createProject.js";
+import { todoRetrieve, projectRetrieve } from "./storage.js";
 import trashcan from "./img/trashcan.png";
 import pencil from "./img/pencil.png";
 import pencil_edit from "./img/pencil_edit.png";
@@ -89,9 +90,8 @@ function addToTodoDisplay(todoArray) {
     // if it's empty, it should show the "click the button" message, probably by adding a class?
     // if it's not empty, it should do the below stuff
     todoContainer.innerHTML = "";
-
-    // let projectId = todo.projectId;
-
+    todoRetrieve(todoArray);
+    // projectRetrieve(projectArray);
     for (const todo of todoArray) {
         // entire todo item container
         const todoItem = document.createElement("div");

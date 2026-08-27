@@ -3,33 +3,31 @@ import { projectArray } from "./createProject.js";
 
 // adding todo to local storage
 function addTodoToStorage(todoArray) {
+    console.log(JSON.stringify(todoArray));
     localStorage.setItem('storageTodoArray',JSON.stringify(todoArray));
 };
 
 // adding project to local storage
-function addProjectToStorage() {
-
+function addProjectToStorage(projectArray) {
+    localStorage.setItem('storageProjectArray',JSON.stringify(projectArray));
 };
 
 // retrieving todos from local storage
-function todoRetrieve() {
-    let todoArray = JSON.parse(localStorage.getItem('storageTodoArray'));
+function todoRetrieve(todoArray) {
+    todoArray = JSON.parse(localStorage.getItem('storageTodoArray'));
     console.log(todoArray)
-}
+};
 
-// trying to make a reusable function to check if a given key is present in the local
-// storage and if it's not, then it'll do something. 
-// something TBD. 
-// function storageCheck(key) {
-//     if (!localStorage.getItem(key)) {
-//         addTodoToStorage(key);
-//     } else {
-//         console.log(localStorage);
-//     };
-// };
+// retrieving projects from local storage
+function projectRetrieve(projectArray) {
+    console.log(projectArray)
+    projectArray = JSON.parse(localStorage.getItem('storageProjectArray'));
+    console.log(projectArray)
+};
 
 export {
     addTodoToStorage,
     addProjectToStorage,
-    storageCheck,
+    todoRetrieve,
+    projectRetrieve,
 };

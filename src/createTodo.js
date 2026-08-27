@@ -1,6 +1,6 @@
 import { addToTodoDisplay } from "./displayControl.js";
 import { projectArray } from "./createProject.js";
-import { addTodoToStorage, addProjectToStorage, storageCheck } from "./storage.js";
+import { addTodoToStorage, addProjectToStorage, todoRetrieve } from "./storage.js";
 
 // Creates a todoItem and appends it to the todoArray array
 const todoArray = [];
@@ -27,7 +27,7 @@ function createTodo(title,details,dueDate,priority,projectId) {
     addTodoToStorage(todoArray);
 };
 
-storageCheck('todoArray');
+todoRetrieve();
 
 // 
 function todoUpdate (todoToUpdate) {
