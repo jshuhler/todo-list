@@ -27,7 +27,7 @@ function createTodo(title,details,dueDate,priority,projectId) {
     addTodoToStorage(todoArray);
 };
 
-todoRetrieve();
+// todoRetrieve();
 
 // 
 function todoUpdate (todoToUpdate) {

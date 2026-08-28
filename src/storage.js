@@ -14,8 +14,12 @@ function addProjectToStorage(projectArray) {
 
 // retrieving todos from local storage
 function todoRetrieve(todoArray) {
+    // todoArray = [];
+    console.log(todoArray)
+    console.log(JSON.parse(localStorage.getItem('storageTodoArray')))
     todoArray = JSON.parse(localStorage.getItem('storageTodoArray'));
     console.log(todoArray)
+    // console.log(todoArray)
 };
 
 // retrieving projects from local storage
