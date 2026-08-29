@@ -92,7 +92,9 @@ function addToTodoDisplay(todoArray) {
     todoContainer.innerHTML = "";
     todoRetrieve(todoArray);
     // projectRetrieve(projectArray);
+    console.log(todoArray)
     for (const todo of todoArray) {
+        console.log(todo)
         // entire todo item container
         const todoItem = document.createElement("div");
             todoItem.classList.add("todo-item");
@@ -166,7 +168,7 @@ function addToTodoDisplay(todoArray) {
             todoProjectContainer.classList.add("todo-project-container");
 
             let projectObject = projectArray.find((project) => project.id === todo.projectId)
-        
+
             todoProjectContainer.textContent = projectObject.name;
             infoBottomContainer.appendChild(todoProjectContainer);
         

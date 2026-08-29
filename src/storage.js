@@ -1,6 +1,8 @@
 import { todoArray } from "./createProject.js";
 import { projectArray } from "./createProject.js";
 
+// let retrievedTodoArray = [];
+
 // adding todo to local storage
 function addTodoToStorage(todoArray) {
     console.log(JSON.stringify(todoArray));
@@ -14,18 +16,23 @@ function addProjectToStorage(projectArray) {
 
 // retrieving todos from local storage
 function todoRetrieve(todoArray) {
-    // todoArray = [];
     console.log(todoArray)
     console.log(JSON.parse(localStorage.getItem('storageTodoArray')))
-    todoArray = JSON.parse(localStorage.getItem('storageTodoArray'));
+    const retrievedTodoArray = (JSON.parse(localStorage.getItem('storageTodoArray')))
+    console.log(retrievedTodoArray)
+    for (const todo of retrievedTodoArray) {
+        todoArray.push(todo)
+    }
     console.log(todoArray)
-    // console.log(todoArray)
 };
 
 // retrieving projects from local storage
 function projectRetrieve(projectArray) {
     console.log(projectArray)
-    projectArray = JSON.parse(localStorage.getItem('storageProjectArray'));
+    const retrievedProjectArray = JSON.parse(localStorage.getItem('storageProjectArray'));
+    for (const project of retrievedProjectArray) {
+        projectArray.push(project)
+    }
     console.log(projectArray)
 };
 
