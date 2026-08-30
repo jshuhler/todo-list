@@ -1,6 +1,6 @@
 import { todoArray, createTodo, todoUpdate } from "./createTodo.js";
 import { projectArray, createProject, deleteProject } from "./createProject.js";
-import { todoRetrieve, projectRetrieve } from "./storage.js";
+import { todoRetrieve, projectRetrieve, addTodoToStorage, addProjectToStorage } from "./storage.js";
 import trashcan from "./img/trashcan.png";
 import pencil from "./img/pencil.png";
 import pencil_edit from "./img/pencil_edit.png";
@@ -219,6 +219,8 @@ function todoDeleteListener (todoDeleteButton, todo) {
         if (index > -1) {
             todoArray.splice(index,1);
         };
+        addTodoToStorage(todoArray)
+        todoRetrieve(todoArray)
         addToTodoDisplay(todoArray);
     });
 };
@@ -337,6 +339,8 @@ function projectDeleteListener(projectArray, projectDelete, project) {
         if (index > -1) {
             projectArray.splice(index,1);
         };
+        addProjectToStorage(projectArray);
+        projectRetrieve(projectArray);
         addToProjectList(projectArray);
     });
 };

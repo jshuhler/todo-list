@@ -32,10 +32,14 @@ function todoRetrieve(todoArray) {
 // retrieving projects from local storage
 function projectRetrieve(projectArray) {
     console.log(projectArray)
-    const retrievedProjectArray = JSON.parse(localStorage.getItem('storageProjectArray'));
-    for (const project of retrievedProjectArray) {
-        projectArray.push(project)
-    }
+    if (!localStorage.getItem("storageProjectArray")) {
+        return;
+    } else {
+        const retrievedProjectArray = JSON.parse(localStorage.getItem('storageProjectArray'));
+        for (const project of retrievedProjectArray) {
+            projectArray.push(project)
+        };
+    };
     console.log(projectArray)
 };
 
