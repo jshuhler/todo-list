@@ -90,7 +90,7 @@ function addToTodoDisplay(todoArray) {
     // if it's empty, it should show the "click the button" message, probably by adding a class?
     // if it's not empty, it should do the below stuff
     todoContainer.innerHTML = "";
-    todoRetrieve(todoArray);
+    // todoRetrieve(todoArray);
     // projectRetrieve(projectArray);
     console.log(todoArray)
     for (const todo of todoArray) {

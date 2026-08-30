@@ -1,4 +1,5 @@
 import { addToProjectList } from "./displayControl.js";
+import { addProjectToStorage, projectRetrieve } from "./storage.js";
 
 // Creates a projectItem and appends it to the projectArray array
 
@@ -17,21 +18,21 @@ class Project {
 function createProject(name) {
     const newProject = new Project(name)
     projectArray.push(newProject);
-    return newProject;
+    // return newProject; // why is this here?
+    addProjectToStorage(projectArray);
 };
 
-// function projectDeleteListener(projectArray, projectDelete, project) {
-//     projectDelete.addEventListener('click', () => {
-//         const projectToRemove = projectArray.find((selectedProject) => selectedProject.id === project.id);
-//         const index = projectArray.indexOf(projectToRemove);
-//         if (index > -1) {
-//             projectArray.splice(index,1);
-//         };
-//         addToProjectList(projectArray);
-//     });
-// };
+function createDefaultProject() {
+    if (!localStorage.getItem("storageProjectArray")) {
+        createProject("All Todos");
+    } else {
+        projectRetrieve(projectArray);
+    }
+    
+}
 
 export {
     projectArray,
     createProject,
+    createDefaultProject,
 };
