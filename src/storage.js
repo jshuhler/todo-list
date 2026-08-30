@@ -18,12 +18,15 @@ function addProjectToStorage(projectArray) {
 function todoRetrieve(todoArray) {
     console.log(todoArray)
     console.log(JSON.parse(localStorage.getItem('storageTodoArray')))
-    const retrievedTodoArray = (JSON.parse(localStorage.getItem('storageTodoArray')))
-    console.log(retrievedTodoArray)
-    for (const todo of retrievedTodoArray) {
-        todoArray.push(todo)
-    }
-    console.log(todoArray)
+
+    if (!localStorage.getItem("storageTodoArray")) {
+        return;
+    } else {
+        const retrievedTodoArray = (JSON.parse(localStorage.getItem('storageTodoArray')));
+        for (const todo of retrievedTodoArray) {
+            todoArray.push(todo);
+        };
+    };
 };
 
 // retrieving projects from local storage
