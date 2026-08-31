@@ -258,7 +258,7 @@ function todoUpdateListener (todoEditButton, todo, editTodoDialog, projectArray,
 };
 
 // ------------------------------------------------------------ //
-//                      NEW PROJECT DIALOG                      //
+//                           PROJECTS                           //
 // ------------------------------------------------------------ //
 
 // declaring variables
@@ -339,6 +339,7 @@ function projectDeleteListener(projectArray, projectDelete, project) {
         if (index > -1) {
             projectArray.splice(index,1);
         };
+        console.log(projectArray)
         addProjectToStorage(projectArray);
         projectRetrieve(projectArray);
         addToProjectList(projectArray);

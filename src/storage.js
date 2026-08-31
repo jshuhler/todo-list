@@ -3,15 +3,12 @@ import { projectArray } from "./createProject.js";
 
 // let retrievedTodoArray = [];
 
+// TODO STORAGE AND RETRIEVE
+
 // adding todo to local storage
 function addTodoToStorage(todoArray) {
     console.log(JSON.stringify(todoArray));
     localStorage.setItem('storageTodoArray',JSON.stringify(todoArray));
-};
-
-// adding project to local storage
-function addProjectToStorage(projectArray) {
-    localStorage.setItem('storageProjectArray',JSON.stringify(projectArray));
 };
 
 // retrieving todos from local storage
@@ -27,6 +24,13 @@ function todoRetrieve(todoArray) {
             todoArray.push(todo);
         };
     };
+};
+
+// PROJECT STORAGE AND RETRIEVE
+
+// adding project to local storage
+function addProjectToStorage(projectArray) {
+    localStorage.setItem('storageProjectArray',JSON.stringify(projectArray));
 };
 
 // retrieving projects from local storage
