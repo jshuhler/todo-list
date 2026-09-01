@@ -2,7 +2,7 @@ import "./styles.css";
 import { createTodo, todoArray } from "./createTodo.js";
 import { createProject, projectArray, createDefaultProject } from "./createProject.js";
 import { addToTodoDisplay, addToProjectList } from "./displayControl.js";
-import { todoRetrieve } from "./storage.js";
+import { projectRetrieve, todoRetrieve } from "./storage.js";
 
 import "./displayControl.js"
 
@@ -10,6 +10,7 @@ import "./displayControl.js"
 // some kind of "onLoad" function to call them
 createDefaultProject();
 todoRetrieve(todoArray)
+// projectRetrieve(projectArray)
 console.log(todoArray)
 console.log(projectArray)
 addToTodoDisplay(todoArray);
