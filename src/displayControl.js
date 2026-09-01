@@ -92,8 +92,6 @@ function addToTodoDisplay(todoArray) {
     todoContainer.innerHTML = "";
     // todoRetrieve(todoArray);
     // projectRetrieve(projectArray);
-    console.log(todoArray)
-    console.log(projectArray)
     for (const todo of todoArray) {
         console.log(todo)
         // entire todo item container
@@ -169,7 +167,7 @@ function addToTodoDisplay(todoArray) {
             todoProjectContainer.classList.add("todo-project-container");
 
             let projectObject = projectArray.find((project) => project.id === todo.projectId)
-
+            console.log("building todo cards:", projectArray)
             todoProjectContainer.textContent = projectObject.name;
             infoBottomContainer.appendChild(todoProjectContainer);
         

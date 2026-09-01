@@ -34,19 +34,37 @@ function addProjectToStorage(projectArray) {
 };
 
 // retrieving projects from local storage
+// function projectRetrieve(projectArray) {
+//     console.log(projectArray)
+    // if (!localStorage.getItem("storageProjectArray")) {
+    //     return;
+    // } else {
+//         // projectArray = [];   
+//         const retrievedProjectArray = JSON.parse(localStorage.getItem('storageProjectArray'));
+//         console.log("retrievedProjectArray:", retrievedProjectArray)
+//         console.log("projectArray:", projectArray)
+//         for (const savedProject of retrievedProjectArray) {
+//             console.log("savedProject.id:", savedProject.id)
+//             for (const project of projectArray) {
+//                 console.log("project.id:", project.id)
+//             }
+//             // projectArray.push(project)
+//         };
+//     };
+//     console.log(projectArray)
+// };
+
 function projectRetrieve(projectArray) {
-    console.log(projectArray)
+    console.log("projectArray before retrieve:", projectArray)
     if (!localStorage.getItem("storageProjectArray")) {
         return;
     } else {
-        // projectArray = [];
         const retrievedProjectArray = JSON.parse(localStorage.getItem('storageProjectArray'));
-        for (const project of retrievedProjectArray) {
-            projectArray.push(project)
-        };
-    };
-    console.log(projectArray)
-};
+        console.log("retrievedProjectArray:", retrievedProjectArray)
+        projectArray = retrievedProjectArray
+        console.log("projectArray after retrieve:", projectArray)
+    }
+}
 
 export {
     addTodoToStorage,
