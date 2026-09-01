@@ -85,7 +85,7 @@ function addProjectToSelection(projectArray) {
 // --------------------------------------------------------------------------- //
 //                        UPDATING THE MAIN TODO DISPLAY                       //
 // --------------------------------------------------------------------------- //
-function addToTodoDisplay(todoArray,projectArray) {
+function addToTodoDisplay(todoArray) {
     // add an if statement here to determine if the project array is empty or not
     // if it's empty, it should show the "click the button" message, probably by adding a class?
     // if it's not empty, it should do the below stuff
@@ -93,6 +93,7 @@ function addToTodoDisplay(todoArray,projectArray) {
     // todoRetrieve(todoArray);
     // projectRetrieve(projectArray);
     console.log(todoArray)
+    console.log(projectArray)
     for (const todo of todoArray) {
         console.log(todo)
         // entire todo item container
@@ -163,7 +164,7 @@ function addToTodoDisplay(todoArray,projectArray) {
         const infoBottomContainer = document.createElement("div");
             infoBottomContainer.classList.add("info-bottom-container");    
             infoContainer.appendChild(infoBottomContainer);
-        console.log(projectArray)
+
         const todoProjectContainer = document.createElement("div");
             todoProjectContainer.classList.add("todo-project-container");
 

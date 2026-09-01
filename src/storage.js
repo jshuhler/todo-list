@@ -39,7 +39,7 @@ function projectRetrieve(projectArray) {
     if (!localStorage.getItem("storageProjectArray")) {
         return;
     } else {
-        projectArray = [];
+        // projectArray = [];
         const retrievedProjectArray = JSON.parse(localStorage.getItem('storageProjectArray'));
         for (const project of retrievedProjectArray) {
             projectArray.push(project)

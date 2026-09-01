@@ -8,7 +8,7 @@ import "./displayControl.js"
 
 // probably put all of the function calls for first load into 
 // some kind of "onLoad" function to call them
-createDefaultProject();
+createDefaultProject(); // if there is nothing in local storage, this should create the default project, else it pulls the projects out of storage and puts them into the projectArray
 todoRetrieve(todoArray)
 // projectRetrieve(projectArray)
 console.log(todoArray)
