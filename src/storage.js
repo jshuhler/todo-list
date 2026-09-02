@@ -13,9 +13,6 @@ function addTodoToStorage(todoArray) {
 
 // retrieving todos from local storage
 function todoRetrieve(todoArray) {
-    console.log(todoArray)
-    console.log(JSON.parse(localStorage.getItem('storageTodoArray')))
-
     if (!localStorage.getItem("storageTodoArray")) {
         return;
     } else {
@@ -33,38 +30,24 @@ function addProjectToStorage(projectArray) {
     localStorage.setItem('storageProjectArray',JSON.stringify(projectArray));
 };
 
-// retrieving projects from local storage
-// function projectRetrieve(projectArray) {
-//     console.log(projectArray)
-    // if (!localStorage.getItem("storageProjectArray")) {
-    //     return;
-    // } else {
-//         // projectArray = [];   
-//         const retrievedProjectArray = JSON.parse(localStorage.getItem('storageProjectArray'));
-//         console.log("retrievedProjectArray:", retrievedProjectArray)
-//         console.log("projectArray:", projectArray)
-//         for (const savedProject of retrievedProjectArray) {
-//             console.log("savedProject.id:", savedProject.id)
-//             for (const project of projectArray) {
-//                 console.log("project.id:", project.id)
-//             }
-//             // projectArray.push(project)
-//         };
-//     };
-//     console.log(projectArray)
-// };
-
 function projectRetrieve(projectArray) {
     console.log("projectArray before retrieve:", projectArray)
     if (!localStorage.getItem("storageProjectArray")) {
         return;
     } else {
         const retrievedProjectArray = JSON.parse(localStorage.getItem('storageProjectArray'));
-        console.log("retrievedProjectArray:", retrievedProjectArray)
-        projectArray = retrievedProjectArray
-        console.log("projectArray after retrieve:", projectArray)
-    }
-}
+        for (const retrievedProject of retrievedProjectArray) {
+            console.log("retrievedProject:", retrievedProject)
+            for (const project of projectArray) {
+                if (retrievedProject.id === project.id) {
+                    return;
+                } else {
+                    projectArray.push(retrievedProject);
+                };
+            };
+        };
+    };
+};
 
 export {
     addTodoToStorage,

@@ -207,7 +207,7 @@ function addToTodoDisplay(todoArray) {
             todoEditButton.appendChild(editTodoIcon);
             todoEditContainer.appendChild(todoEditButton);
     };
-    console.log(todoArray);
+    console.log("todo array after DOM build:", todoArray);
 };
 
 // add listener to delete button on todo cards
