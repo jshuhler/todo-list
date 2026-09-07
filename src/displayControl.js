@@ -340,7 +340,7 @@ function projectDeleteListener(projectArray, projectDelete, project) {
         };
         console.log(projectArray)
         addProjectToStorage(projectArray);
-        projectRetrieve(projectArray);
+        // projectRetrieve(projectArray);
         addToProjectList(projectArray);
     });
 };
