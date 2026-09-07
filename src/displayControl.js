@@ -93,7 +93,7 @@ function addToTodoDisplay(todoArray) {
     // todoRetrieve(todoArray);
     // projectRetrieve(projectArray);
     for (const todo of todoArray) {
-        console.log(todo)
+        console.log("todo when looping to create DOM list:",todo)
         // entire todo item container
         const todoItem = document.createElement("div");
             todoItem.classList.add("todo-item");
@@ -167,8 +167,10 @@ function addToTodoDisplay(todoArray) {
             todoProjectContainer.classList.add("todo-project-container");
 
             let projectObject = projectArray.find((project) => project.id === todo.projectId)
-            console.log("building todo cards:", projectArray)
+            // console.log("projectObject:", projectObject)
+            console.log("projectArray when building todo cards:", projectArray)
             todoProjectContainer.textContent = projectObject.name;
+            
             infoBottomContainer.appendChild(todoProjectContainer);
         
         const iconContainer = document.createElement("div");
@@ -218,8 +220,7 @@ function todoDeleteListener (todoDeleteButton, todo) {
         if (index > -1) {
             todoArray.splice(index,1);
         };
-        addTodoToStorage(todoArray)
-        todoRetrieve(todoArray)
+        addTodoToStorage(todoArray);
         addToTodoDisplay(todoArray);
     });
 };
@@ -331,17 +332,33 @@ function addToProjectList(projectArray) {
 };
 
 // creates the listener on the project 'x' button to delete a project from the sidebar list
-function projectDeleteListener(projectArray, projectDelete, project) {
+function projectDeleteListener(projectArray, projectDelete, project, todoArray) {
     projectDelete.addEventListener('click', () => {
         const projectToRemove = projectArray.find((selectedProject) => selectedProject.id === project.id);
         const index = projectArray.indexOf(projectToRemove);
-        if (index > -1) {
-            projectArray.splice(index,1);
+        console.log("projectToRemove.id:",projectToRemove.id)
+        console.log("todoArray before loop:", todoArray)
+
+        // if the project that is clicked to be deleted DOES have an id that is on one of the todos in the projectId key,
+        // then prompt that "all todos for this project must be assigned to other projects before this can be deleted"
+
+        // if the project that is clicked to be deleted does not have an id that is on one of the todos in the projectId
+        // key, then the project can be deleted
+
+
+        for (const todo of todoArray) {
+            if (todo.id = projectToRemove.id) {
+                alert("All todos for this project must be assigned to other projects before this can be deleted.");
+            } else {
+                if (index > -1) {
+                    projectArray.splice(index,1);
+                };
+                console.log(projectArray)
+                addProjectToStorage(projectArray);
+                // projectRetrieve(projectArray);
+                addToProjectList(projectArray);                
+            };
         };
-        console.log(projectArray)
-        addProjectToStorage(projectArray);
-        // projectRetrieve(projectArray);
-        addToProjectList(projectArray);
     });
 };
 

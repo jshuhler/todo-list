@@ -7,7 +7,7 @@ import { projectArray } from "./createProject.js";
 
 // adding todo to local storage
 function addTodoToStorage(todoArray) {
-    console.log(JSON.stringify(todoArray));
+    // console.log(JSON.stringify(todoArray));
     localStorage.setItem('storageTodoArray',JSON.stringify(todoArray));
 };
 

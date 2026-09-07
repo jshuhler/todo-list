@@ -11,7 +11,7 @@ import "./displayControl.js"
 createDefaultProject(); // if there is nothing in local storage, this should create the default project, else it pulls the projects out of storage and puts them into the projectArray
 todoRetrieve(todoArray)
 // projectRetrieve(projectArray)
-console.log("todoArray from index.js:", todoArray)
-console.log("projectArray from index.js:", projectArray)
+// console.log("todoArray from index.js:", todoArray)
+// console.log("projectArray from index.js:", projectArray)
 addToTodoDisplay(todoArray);
 addToProjectList(projectArray)
