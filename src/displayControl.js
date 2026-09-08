@@ -338,33 +338,21 @@ function projectDeleteListener(projectArray, projectDelete, project) {
         const index = projectArray.indexOf(projectToRemove);
         console.log("projectToRemove.id:",projectToRemove.id)
         console.log("todoArray before loop:", todoArray)
-
-        // if the project that is clicked to be deleted DOES have an id that is on one of the todos in the projectId key,
-        // then prompt that "all todos for this project must be assigned to other projects before this can be deleted"
-
-        // if the project that is clicked to be deleted does not have an id that is on one of the todos in the projectId
-        // key, then the project can be deleted
-
-
         for (const todo of todoArray) {
             console.log("todo:", todo)
             console.log("todo.projectId:", todo.projectId)
             console.log("projectToRemove.id:", projectToRemove.id)
-
             if (todo.projectId === projectToRemove.id) {
-                alert("All todos for this project must be assigned to other projects before this can be deleted.");
+                alert("Sorry, you can't delete a project that has todos assigned to it.");
                 return;
-            } else if (todo.projectId !== projectToRemove.id) {
-                if (index > -1) {
-                    projectArray.splice(index,1);
-                };
-                console.log(projectArray)
-                addProjectToStorage(projectArray);
-                // projectRetrieve(projectArray);
-                addToProjectList(projectArray);
-                return;              
             };
         };
+        if (index > -1) {
+            projectArray.splice(index,1);
+        };
+        console.log(projectArray)
+        addProjectToStorage(projectArray);
+        addToProjectList(projectArray);
     });
 };
 
