@@ -30,11 +30,10 @@ function createTodo(title,details,dueDate,priority,projectId) {
 // todoRetrieve();
 
 // 
-function todoUpdate (todoToUpdate) {
+function todoUpdate() {
     // take all of the values from the dialog
     // pass them back to the object identified in todoToUpdate ?
-    console.log("You did it over here too.")
-    console.log(todoToUpdate)
+    console.log("Function from edit button on todo card called from update click.")
 };
 
 export { 

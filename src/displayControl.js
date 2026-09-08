@@ -90,10 +90,7 @@ function addToTodoDisplay(todoArray) {
     // if it's empty, it should show the "click the button" message, probably by adding a class?
     // if it's not empty, it should do the below stuff
     todoContainer.innerHTML = "";
-    // todoRetrieve(todoArray);
-    // projectRetrieve(projectArray);
     for (const todo of todoArray) {
-        console.log("todo when looping to create DOM list:",todo)
         // entire todo item container
         const todoItem = document.createElement("div");
             todoItem.classList.add("todo-item");
@@ -167,8 +164,8 @@ function addToTodoDisplay(todoArray) {
             todoProjectContainer.classList.add("todo-project-container");
 
             let projectObject = projectArray.find((project) => project.id === todo.projectId)
-            console.log("projectObject:", projectObject)
-            console.log("projectArray when building todo cards:", projectArray)
+            // console.log("projectObject:", projectObject)
+            // console.log("projectArray when building todo cards:", projectArray)
             todoProjectContainer.textContent = projectObject.name;
             
             infoBottomContainer.appendChild(todoProjectContainer);
@@ -209,7 +206,7 @@ function addToTodoDisplay(todoArray) {
             todoEditButton.appendChild(editTodoIcon);
             todoEditContainer.appendChild(todoEditButton);
     };
-    console.log("todo array after DOM build:", todoArray);
+    // console.log("todo array after DOM build:", todoArray);
 };
 
 // add listener to delete button on todo cards
@@ -253,7 +250,8 @@ function todoUpdateListener (todoEditButton, todo, editTodoDialog, projectArray,
         addProjectsToEditSelection(projectArray);
         const projectIdOfTodo = findProjectIdOfTodo(todoToUpdate,projectArray);
         populateEditDialog(todoToUpdate,projectArray,projectIdOfTodo);
-        todoUpdate(todoToUpdate);
+        // todoUpdate(todoToUpdate);
+        console.log("Edit button on todo card clicked.")
     });
 };
 
@@ -336,12 +334,7 @@ function projectDeleteListener(projectArray, projectDelete, project) {
     projectDelete.addEventListener('click', () => {
         const projectToRemove = projectArray.find((selectedProject) => selectedProject.id === project.id);
         const index = projectArray.indexOf(projectToRemove);
-        console.log("projectToRemove.id:",projectToRemove.id)
-        console.log("todoArray before loop:", todoArray)
         for (const todo of todoArray) {
-            console.log("todo:", todo)
-            console.log("todo.projectId:", todo.projectId)
-            console.log("projectToRemove.id:", projectToRemove.id)
             if (todo.projectId === projectToRemove.id) {
                 alert("Sorry, you can't delete a project that has todos assigned to it.");
                 return;
@@ -350,7 +343,6 @@ function projectDeleteListener(projectArray, projectDelete, project) {
         if (index > -1) {
             projectArray.splice(index,1);
         };
-        console.log(projectArray)
         addProjectToStorage(projectArray);
         addToProjectList(projectArray);
     });
@@ -425,14 +417,20 @@ function populateEditDialog (todoToUpdate,projectArray,projectSelectId) {
             break;
         };
     };
+    todoEditDialogSaveButton(todoToUpdate);
 };
 
 // adding event listener to the Update button on edit todo dialog, call update function on click
-editTodoButton.addEventListener('click', (e) => {
-    e.preventDefault();
-    console.log("You did it, Jeff.");
-    todoUpdate();
-});
+function todoEditDialogSaveButton(todoToUpdate) {
+    editTodoButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log("Update button on edit dialog clicked")
+        console.log("todoToUpdate:",todoToUpdate)
+        editTodoName.value = todoToUpdate.title;
+        addTodoToStorage(todoArray);
+        todoUpdate();
+    });
+};
 
 // ------------------------------- //
 // CHANGING THE SORT BY PROJECT    //
