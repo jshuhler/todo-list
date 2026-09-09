@@ -420,15 +420,22 @@ function populateEditDialog (todoToUpdate,projectArray,projectSelectId) {
     todoEditDialogSaveButton(todoToUpdate);
 };
 
-// adding event listener to the Update button on edit todo dialog, call update function on click
+// adding event listener to the Update button on edit todo dialog
 function todoEditDialogSaveButton(todoToUpdate) {
     editTodoButton.addEventListener('click', (e) => {
         e.preventDefault();
         console.log("Update button on edit dialog clicked")
         console.log("todoToUpdate:",todoToUpdate)
-        editTodoName.value = todoToUpdate.title;
+        console.log("todoToUpdate.title:",todoToUpdate.title)
+        todoToUpdate.title = editTodoName.value;
+        todoToUpdate.details = editTodoDetails.value;
+        todoToUpdate.dueDate = editTodoDate.value;
+        todoToUpdate.projectId = editTodoProject.value;
+        todoToUpdate.priority = radioButtons.value;
         addTodoToStorage(todoArray);
         todoUpdate();
+        editTodoDialog.close();
+        addToTodoDisplay(todoArray);
     });
 };
 
