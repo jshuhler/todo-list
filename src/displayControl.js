@@ -1,6 +1,7 @@
 import { todoArray, createTodo } from "./createTodo.js";
 import { projectArray, createProject, deleteProject } from "./createProject.js";
 import { todoRetrieve, projectRetrieve, addTodoToStorage, addProjectToStorage } from "./storage.js";
+import { isPast } from "date-fns";
 import trashcan from "./img/trashcan.png";
 import pencil from "./img/pencil.png";
 import pencil_edit from "./img/pencil_edit.png";
@@ -454,7 +455,18 @@ const overdueSelect = document.getElementById("overdue-select");
 
 allTodoSelect.addEventListener('click', () => {
     addToTodoDisplay(todoArray);
-})
+});
+
+overdueSelect.addEventListener('click', () => {
+    let overdueSortArray = [];
+    for (const todo of todoArray) {
+        if (isPast(todo.dueDate === true)) {
+            overdueSortArray.push(todo)
+        };
+    };
+    console.log(overdueSortArray)
+    addToTodoDisplay(overdueSortArray);
+});
 
 // ---------------------------------- //
 // CHANGING THE SORT BY PROJECT       //
