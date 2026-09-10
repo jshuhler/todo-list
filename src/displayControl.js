@@ -1,4 +1,4 @@
-import { todoArray, createTodo, todoUpdate } from "./createTodo.js";
+import { todoArray, createTodo } from "./createTodo.js";
 import { projectArray, createProject, deleteProject } from "./createProject.js";
 import { todoRetrieve, projectRetrieve, addTodoToStorage, addProjectToStorage } from "./storage.js";
 import trashcan from "./img/trashcan.png";
@@ -306,6 +306,7 @@ function addToProjectList(projectArray) {
             
             // add the name of the project to the projectTitle span
             projectTitle.textContent = project.name;
+            projectTitle.classList.add("project-title");
             // this is where to call the function for adding the event listener to 
             // each project name to change the display to show only todos within that project
 
@@ -323,6 +324,8 @@ function addToProjectList(projectArray) {
                 } else if (key === 'id') {
                     projectDelete.setAttribute("data-id",project.id);
                     projectDeleteListener(projectArray,projectDelete,project);
+                    projectTitle.setAttribute("date-id",project.id);
+                    projectSortListener(projectArray,projectTitle,project);
                 };
             };
         };
@@ -433,22 +436,43 @@ function todoEditDialogSaveButton(todoToUpdate) {
         todoToUpdate.projectId = editTodoProject.value;
         todoToUpdate.priority = radioButtons.value;
         addTodoToStorage(todoArray);
-        todoUpdate();
         editTodoDialog.close();
         addToTodoDisplay(todoArray);
     });
 };
 
-// ------------------------------- //
-// CHANGING THE SORT BY PROJECT    //
-// ------------------------------- //
-// this should probably call a function that is in the createTodo.js module. that should probably
-// be renamed to todo.js 
 
-// maybe I could make some kind of generic "sort" function that looks for whatever thing is selected
-// like the project, All Todos, Due today or Due This Week and just call the function from there?
+// ---------------------------------- //
+// CHANGING THE SORT BY ALL & DATE    //
+// ---------------------------------- //
 
-// DECLARING VARIABLES
+// declaring variables
+const allTodoSelect = document.getElementById("all-todo-select");
+const dueTodaySelect = document.getElementById("due-today-select");
+const dueWeekSelect = document.getElementById("due-week-select");
+const overdueSelect = document.getElementById("overdue-select");
+
+allTodoSelect.addEventListener('click', () => {
+    addToTodoDisplay(todoArray);
+})
+
+// ---------------------------------- //
+// CHANGING THE SORT BY PROJECT       //
+// ---------------------------------- //
+
+// add listener to project name on left panel for sorting by project
+function projectSortListener(projectArray,projectTitle,project) {
+    projectTitle.addEventListener('click', () => {
+        let projectSortArray = [];
+        const projectToSortBy = projectArray.find((selectedProject) => selectedProject.id === project.id);
+        for (const todo of todoArray) {
+            if (todo.projectId === projectToSortBy.id) {
+                projectSortArray.push(todo);
+            };
+        };
+        addToTodoDisplay(projectSortArray);
+    });
+};
 
 export {
     addToProjectList,

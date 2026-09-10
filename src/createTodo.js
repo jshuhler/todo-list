@@ -27,17 +27,7 @@ function createTodo(title,details,dueDate,priority,projectId) {
     addTodoToStorage(todoArray);
 };
 
-// todoRetrieve();
-
-// 
-function todoUpdate() {
-    // take all of the values from the dialog
-    // pass them back to the object identified in todoToUpdate ?
-    console.log("Function from edit button on todo card called from update click.")
-};
-
 export { 
     todoArray,
     createTodo,
-    todoUpdate,
 };
