@@ -1,7 +1,7 @@
 import { todoArray, createTodo } from "./createTodo.js";
 import { projectArray, createProject, deleteProject } from "./createProject.js";
 import { todoRetrieve, projectRetrieve, addTodoToStorage, addProjectToStorage } from "./storage.js";
-import { isPast } from "date-fns";
+import { isToday, parseISO, isPast } from "date-fns";
 import trashcan from "./img/trashcan.png";
 import pencil from "./img/pencil.png";
 import pencil_edit from "./img/pencil_edit.png";
@@ -453,18 +453,36 @@ const dueTodaySelect = document.getElementById("due-today-select");
 const dueWeekSelect = document.getElementById("due-week-select");
 const overdueSelect = document.getElementById("overdue-select");
 
+// sort display by all items
 allTodoSelect.addEventListener('click', () => {
     addToTodoDisplay(todoArray);
 });
 
+// sort display by todos due today
+dueTodaySelect.addEventListener('click', () => {
+    let todaySortArray = [];
+    for (const todo of todoArray) {
+        const todayCheck = isToday(parseISO(todo.dueDate));
+        console.log(todo.id, todayCheck)
+        if (todayCheck === true) {
+            todaySortArray.push(todo)
+        };
+    };
+    addToTodoDisplay(todaySortArray);
+});
+
+// sort display by todos due within the next 7 days
+
+
+// sort display by todos overdue
 overdueSelect.addEventListener('click', () => {
     let overdueSortArray = [];
     for (const todo of todoArray) {
-        if (isPast(todo.dueDate === true)) {
+        const overdueCheck = isPast(parseISO(todo.dueDate));
+        if (overdueCheck === true) {
             overdueSortArray.push(todo)
         };
     };
-    console.log(overdueSortArray)
     addToTodoDisplay(overdueSortArray);
 });
 
