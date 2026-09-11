@@ -472,7 +472,12 @@ dueTodaySelect.addEventListener('click', () => {
 });
 
 // sort display by todos due within the next 7 days
-
+dueWeekSelect.addEventListener('click', () => {
+    let weekSortArray = [];
+    for (const todo of todoArray) {
+        
+    }
+});
 
 // sort display by todos overdue
 overdueSelect.addEventListener('click', () => {
