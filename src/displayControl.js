@@ -86,17 +86,28 @@ function addProjectToSelection(projectArray) {
 // --------------------------------------------------------------------------- //
 //                        UPDATING THE MAIN TODO DISPLAY                       //
 // --------------------------------------------------------------------------- //
+
+
+
 function addToTodoDisplay(todoArray) {
-    // add an if statement here to determine if the project array is empty or not
-    // if it's empty, it should show the "click the button" message, probably by adding a class?
-    // if it's not empty, it should do the below stuff
+    console.log("todoArray before building DOM:", todoArray)
+    if (todoArray.length === 0) {
+        todoContainer.innerHTML = "";
+        const emptyTodoMessage = document.createElement("div");
+            emptyTodoMessage.classList.add("empty-todo-container");
+            emptyTodoMessage.textContent = "You're not tracking anything yet, click the + to start getting organized."
+            todoContainer.appendChild(emptyTodoMessage);
+
+        console.log(todoArray)
+        console.log("This will be where the empty message is displayed")
+    } else {
+    
     todoContainer.innerHTML = "";
     for (const todo of todoArray) {
         // entire todo item container
         const todoItem = document.createElement("div");
             todoItem.classList.add("todo-item");
             todoContainer.appendChild(todoItem);
-            // call update function here
 
         // status container - this will eventually need an event listener on the toggle to change status from open to closed
         const statusContainer = document.createElement("div");
@@ -207,8 +218,8 @@ function addToTodoDisplay(todoArray) {
             todoEditButton.appendChild(editTodoIcon);
             todoEditContainer.appendChild(todoEditButton);
     };
-    // console.log("todo array after DOM build:", todoArray);
 };
+}
 
 // add listener to delete button on todo cards
 function todoDeleteListener (todoDeleteButton, todo) {
@@ -226,8 +237,9 @@ function todoDeleteListener (todoDeleteButton, todo) {
 // add listener to status toggle on todo cards
 function todoStatusListener (todoCheckbox, todo) {
     todoCheckbox.addEventListener('click', () => {
-        const todoStatusToChange = todoArray.find((selectedTodo) => selectedTodo.id === todo.id);
-        const index = todoArray.indexOf(todoStatusToChange);
+        // const todoStatusToChange = todoArray.find((selectedTodo) => selectedTodo.id === todo.id);
+        // const index = todoArray.indexOf(todoStatusToChange);
+        console.log(todo)
         if (todo.status === 'open') {
             console.log("the status is open right now, changing to closed");
             todo.status = 'closed';
@@ -235,6 +247,9 @@ function todoStatusListener (todoCheckbox, todo) {
             console.log("the status is closed right now, changing to open");
             todo.status = 'open';
         };
+                addTodoToStorage(todoArray);
+        addToTodoDisplay(todoArray);
+
         console.log(todoArray);
         // if I'm going to dim or strike thru the cards when I click them as done, I'm going to need to 
         // re-call the display function to remake the displayed list, right?
@@ -450,8 +465,8 @@ function todoEditDialogSaveButton(todoToUpdate) {
 // declaring variables
 const allTodoSelect = document.getElementById("all-todo-select");
 const dueTodaySelect = document.getElementById("due-today-select");
-const dueWeekSelect = document.getElementById("due-week-select");
 const overdueSelect = document.getElementById("overdue-select");
+const closedSelect = document.getElementById("closed-select");
 
 // sort display by all items
 allTodoSelect.addEventListener('click', () => {
@@ -463,20 +478,11 @@ dueTodaySelect.addEventListener('click', () => {
     let todaySortArray = [];
     for (const todo of todoArray) {
         const todayCheck = isToday(parseISO(todo.dueDate));
-        console.log(todo.id, todayCheck)
         if (todayCheck === true) {
-            todaySortArray.push(todo)
+            todaySortArray.push(todo);
         };
     };
     addToTodoDisplay(todaySortArray);
-});
-
-// sort display by todos due within the next 7 days
-dueWeekSelect.addEventListener('click', () => {
-    let weekSortArray = [];
-    for (const todo of todoArray) {
-        
-    }
 });
 
 // sort display by todos overdue
@@ -490,6 +496,9 @@ overdueSelect.addEventListener('click', () => {
     };
     addToTodoDisplay(overdueSortArray);
 });
+
+// sort display by completed
+closedSelect.addEventListener('click', () => {})
 
 // ---------------------------------- //
 // CHANGING THE SORT BY PROJECT       //

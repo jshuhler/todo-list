@@ -120,6 +120,7 @@ fieldset {
 .empty-todo-container {
     color: #999999;
     text-align: center;
+    justify-content: center;
     margin: 20px;
 }
 
