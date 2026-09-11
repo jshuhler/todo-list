@@ -490,15 +490,25 @@ overdueSelect.addEventListener('click', () => {
     let overdueSortArray = [];
     for (const todo of todoArray) {
         const overdueCheck = isPast(parseISO(todo.dueDate));
-        if (overdueCheck === true) {
-            overdueSortArray.push(todo)
+        if (overdueCheck === true && todo.status !== "closed") {
+            overdueSortArray.push(todo);
         };
     };
     addToTodoDisplay(overdueSortArray);
 });
 
 // sort display by completed
-closedSelect.addEventListener('click', () => {})
+closedSelect.addEventListener('click', () => {
+    let closedSortArray = [];
+    for (const todo of todoArray) {
+        console.log(todo.id, todo.status)
+        if (todo.status === "closed") {
+            closedSortArray.push(todo);
+        };
+    };
+    console.log("closedSortArray:", closedSortArray)
+    addToTodoDisplay(closedSortArray);
+});
 
 // ---------------------------------- //
 // CHANGING THE SORT BY PROJECT       //
