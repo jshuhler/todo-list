@@ -24,7 +24,7 @@ function createProject(name) {
 
 function createDefaultProject() {
     if (!localStorage.getItem("storageProjectArray")) {
-        createProject("All Todos");
+        createProject("Inbox"); // I don't like that this is hard coded.
     } else {
         projectRetrieve(projectArray);
     }

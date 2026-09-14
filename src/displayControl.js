@@ -87,8 +87,6 @@ function addProjectToSelection(projectArray) {
 //                        UPDATING THE MAIN TODO DISPLAY                       //
 // --------------------------------------------------------------------------- //
 
-
-
 function addToTodoDisplay(todoArray) {
     console.log("todoArray before building DOM:", todoArray)
     if (todoArray.length === 0) {
@@ -101,7 +99,6 @@ function addToTodoDisplay(todoArray) {
         console.log(todoArray)
         console.log("This will be where the empty message is displayed")
     } else {
-    
     todoContainer.innerHTML = "";
     for (const todo of todoArray) {
         // entire todo item container
@@ -217,9 +214,9 @@ function addToTodoDisplay(todoArray) {
             editTodoIcon.src = pencil_edit;
             todoEditButton.appendChild(editTodoIcon);
             todoEditContainer.appendChild(todoEditButton);
+        };
     };
 };
-}
 
 // add listener to delete button on todo cards
 function todoDeleteListener (todoDeleteButton, todo) {
@@ -307,42 +304,40 @@ addProjectDialog.addEventListener('submit', (e) => {
 function addToProjectList(projectArray) {
     projectMenu.innerHTML = "";
     for (const project of projectArray) {
-        if (project.name === "All Todos") {
-            continue
-        } else {
-            const projectLine = document.createElement("li");
-            const projectTitle = document.createElement("span");
-            const projectDelete = document.createElement("span");
+        const projectLine = document.createElement("li");
+        const projectTitle = document.createElement("span");
+        const projectDelete = document.createElement("span");
 
-            // add projectLine to the entire projectMenu
-            projectMenu.appendChild(projectLine);
-            
-            // add class to projectLine
-            projectLine.classList.add("menu-choice");
-            
-            // add the name of the project to the projectTitle span
-            projectTitle.textContent = project.name;
-            projectTitle.classList.add("project-title");
-            // this is where to call the function for adding the event listener to 
-            // each project name to change the display to show only todos within that project
+        // add projectLine to the entire projectMenu
+        projectMenu.appendChild(projectLine);
+        
+        // add class to projectLine
+        projectLine.classList.add("menu-choice");
+        
+        // add the name of the project to the projectTitle span
+        projectTitle.textContent = project.name;
+        projectTitle.classList.add("project-title");
+        // this is where to call the function for adding the event listener to 
+        // each project name to change the display to show only todos within that project
 
-            // add the x and class to the delete button span
+        // add the x and class to the delete button span
+        if (project.name !== "Inbox") { // I don't like that this is hard coded.
             projectDelete.textContent = "×";
-            projectDelete.classList.add("delete-button");
-
-            // add the project title and the project delete button into the single line for the whole project
-            projectLine.appendChild(projectTitle);
-            projectLine.appendChild(projectDelete);
-            for (const key in project) {
-                // for every object in the project array, loop through and set the key with the name id to the data attribute for that delete button
-                if (key === 'name') {
-                    continue;
-                } else if (key === 'id') {
-                    projectDelete.setAttribute("data-id",project.id);
-                    projectDeleteListener(projectArray,projectDelete,project);
-                    projectTitle.setAttribute("date-id",project.id);
-                    projectSortListener(projectArray,projectTitle,project);
-                };
+            projectDelete.classList.add("delete-button");   
+        };
+        
+        // add the project title and the project delete button into the single line for the whole project
+        projectLine.appendChild(projectTitle);
+        projectLine.appendChild(projectDelete);
+        for (const key in project) {
+            // for every object in the project array, loop through and set the key with the name id to the data attribute for that delete button
+            if (key === 'name') {
+                continue;
+            } else if (key === 'id') {
+                projectDelete.setAttribute("data-id",project.id);
+                projectDeleteListener(projectArray,projectDelete,project);
+                projectTitle.setAttribute("data-id",project.id);
+                projectSortListener(projectArray,projectTitle,project);
             };
         };
     };
