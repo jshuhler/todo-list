@@ -19,6 +19,7 @@ const closeTodoDialog = document.querySelector(".todo-dialog-close");
 const addTodoDialog = document.querySelector(".add-todo-form");
 // const addTodoDialog = document.getElementById("add-todo-submit");
 
+const sortTitleContainer = document.querySelector(".sort-title-container");
 const todoContainer = document.querySelector(".todo-container");
 let todoTitle;
 let todoDetails;
@@ -87,6 +88,12 @@ function addProjectToSelection(projectArray) {
 //                        UPDATING THE MAIN TODO DISPLAY                       //
 // --------------------------------------------------------------------------- //
 
+// update the displayed sort above the todo cards
+function updateViewTitle(targetSort,sortTitle) {
+    sortTitleContainer.textContent = sortTitle
+};
+
+// remove and rebuild all todo cards - called for various sorts and initial load
 function addToTodoDisplay(todoArray) {
     console.log("todoArray before building DOM:", todoArray)
     if (todoArray.length === 0) {
@@ -464,37 +471,44 @@ const overdueSelect = document.getElementById("overdue-select");
 const closedSelect = document.getElementById("closed-select");
 
 // sort display by all items
-allTodoSelect.addEventListener('click', () => {
+allTodoSelect.addEventListener('click', (e) => {
+    let sortTitle = "All Todos"
+    updateViewTitle(e.target.id, sortTitle);
     addToTodoDisplay(todoArray);
 });
 
 // sort display by todos due today
-dueTodaySelect.addEventListener('click', () => {
+dueTodaySelect.addEventListener('click', (e) => {
     let todaySortArray = [];
+    let sortTitle = "Due Today";
     for (const todo of todoArray) {
         const todayCheck = isToday(parseISO(todo.dueDate));
         if (todayCheck === true) {
             todaySortArray.push(todo);
         };
     };
+    updateViewTitle(e.target.id, sortTitle);
     addToTodoDisplay(todaySortArray);
 });
 
 // sort display by todos overdue
-overdueSelect.addEventListener('click', () => {
+overdueSelect.addEventListener('click', (e) => {
     let overdueSortArray = [];
+    let sortTitle = "Overdue";
     for (const todo of todoArray) {
         const overdueCheck = isPast(parseISO(todo.dueDate));
         if (overdueCheck === true && todo.status !== "closed") {
             overdueSortArray.push(todo);
         };
     };
+    updateViewTitle(e.target.id, sortTitle);
     addToTodoDisplay(overdueSortArray);
 });
 
 // sort display by completed
-closedSelect.addEventListener('click', () => {
+closedSelect.addEventListener('click', (e) => {
     let closedSortArray = [];
+    let sortTitle = "Completed";
     for (const todo of todoArray) {
         console.log(todo.id, todo.status)
         if (todo.status === "closed") {
@@ -502,6 +516,7 @@ closedSelect.addEventListener('click', () => {
         };
     };
     console.log("closedSortArray:", closedSortArray)
+    updateViewTitle(e.target.id, sortTitle);
     addToTodoDisplay(closedSortArray);
 });
 
@@ -511,14 +526,16 @@ closedSelect.addEventListener('click', () => {
 
 // add listener to project name on left panel for sorting by project
 function projectSortListener(projectArray,projectTitle,project) {
-    projectTitle.addEventListener('click', () => {
+    projectTitle.addEventListener('click', (e) => {
         let projectSortArray = [];
+        let sortTitle = project.name;
         const projectToSortBy = projectArray.find((selectedProject) => selectedProject.id === project.id);
         for (const todo of todoArray) {
             if (todo.projectId === projectToSortBy.id) {
                 projectSortArray.push(todo);
             };
         };
+        updateViewTitle(e.target.id, sortTitle);
         addToTodoDisplay(projectSortArray);
     });
 };
