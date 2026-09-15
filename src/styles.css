@@ -27,7 +27,7 @@
 }
 
 button,
-.menu-choice span {
+.sort-choice span {
     cursor: pointer;
 }
 
@@ -105,14 +105,18 @@ fieldset {
     flex-direction: column;
 }
 
-.menu-choice,
+.sort-choice,
 .menu-title {
     padding: 5px 0px;
 }
 
-.project-menu .menu-choice {
+.project-menu .sort-choice {
     display: flex;
     justify-content: space-between;
+}
+
+.selected-sort {
+    color: var(--main-blue-color);
 }
 
 /* ===================================

@@ -319,7 +319,7 @@ function addToProjectList(projectArray) {
         projectMenu.appendChild(projectLine);
         
         // add class to projectLine
-        projectLine.classList.add("menu-choice");
+        projectLine.classList.add("sort-choice");
         
         // add the name of the project to the projectTitle span
         projectTitle.textContent = project.name;
@@ -459,6 +459,16 @@ function todoEditDialogSaveButton(todoToUpdate) {
     });
 };
 
+// ---------------------------------- //
+// BASIC SORT STYLE ADJUSTMENT        //
+// ---------------------------------- //
+
+// CHANGING SORT STYLING VIA CLASS
+function selectedSortHighlight(e) {
+    const sortChoiceAll = document.querySelectorAll(".selected-sort");
+    sortChoiceAll.forEach((choice) => choice.classList.remove("selected-sort"));
+    e.target.classList.add("selected-sort");
+};
 
 // ---------------------------------- //
 // CHANGING THE SORT BY ALL & DATE    //
@@ -473,6 +483,7 @@ const closedSelect = document.getElementById("closed-select");
 // sort display by all items
 allTodoSelect.addEventListener('click', (e) => {
     let sortTitle = "All Todos"
+    selectedSortHighlight(e);
     updateViewTitle(e.target.id, sortTitle);
     addToTodoDisplay(todoArray);
 });
@@ -481,6 +492,7 @@ allTodoSelect.addEventListener('click', (e) => {
 dueTodaySelect.addEventListener('click', (e) => {
     let todaySortArray = [];
     let sortTitle = "Due Today";
+    selectedSortHighlight(e);
     for (const todo of todoArray) {
         const todayCheck = isToday(parseISO(todo.dueDate));
         if (todayCheck === true) {
@@ -495,6 +507,7 @@ dueTodaySelect.addEventListener('click', (e) => {
 overdueSelect.addEventListener('click', (e) => {
     let overdueSortArray = [];
     let sortTitle = "Overdue";
+    selectedSortHighlight(e);
     for (const todo of todoArray) {
         const overdueCheck = isPast(parseISO(todo.dueDate));
         if (overdueCheck === true && todo.status !== "closed") {
@@ -509,6 +522,7 @@ overdueSelect.addEventListener('click', (e) => {
 closedSelect.addEventListener('click', (e) => {
     let closedSortArray = [];
     let sortTitle = "Completed";
+    selectedSortHighlight(e);
     for (const todo of todoArray) {
         console.log(todo.id, todo.status)
         if (todo.status === "closed") {
@@ -529,6 +543,7 @@ function projectSortListener(projectArray,projectTitle,project) {
     projectTitle.addEventListener('click', (e) => {
         let projectSortArray = [];
         let sortTitle = project.name;
+        selectedSortHighlight(e);
         const projectToSortBy = projectArray.find((selectedProject) => selectedProject.id === project.id);
         for (const todo of todoArray) {
             if (todo.projectId === projectToSortBy.id) {
