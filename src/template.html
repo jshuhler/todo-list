@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
-    <title>Todo List</title>
+    <title>ToDo-er</title>
 </head>
 <body>
     <div class="wrapper">
@@ -16,29 +16,29 @@
                 <form action="" method="" class="add-todo-form">
                     <fieldset>
                         <div class="dialog-header">
-                            <legend>Add New Todo</legend>
+                            <legend>Add Todo</legend>
                             <span class="todo-dialog-close dialog-close">&times;</span>
                         </div>
-                        <div>
+                        <div class="form-item form-text-entry">
                             <label for="todo-name">Title</label>
                             <input type="text" id="todo-name" required>
                         </div>
-                        <div>
+                        <div class="form-item form-text-entry">
                             <label for="todo-details">Details</label>
                             <textarea name="todo-details" id="todo-details" rows="5" cols="33"></textarea>
                         </div>
-                        <div>
+                        <div class="form-item">
                             <label for="todo-date">Due Date</label>
                             <input type="date" id="todo-date" required>
                         </div>
-                        <div>
+                        <div class="form-item">
                             <label for="todo-project">Project</label>
                             <select name="project" id="todo-project" required>
                                 
                             </select>
                         </div>
-                        <div class="form-priority">
-                            <p class="todo-priority">Todo Priority</p>
+                        <div class="form-priority form-item">
+                            <p class="todo-priority">Priority</p>
                             <div class="radio-item">
                                 <input type="radio" id="priority-high" name="priority" value="3" required>
                                 <label for="priority-high">High</label>
@@ -65,25 +65,25 @@
                             <legend>Edit Todo</legend>
                             <span class="edit-todo-dialog-close dialog-close">&times;</span>
                         </div>
-                        <div>
+                        <div class="form-item form-text-entry">
                             <label for="todo-name">Title</label>
                             <input type="text" id="edit-todo-name" required>
                         </div>
-                        <div>
+                        <div class="form-item form-text-entry">
                             <label for="todo-details">Details</label>
                             <textarea name="todo-details" id="edit-todo-details" rows="5" cols="33"></textarea>
                         </div>
-                        <div>
+                        <div class="form-item">
                             <label for="todo-date">Due Date</label>
                             <input type="date" id="edit-todo-date" required>
                         </div>
-                        <div>
+                        <div class="form-item">
                             <label for="todo-project">Project</label>
                             <select name="project" id="edit-todo-project" required>
 
                             </select>
                         </div>
-                        <div class="form-edit-priority">
+                        <div class="form-edit-priority form-item">
                             <p class="todo-priority">Todo Priority</p>
                             <div class="radio-item">
                                 <input type="radio" id="priority-high" name="edit-priority" value="3" required>
@@ -111,8 +111,8 @@
                             <legend>Add New Project</legend>
                             <div class="project-dialog-close dialog-close">&times;</div>
                         </div>
-                        <div>
-                            <label for="project-name">Project Name:</label>
+                        <div class="form-item form-text-entry">
+                            <label for="project-name">Project Name</label>
                             <input type="text" id="project-name" required>
                         </div>
                     </fieldset>
@@ -123,7 +123,7 @@
             </dialog>
             <div class="left-panel">
                 <div class="title">
-                    <h1>To-Do-er</h1>
+                    <h1>ToDo-er</h1>
                 </div>
                 <div class="left-section" id="left-section-top">
                     <!-- <h2 class="menu-title">All Todos</h2> -->
