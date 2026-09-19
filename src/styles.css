@@ -218,6 +218,12 @@ dialog button:hover {
     padding: 5px 0px;
 }
 
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .project-menu .sort-choice {
     display: flex;
     justify-content: space-between;
