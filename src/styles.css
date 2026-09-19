@@ -31,6 +31,11 @@ button,
     cursor: pointer;
 }
 
+li,
+ul {
+    list-style: none;
+}
+
 /* ===================================
    WRAPPER
    =================================== */
@@ -184,8 +189,9 @@ dialog button:hover {
    LEFT-PANEL CONTAINER
    =================================== */
 .left-panel {
-    min-width: 27vw; /* this is absolutely not the way to handle the width of the left panel */
-    padding: 10px;
+    min-width: 20vw; 
+    /* max-width: 20vw; */
+    padding: 20px;
     box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.1);
     position: relative;
     z-index: 1;
@@ -193,7 +199,12 @@ dialog button:hover {
 }
 
 .title {
+    /* font-size: 32px; */
     padding-bottom: 15px;
+}
+
+.title span {
+    color: var(--main-blue-color);
 }
 
 .left-section {
@@ -217,17 +228,32 @@ dialog button:hover {
     font-weight: bold;
 }
 
+#add-project-button {
+    outline: none;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    padding: 6px 12px;
+    color: var(--font-color-secondary);
+    background-color: var(--main-blue-color);
+}
+
+#add-project-button:hover {
+    background-color: var(--main-blue-hover);
+    font-weight: bold;
+}
+
 /* ===================================
    RIGHT-PANEL CONTAINER
    =================================== */
 .right-panel {
-    min-width: 73vw; /* this is absolutely not the way to handle the width of the right panel*/
+    min-width: 80vw; /* this is absolutely not the way to handle the width of the right panel*/
     background-color: var(--right-panel-background);
 }
 
 .sort-title-container {
     padding: 20px;
     font-size: 24px;
+    text-align: center;
 }
 
 /* NO EXISTING TODOS */
