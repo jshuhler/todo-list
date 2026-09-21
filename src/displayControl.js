@@ -89,9 +89,9 @@ function addProjectToSelection(projectArray) {
 // --------------------------------------------------------------------------- //
 
 // update the displayed sort above the todo cards
-function updateViewTitle(targetSort,sortTitle) {
-    sortTitleContainer.textContent = sortTitle
-};
+// function updateViewTitle(targetSort,sortTitle) {
+//     sortTitleContainer.textContent = sortTitle
+// };
 
 // remove and rebuild all todo cards - called for various sorts and initial load
 function addToTodoDisplay(todoArray) {
@@ -180,8 +180,6 @@ function addToTodoDisplay(todoArray) {
             todoProjectContainer.classList.add("todo-project-container");
 
             let projectObject = projectArray.find((project) => project.id === todo.projectId)
-            // console.log("projectObject:", projectObject)
-            // console.log("projectArray when building todo cards:", projectArray)
             todoProjectContainer.textContent = projectObject.name;
             
             infoBottomContainer.appendChild(todoProjectContainer);
@@ -324,8 +322,6 @@ function addToProjectList(projectArray) {
         // add the name of the project to the projectTitle span
         projectTitle.textContent = project.name;
         projectTitle.classList.add("project-title");
-        // this is where to call the function for adding the event listener to 
-        // each project name to change the display to show only todos within that project
 
         // add the x and class to the delete button span
         if (project.name !== "Inbox") { // I don't like that this is hard coded.
@@ -484,7 +480,7 @@ const closedSelect = document.getElementById("closed-select");
 allTodoSelect.addEventListener('click', (e) => {
     let sortTitle = "All Todos"
     selectedSortHighlight(e);
-    updateViewTitle(e.target.id, sortTitle);
+    // updateViewTitle(e.target.id, sortTitle);
     addToTodoDisplay(todoArray);
 });
 
@@ -499,7 +495,7 @@ dueTodaySelect.addEventListener('click', (e) => {
             todaySortArray.push(todo);
         };
     };
-    updateViewTitle(e.target.id, sortTitle);
+    // updateViewTitle(e.target.id, sortTitle);
     addToTodoDisplay(todaySortArray);
 });
 
@@ -514,7 +510,7 @@ overdueSelect.addEventListener('click', (e) => {
             overdueSortArray.push(todo);
         };
     };
-    updateViewTitle(e.target.id, sortTitle);
+    // updateViewTitle(e.target.id, sortTitle);
     addToTodoDisplay(overdueSortArray);
 });
 
@@ -530,7 +526,7 @@ closedSelect.addEventListener('click', (e) => {
         };
     };
     console.log("closedSortArray:", closedSortArray)
-    updateViewTitle(e.target.id, sortTitle);
+    // updateViewTitle(e.target.id, sortTitle);
     addToTodoDisplay(closedSortArray);
 });
 

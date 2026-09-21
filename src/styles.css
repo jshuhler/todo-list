@@ -254,6 +254,7 @@ dialog button:hover {
 .left-footer {
     position: absolute;
     bottom: 0;
+    left: 0;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -267,7 +268,15 @@ dialog button:hover {
 }
 
 .left-footer-top img {
-    width: 32px;
+    width: 34px;
+    cursor: pointer;
+}
+
+.left-footer-bottom {
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+    padding-top: 5px;
 }
 
 /* ===================================
@@ -276,6 +285,7 @@ dialog button:hover {
 .right-panel {
     min-width: 80vw;
     background-color: var(--right-panel-background);
+    padding-top: 60px;
 }
 
 .sort-title-container {
