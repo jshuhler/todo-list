@@ -156,6 +156,7 @@ p.todo-priority {
 
 .radio-item {
     font-weight: normal;
+    padding-bottom: 5px;
 }
 
 .radio-item label {

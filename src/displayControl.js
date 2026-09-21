@@ -546,7 +546,7 @@ function projectSortListener(projectArray,projectTitle,project) {
                 projectSortArray.push(todo);
             };
         };
-        updateViewTitle(e.target.id, sortTitle);
+        // updateViewTitle(e.target.id, sortTitle);
         addToTodoDisplay(projectSortArray);
     });
 };
