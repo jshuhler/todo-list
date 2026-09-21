@@ -203,7 +203,6 @@ dialog button:hover {
 }
 
 .title {
-    /* font-size: 32px; */
     padding-bottom: 15px;
 }
 
@@ -221,6 +220,24 @@ dialog button:hover {
 .menu-title {
     padding: 5px 0px;
 }
+
+.sort-choice {
+    display: flex;
+    align-items: center;
+}
+
+#left-section-top span {
+    padding-left: 10px;
+}
+
+#left-section-top img {
+    width: 20px;
+    /* padding-right: 10px; */
+}
+
+/* .left-section .icon {
+    padding-right: 10px;
+} */
 
 .project-header {
     display: flex;
