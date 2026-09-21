@@ -100,11 +100,19 @@ function addToTodoDisplay(todoArray) {
         todoContainer.innerHTML = "";
         const emptyTodoMessage = document.createElement("div");
             emptyTodoMessage.classList.add("empty-todo-container");
-            emptyTodoMessage.textContent = "You're not tracking anything yet, click the + to start getting organized."
-            todoContainer.appendChild(emptyTodoMessage);
+        const emptyTodoMessagePartOne = document.createElement("span");
+            emptyTodoMessagePartOne.textContent = "You're not tracking anything yet, click the "
+        const emptyTodoMessagePartTwo = document.createElement("span");
+            emptyTodoMessagePartTwo.classList.add("default-text");
+            emptyTodoMessagePartTwo.textContent = "+"
+        const emptyTodoMessagePartThree = document.createElement("span");
+            emptyTodoMessagePartThree.textContent = " to start getting organized."
 
-        console.log(todoArray)
-        console.log("This will be where the empty message is displayed")
+        todoContainer.appendChild(emptyTodoMessage)
+        emptyTodoMessage.appendChild(emptyTodoMessagePartOne);
+        emptyTodoMessage.appendChild(emptyTodoMessagePartTwo);
+        emptyTodoMessage.appendChild(emptyTodoMessagePartThree);
+
     } else {
     todoContainer.innerHTML = "";
     for (const todo of todoArray) {

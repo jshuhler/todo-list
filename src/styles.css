@@ -232,12 +232,7 @@ dialog button:hover {
 
 #left-section-top img {
     width: 20px;
-    /* padding-right: 10px; */
 }
-
-/* .left-section .icon {
-    padding-right: 10px;
-} */
 
 .project-header {
     display: flex;
@@ -318,10 +313,15 @@ dialog button:hover {
     text-align: center;
     justify-content: center;
     margin: 20px;
+    display: flex;
+    align-items: center;
+    white-space: preserve nowrap;
 }
 
 span.default-text {
     color: var(--main-blue-color);
+    font-weight: bold;
+    font-size: 24px;
 }
 
 /* ADD TODO BUTTON */
