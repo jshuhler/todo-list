@@ -16,6 +16,6 @@ My solution for the [Todo List project](https://www.theodinproject.com/lessons/n
 - Implementing using new libraries and local storage directly from reading and researching through documentation. 
 
 ## attibutions
-Favicon [created by Graphics Plazza - Flaticon](https://www.flaticon.com/authors/graphics-plazza).
-Trashcan and pencil icon [created by Agus_87 - Flaticon](https://www.flaticon.com/authors/agus-87).
-Default sort icons [created by Magnific - Flaticon](https://www.flaticon.com/authors/magnific).
+- Favicon [created by Graphics Plazza - Flaticon](https://www.flaticon.com/authors/graphics-plazza).
+- Trashcan and pencil icon [created by Agus_87 - Flaticon](https://www.flaticon.com/authors/agus-87).
+- Default sort icons [created by Magnific - Flaticon](https://www.flaticon.com/authors/magnific).
