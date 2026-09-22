@@ -3,7 +3,6 @@ import { projectArray, createProject, deleteProject } from "./createProject.js";
 import { todoRetrieve, projectRetrieve, addTodoToStorage, addProjectToStorage } from "./storage.js";
 import { isToday, parseISO, isPast } from "date-fns";
 import trashcan from "./img/trashcan.png";
-import pencil from "./img/pencil.png";
 import pencil_edit from "./img/pencil_edit.png";
 
 // --------------------------------------------------------------------------- //
@@ -257,13 +256,7 @@ function todoStatusListener (todoCheckbox, todo) {
             console.log("the status is closed right now, changing to open");
             todo.status = 'open';
         };
-                addTodoToStorage(todoArray);
-        addToTodoDisplay(todoArray);
-
-        console.log(todoArray);
-        // if I'm going to dim or strike thru the cards when I click them as done, I'm going to need to 
-        // re-call the display function to remake the displayed list, right?
-        // addToTodoDisplay(todoArray);
+        addTodoToStorage(todoArray);
     });
 };
 
@@ -276,8 +269,6 @@ function todoUpdateListener (todoEditButton, todo, editTodoDialog, projectArray,
         addProjectsToEditSelection(projectArray);
         const projectIdOfTodo = findProjectIdOfTodo(todoToUpdate,projectArray);
         populateEditDialog(todoToUpdate,projectArray,projectIdOfTodo);
-        // todoUpdate(todoToUpdate);
-        console.log("Edit button on todo card clicked.")
     });
 };
 
@@ -296,6 +287,7 @@ let project;
 // open new project dialog
 addProjectButton.addEventListener('click', () => {
     projectDialog.showModal();
+    findSelectedSort()
 });
 
 // close new project dialog without adding project
@@ -483,6 +475,12 @@ const allTodoSelect = document.getElementById("all-todo-select");
 const dueTodaySelect = document.getElementById("due-today-select");
 const overdueSelect = document.getElementById("overdue-select");
 const closedSelect = document.getElementById("closed-select");
+
+// resetting the current sort to all todos
+function findSelectedSort() {
+    const sortChoiceAll = document.querySelectorAll(".selected-sort");
+    console.log(sortChoiceAll)
+};
 
 // sort display by all items
 allTodoSelect.addEventListener('click', (e) => {
