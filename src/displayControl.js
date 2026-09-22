@@ -55,6 +55,7 @@ addTodoDialog.addEventListener('submit', (e) => {
     todoDialog.close();
 
     addToTodoDisplay(todoArray);
+    resetHighlightedSort();
 });
 
 // adding the current projects to the project select on the todo dialog
@@ -287,7 +288,6 @@ let project;
 // open new project dialog
 addProjectButton.addEventListener('click', () => {
     projectDialog.showModal();
-    findSelectedSort()
 });
 
 // close new project dialog without adding project
@@ -477,9 +477,10 @@ const overdueSelect = document.getElementById("overdue-select");
 const closedSelect = document.getElementById("closed-select");
 
 // resetting the current sort to all todos
-function findSelectedSort() {
+function resetHighlightedSort() {
     const sortChoiceAll = document.querySelectorAll(".selected-sort");
-    console.log(sortChoiceAll)
+    sortChoiceAll.forEach((choice) => choice.classList.remove("selected-sort"));
+    allTodoSelect.classList.add("selected-sort");
 };
 
 // sort display by all items
