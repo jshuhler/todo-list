@@ -16,7 +16,6 @@ const addTodoButton = document.getElementById("add-task-button");
 const closeTodoDialog = document.querySelector(".todo-dialog-close");
 
 const addTodoDialog = document.querySelector(".add-todo-form");
-// const addTodoDialog = document.getElementById("add-todo-submit");
 
 const sortTitleContainer = document.querySelector(".sort-title-container");
 const todoContainer = document.querySelector(".todo-container");
@@ -77,25 +76,17 @@ function addProjectToSelection(projectArray) {
     for (const project of projectArray) {
         const projectOption = document.createElement("option");
         projectOption.setAttribute("value",project.id);
-        // projectOption.setAttribute("data-project-id",project.id);
         projectOption.textContent = project.name;
         projectSelectList.appendChild(projectOption);
     };
-    console.log(projectArray);
 };
 
 // --------------------------------------------------------------------------- //
 //                        UPDATING THE MAIN TODO DISPLAY                       //
 // --------------------------------------------------------------------------- //
 
-// update the displayed sort above the todo cards
-// function updateViewTitle(targetSort,sortTitle) {
-//     sortTitleContainer.textContent = sortTitle
-// };
-
 // remove and rebuild all todo cards - called for various sorts and initial load
 function addToTodoDisplay(todoArray) {
-    console.log("todoArray before building DOM:", todoArray)
     if (todoArray.length === 0) {
         todoContainer.innerHTML = "";
         const emptyTodoMessage = document.createElement("div");
@@ -247,14 +238,9 @@ function todoDeleteListener (todoDeleteButton, todo) {
 // add listener to status toggle on todo cards
 function todoStatusListener (todoCheckbox, todo) {
     todoCheckbox.addEventListener('click', () => {
-        // const todoStatusToChange = todoArray.find((selectedTodo) => selectedTodo.id === todo.id);
-        // const index = todoArray.indexOf(todoStatusToChange);
-        console.log(todo)
         if (todo.status === 'open') {
-            console.log("the status is open right now, changing to closed");
             todo.status = 'closed';
         } else if (todo.status === 'closed') {
-            console.log("the status is closed right now, changing to open");
             todo.status = 'open';
         };
         addTodoToStorage(todoArray);
@@ -441,9 +427,6 @@ function populateEditDialog (todoToUpdate,projectArray,projectSelectId) {
 function todoEditDialogSaveButton(todoToUpdate) {
     editTodoButton.addEventListener('click', (e) => {
         e.preventDefault();
-        console.log("Update button on edit dialog clicked")
-        console.log("todoToUpdate:",todoToUpdate)
-        console.log("todoToUpdate.title:",todoToUpdate.title)
         todoToUpdate.title = editTodoName.value;
         todoToUpdate.details = editTodoDetails.value;
         todoToUpdate.dueDate = editTodoDate.value;
@@ -487,7 +470,6 @@ function resetHighlightedSort() {
 allTodoSelect.addEventListener('click', (e) => {
     let sortTitle = "All Todos"
     selectedSortHighlight(e);
-    // updateViewTitle(e.target.id, sortTitle);
     addToTodoDisplay(todoArray);
 });
 
@@ -502,7 +484,6 @@ dueTodaySelect.addEventListener('click', (e) => {
             todaySortArray.push(todo);
         };
     };
-    // updateViewTitle(e.target.id, sortTitle);
     addToTodoDisplay(todaySortArray);
 });
 
@@ -517,7 +498,6 @@ overdueSelect.addEventListener('click', (e) => {
             overdueSortArray.push(todo);
         };
     };
-    // updateViewTitle(e.target.id, sortTitle);
     addToTodoDisplay(overdueSortArray);
 });
 
@@ -527,13 +507,10 @@ closedSelect.addEventListener('click', (e) => {
     let sortTitle = "Completed";
     selectedSortHighlight(e);
     for (const todo of todoArray) {
-        console.log(todo.id, todo.status)
         if (todo.status === "closed") {
             closedSortArray.push(todo);
         };
     };
-    console.log("closedSortArray:", closedSortArray)
-    // updateViewTitle(e.target.id, sortTitle);
     addToTodoDisplay(closedSortArray);
 });
 
@@ -553,7 +530,6 @@ function projectSortListener(projectArray,projectTitle,project) {
                 projectSortArray.push(todo);
             };
         };
-        // updateViewTitle(e.target.id, sortTitle);
         addToTodoDisplay(projectSortArray);
     });
 };

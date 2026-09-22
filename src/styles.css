@@ -193,15 +193,6 @@ dialog button:hover {
 /* ===================================
    LEFT-PANEL CONTAINER
    =================================== */
-/* .left-panel {
-    min-width: 20vw; 
-    padding: 20px;
-    box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.1);
-    position: relative;
-    z-index: 1;
-    background-color: var(--left-panel-background);
-} */
-
 .left-panel {
     min-width: 20vw;
     height: 100vh;

@@ -18,7 +18,6 @@ class Project {
 function createProject(name) {
     const newProject = new Project(name)
     projectArray.push(newProject);
-    // return newProject; // why is this here?
     addProjectToStorage(projectArray);
 };
 
